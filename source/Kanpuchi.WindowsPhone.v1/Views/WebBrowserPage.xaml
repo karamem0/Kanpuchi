@@ -1,0 +1,117 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Kanpuchi.Views.WebBrowserPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:pi="clr-namespace:Microsoft.Practices.Prism.Interactivity;assembly=Microsoft.Practices.Prism.Interactivity"
+    xmlns:ir="clr-namespace:Microsoft.Practices.Prism.Interactivity.InteractionRequest;assembly=Microsoft.Practices.Prism.Interactivity"
+    xmlns:li="clr-namespace:Kanpuchi.Interactivity"
+    xmlns:vi="clr-namespace:Kanpuchi.Views"
+    mc:Ignorable="d"
+    d:DesignWidth="480"
+    d:DesignHeight="768"
+    shell:SystemTray.IsVisible="False"
+    DataContext="{Binding
+        Path=WebBrowserViewModel,
+        Source={StaticResource ResourceKey=ViewModelLocator}}"
+    FontFamily="{StaticResource ResourceKey=PhoneFontFamilyNormal}"
+    FontSize="{StaticResource ResourceKey=PhoneFontSizeNormal}"
+    Foreground="{StaticResource ResourceKey=PhoneForegroundBrush}"
+    Language="ja-jp"
+    Orientation="Portrait"
+    SupportedOrientations="PortraitOrLandscape">
+    <phone:PhoneApplicationPage.Resources>
+        <li:WebBrowserCommands x:Key="WebBrowserCommands" WebBrowser="{Binding ElementName=WebBrowser}" />
+    </phone:PhoneApplicationPage.Resources>
+    <phone:WebBrowser x:Name="WebBrowser" Source="{Binding Path=Uri}">
+        <i:Interaction.Behaviors>
+            <li:WebBrowserBehavior ViewModel="{Binding
+                Path=WebBrowserViewModel,
+                Source={StaticResource ResourceKey=ViewModelLocator}}" />
+        </i:Interaction.Behaviors>
+    </phone:WebBrowser>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar>
+            <shell:ApplicationBar.Buttons>
+                <shell:ApplicationBarIconButton
+                    IconUri="/Icons/dark/appbar.refresh.rest.png"
+                    Text="update" />
+                <shell:ApplicationBarIconButton
+                    IconUri="/Icons/dark/appbar.close.rest.png"
+                    Text="close" />
+            </shell:ApplicationBar.Buttons>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="back" />
+                <shell:ApplicationBarMenuItem Text="open browser" />
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+    <i:Interaction.Behaviors>
+        <li:ApplicationBarCommandBindingBehavior
+            Text="update"
+            Command="{Binding
+                Path=RefreshCommand,
+                Source={StaticResource ResourceKey=WebBrowserCommands}}"
+            DisplayText="{Binding
+                Path=StringResource.UpdateMenu,
+                Source={StaticResource ResourceKey=StringResourceLocator}}" />
+        <li:ApplicationBarCommandBindingBehavior
+            Text="close"
+            Command="{Binding
+                Path=GoBackCommand,
+                Source={StaticResource ResourceKey=NavigationCommands}}"
+            DisplayText="{Binding
+                Path=StringResource.CloseMenu,
+                Source={StaticResource ResourceKey=StringResourceLocator}}" />
+        <li:ApplicationBarCommandBindingBehavior
+            Text="back"
+            Command="{Binding
+                Path=GoBackCommand,
+                Source={StaticResource ResourceKey=WebBrowserCommands}}"
+            DisplayText="{Binding
+                Path=StringResource.BackMenu,
+                Source={StaticResource ResourceKey=StringResourceLocator}}" />
+        <li:ApplicationBarCommandBindingBehavior
+            Text="open browser"
+            Command="{Binding
+                Path=WebBrowserTaskCommand,
+                Source={StaticResource ResourceKey=TaskCommands}}"
+            DisplayText="{Binding
+                Path=StringResource.OpenWithBrowserMenu,
+                Source={StaticResource ResourceKey=StringResourceLocator}}">
+            <li:ApplicationBarCommandBindingBehavior.CommandParameter>
+                <li:WebBrowserTaskContext
+                    Uri="{Binding
+                        Path=WebBrowserViewModel.Uri,
+                        Source={StaticResource ResourceKey=ViewModelLocator}}"
+                    UseAppInBrowser="False" />
+            </li:ApplicationBarCommandBindingBehavior.CommandParameter>
+        </li:ApplicationBarCommandBindingBehavior>
+    </i:Interaction.Behaviors>
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn" />
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn" />
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut" />
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut" />
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+</phone:PhoneApplicationPage>

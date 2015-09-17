@@ -1,0 +1,68 @@
+﻿<Page
+    x:Class="Kanpuchi.Views.WebBrowserPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:li="using:Kanpuchi.Interactivity"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    DataContext="{Binding WebBrowserViewModel, Source={StaticResource ViewModelLocator}}"
+    Language="ja-JP"
+    NavigationCacheMode="Disabled">
+    <WebView
+        x:Name="WebView"
+        NavigationCompleted="OnWebViewNavigationCompleted" />
+    <Page.BottomAppBar>
+        <CommandBar IsOpen="False">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton
+                    x:Name="BackButton"
+                    x:Uid="BackButton"
+                    Click="OnBackButtonClick"
+                    IsEnabled="False"
+                    Label="back">
+                    <AppBarButton.Icon>
+                        <FontIcon
+                            Glyph="&#xE112;"
+                            FontFamily="Segoe UI Symbol" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+                <AppBarButton
+                    x:Name="ForwardButton"
+                    x:Uid="ForwardButton"
+                    Click="OnForwardButtonClick"
+                    IsEnabled="False"
+                    Label="forward">
+                    <AppBarButton.Icon>
+                        <FontIcon
+                            Glyph="&#xE111;"
+                            FontFamily="Segoe UI Symbol" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+                <AppBarButton
+                    x:Uid="CloseButton"
+                    Command="{Binding GoBackCommand}"
+                    Label="close">
+                    <AppBarButton.Icon>
+                        <FontIcon
+                            Glyph="&#xE10A;"
+                            FontFamily="Segoe UI Symbol" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+            </CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
+                <AppBarButton
+                    x:Name="ShareButton"
+                    x:Uid="ShareButton"
+                    Click="OnShareButtonClick"
+                    Label="share">
+                </AppBarButton>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <i:Interaction.Behaviors>
+        <li:ViewModelBehavior />
+    </i:Interaction.Behaviors>
+</Page>

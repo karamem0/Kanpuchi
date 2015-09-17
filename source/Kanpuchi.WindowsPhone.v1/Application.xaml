@@ -1,0 +1,27 @@
+﻿<Application
+    x:Class="Kanpuchi.Application"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:li="clr-namespace:Kanpuchi.Interactivity">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/Generic.xaml" />
+                <ResourceDictionary>
+                    <li:BooleanToVisibilityConverter  x:Key="BooleanToVisibilityConverter" />
+                    <li:BusyStateManager  x:Key="BusyStateManager" />
+                    <li:LocalTimeConverter  x:Key="LocalTimeConverter" />
+                    <li:NavigationCommands x:Key="NavigationCommands" />
+                    <li:TaskCommands x:Key="TaskCommands" />
+                    <li:StringResourceLocator x:Key="StringResourceLocator" />
+                    <li:ViewModelLocator x:Key="ViewModelLocator" />
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+    <Application.ApplicationLifetimeObjects>
+        <shell:PhoneApplicationService />
+    </Application.ApplicationLifetimeObjects>
+</Application>

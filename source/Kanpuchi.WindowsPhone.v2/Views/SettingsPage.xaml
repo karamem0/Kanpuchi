@@ -1,0 +1,81 @@
+﻿<Page
+    x:Class="Kanpuchi.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:li="using:Kanpuchi.Interactivity"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    DataContext="{Binding SettingsViewModel, Source={StaticResource ViewModelLocator}}"
+    Language="ja-JP"
+    NavigationCacheMode="Required">
+    <Page.Resources>
+        <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}" />
+    </Page.Resources>
+    <Grid>
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition />
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel
+            Grid.Column="0"
+            Grid.Row="0"
+            Margin="18,0,0,0">
+            <TextBlock
+                x:Uid="AppNameLabel"
+                Margin="0,12,0,0"
+                Text="KANPUCHI" />
+        </StackPanel>
+        <Grid
+            Grid.Column="0"
+            Grid.Row="1">
+            <Pivot>
+                <PivotItem>
+                    <PivotItem.Header>
+                        <TextBlock
+                            x:Uid="SettingsHeader"
+                            Style="{StaticResource PivotHeadeerTextBlockStyle}"
+                            Text="settings" />
+                    </PivotItem.Header>
+                    <StackPanel>
+                        <CheckBox
+                            x:Uid="UseInAppBrowserCheckBox"
+                            IsChecked="{Binding UseInAppBrowser,Mode=TwoWay}"
+                            FontSize="{ThemeResource TextStyleMediumFontSize}"
+                            Foreground="{ThemeResource PhoneForegroundBrush}"
+                            Content="use in-app browser" />
+                    </StackPanel>
+                </PivotItem>
+            </Pivot>
+        </Grid>
+    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar IsOpen="False">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton
+                    x:Uid="CloseButton"
+                    Command="{Binding GoBackCommand}"
+                    Label="close">
+                    <AppBarButton.Icon>
+                        <FontIcon
+                            Glyph="&#xE10A;"
+                            FontFamily="Segoe UI Symbol" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <i:Interaction.Behaviors>
+        <li:ViewModelBehavior />
+    </i:Interaction.Behaviors>
+</Page>

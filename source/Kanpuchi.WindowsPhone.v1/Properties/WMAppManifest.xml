@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
+  <DefaultLanguage xmlns="" code="ja-JP" />
+  <Languages xmlns="">
+    <Language code="ja" />
+    <Language code="ja-JP" />
+  </Languages>
+  <App xmlns="" ProductID="{C92D84D1-DBF1-42B3-B4A8-053B7E01FE90}" Title="艦ぷち" RuntimeType="Silverlight" Version="1.3.2.0" Genre="apps.normal" Author="karamem0" Description="「艦隊これくしょん～艦これ～」の運営スタッフ（運営鎮守府）のタイムラインや関連まとめブログの更新情報を見ることができます。" Publisher="karamem0" BitsPerPixel="32" PublisherID="{CE12FB67-BF39-40DD-9436-29E4EF1AFDF1}">
+    <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
+    <Capabilities>
+      <Capability Name="ID_CAP_NETWORKING" />
+      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
+    </Capabilities>
+    <Tasks>
+      <DefaultTask Name="_default" NavigationPage="/Views/SplashPage.xaml" />
+    </Tasks>
+    <Tokens>
+      <PrimaryToken TokenID="Kanpuchi.Phone" TaskName="_default">
+        <TemplateFlip>
+          <SmallImageURI IsResource="false" IsRelative="true">Background.png</SmallImageURI>
+          <Count>0</Count>
+          <BackgroundImageURI IsResource="false" IsRelative="true">Background.png</BackgroundImageURI>
+          <Title>艦ぷち</Title>
+          <BackContent>
+          </BackContent>
+          <BackBackgroundImageURI>
+          </BackBackgroundImageURI>
+          <BackTitle>
+          </BackTitle>
+          <DeviceLockImageURI>
+          </DeviceLockImageURI>
+          <HasLarge>false</HasLarge>
+        </TemplateFlip>
+      </PrimaryToken>
+    </Tokens>
+    <ScreenResolutions>
+      <ScreenResolution Name="ID_RESOLUTION_WVGA" />
+      <ScreenResolution Name="ID_RESOLUTION_WXGA" />
+      <ScreenResolution Name="ID_RESOLUTION_HD720P" />
+    </ScreenResolutions>
+  </App>
+</Deployment>

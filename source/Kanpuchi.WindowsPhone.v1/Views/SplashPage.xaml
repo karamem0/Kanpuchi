@@ -1,0 +1,82 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Kanpuchi.Views.SplashPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:ir="clr-namespace:Microsoft.Practices.Prism.Interactivity.InteractionRequest;assembly=Microsoft.Practices.Prism.Interactivity"
+    xmlns:li="clr-namespace:Kanpuchi.Interactivity"
+    xmlns:vi="clr-namespace:Kanpuchi.Views"
+    mc:Ignorable="d"
+    d:DesignWidth="480"
+    d:DesignHeight="768"
+    shell:SystemTray.IsVisible="False"
+    DataContext="{Binding
+        Path=SplashViewModel,
+        Source={StaticResource ResourceKey=ViewModelLocator}}"
+    FontFamily="{StaticResource ResourceKey=PhoneFontFamilyNormal}"
+    FontSize="{StaticResource ResourceKey=PhoneFontSizeNormal}"
+    Foreground="{StaticResource ResourceKey=PhoneForegroundBrush}"
+    Language="ja-jp"
+    Orientation="Portrait"
+    SupportedOrientations="PortraitOrLandscape">
+    <Border Background="{StaticResource ResourceKey=PhoneAccentBrush}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="173" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Image
+                Grid.Column="0"
+                Grid.Row="1"
+                Source="/Icons/173x173.png"
+                Height="173"
+                Width="173" />
+            <ProgressBar
+                Grid.Column="0"
+                Grid.Row="2"
+                Foreground="#FFFFFF"
+                HorizontalAlignment="Stretch" 
+                IsIndeterminate="True"
+                VerticalAlignment="Center" />
+            <TextBlock
+                Grid.Column="0"
+                Grid.Row="3" 
+                Text="{Binding
+                    Path=Text,
+                    Source={StaticResource ResourceKey=BusyStateManager}}"
+                TextAlignment="Center"
+                Visibility="{Binding
+                    Converter={StaticResource ResourceKey=BooleanToVisibilityConverter},
+                    Path=IsBusy,
+                    Source={StaticResource ResourceKey=BusyStateManager}}" />
+        </Grid>
+    </Border>
+    <i:Interaction.Behaviors>
+        <li:ViewModelBehavior />
+    </i:Interaction.Behaviors>
+    <i:Interaction.Triggers>
+        <i:EventTrigger
+            EventName="InitializeCompleted"
+            SourceObject="{Binding
+                Path=SplashViewModel,
+                Source={StaticResource ResourceKey=ViewModelLocator}}">
+            <i:InvokeCommandAction
+                Command="{Binding
+                    Path=GoToPageCommand,
+                    Source={StaticResource ResourceKey=NavigationCommands}}"
+                CommandParameter="/Views/MainPage.xaml" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+</phone:PhoneApplicationPage>

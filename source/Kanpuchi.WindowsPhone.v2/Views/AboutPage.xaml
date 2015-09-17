@@ -1,0 +1,123 @@
+﻿<Page
+    x:Class="Kanpuchi.Views.AboutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:li="using:Kanpuchi.Interactivity"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    DataContext="{Binding AboutViewModel, Source={StaticResource ViewModelLocator}}"
+    Language="ja-JP"
+    NavigationCacheMode="Required">
+    <Page.Resources>
+        <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}" />
+        <Style TargetType="HyperlinkButton" BasedOn="{StaticResource HyperlinkButtonStyle}" />
+    </Page.Resources>
+    <Grid>
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition />
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel
+            Grid.Column="0"
+            Grid.Row="0"
+            Margin="18,0,0,0">
+            <TextBlock
+                x:Uid="AppNameLabel"
+                Margin="0,12,0,0"
+                Text="KANPUCHI" />
+        </StackPanel>
+        <Grid
+            Grid.Column="0"
+            Grid.Row="1">
+            <Pivot>
+                <PivotItem>
+                    <PivotItem.Header>
+                        <TextBlock
+        					x:Uid="AboutHeader"
+                            Style="{StaticResource PivotHeadeerTextBlockStyle}"
+        					Text="about" />
+                    </PivotItem.Header>
+                    <Border Margin="0,12,0,0">
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+        							x:Uid="VersionLabel"
+        							Margin="0,0,6,0"
+        							Text="Version:" />
+                                <TextBlock Text="{Binding Version}" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+        							x:Uid="AuthorLabel"
+        							Margin="0,0,6,0"
+        							Text="Author:" />
+                                <HyperlinkButton
+                                    x:Uid="AuthorButton"
+                                    Command="{Binding LaunchBrowserCommand}"
+                                    CommandParameter="https://twitter.com/karamem0"
+                                    Content="@karamem0" />
+                            </StackPanel>
+                            <HyperlinkButton
+                                x:Uid="PrivacyPolicyButton"
+                                Command="{Binding LaunchBrowserCommand}"
+                                CommandParameter="https://kanpuchi.azurewebsites.net/privacy.aspx"
+                                Content="Privacy policy"
+                                Margin="0,6,0,0" />
+                            <HyperlinkButton
+                                x:Uid="ReviewButton"
+                                Command="{Binding LaunchReviewAppCommand}"
+                                Content="Review app"
+                                Margin="0,6,0,0">
+                            </HyperlinkButton>
+                        </StackPanel>
+                    </Border>
+                </PivotItem>
+                <PivotItem>
+                    <PivotItem.Header>
+                        <TextBlock
+        					x:Uid="LicenseHeader"
+                            Style="{StaticResource PivotHeadeerTextBlockStyle}"
+        					Text="licence" />
+                    </PivotItem.Header>
+                    <StackPanel>
+                        <TextBlock Text="Json.NET" />
+                        <HyperlinkButton
+                            Command="{Binding LaunchBrowserCommand}"
+                            CommandParameter="https://raw.githubusercontent.com/JamesNK/Newtonsoft.Json/master/LICENSE.md"
+                            Content="The MIT License (MIT)" />
+                    </StackPanel>
+                </PivotItem>
+            </Pivot>
+        </Grid>
+    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar IsOpen="False">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton
+                    x:Uid="CloseButton"
+                    Command="{Binding GoBackCommand}"
+                    Label="close">
+                    <AppBarButton.Icon>
+                        <FontIcon
+                            Glyph="&#xE10A;"
+                            FontFamily="Segoe UI Symbol" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+    <i:Interaction.Behaviors>
+        <li:ViewModelBehavior />
+    </i:Interaction.Behaviors>
+</Page>

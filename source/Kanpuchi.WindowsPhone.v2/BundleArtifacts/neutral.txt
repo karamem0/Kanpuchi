@@ -1,0 +1,4 @@
+MainPackage=C:\Users\Takashi\Documents\Repositories\products\Kanpuchi\source\Kanpuchi.WindowsPhone.v2\bin\Release\Kanpuchi.WindowsPhone_2.0.0.0_Bundle\Kanpuchi.WindowsPhone_2.0.0.0_AnyCPU.appx
+SymbolPackage=C:\Users\Takashi\Documents\Repositories\products\Kanpuchi\source\Kanpuchi.WindowsPhone.v2\AppPackages\Kanpuchi.WindowsPhone_2.0.0.0_Test\Kanpuchi.WindowsPhone_2.0.0.0_AnyCPU.appxsym
+ResourcePack=C:\Users\Takashi\Documents\Repositories\products\Kanpuchi\source\Kanpuchi.WindowsPhone.v2\bin\Release\Kanpuchi.WindowsPhone_2.0.0.0_Bundle\Kanpuchi.WindowsPhone_2.0.0.0_language-en.appx
+ResourcePack=C:\Users\Takashi\Documents\Repositories\products\Kanpuchi\source\Kanpuchi.WindowsPhone.v2\bin\Release\Kanpuchi.WindowsPhone_2.0.0.0_Bundle\Kanpuchi.WindowsPhone_2.0.0.0_language-ja.appx

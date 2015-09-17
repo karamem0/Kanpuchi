@@ -1,0 +1,244 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="Kanpuchi.Views.AboutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:li="clr-namespace:Kanpuchi.Interactivity"
+    mc:Ignorable="d"
+    d:DesignWidth="480"
+    d:DesignHeight="768"
+    shell:SystemTray.IsVisible="True"
+    DataContext="{Binding
+        Path=AboutViewModel,
+        Source={StaticResource ResourceKey=ViewModelLocator}}"
+    FontFamily="{StaticResource ResourceKey=PhoneFontFamilyNormal}"
+    FontSize="{StaticResource ResourceKey=PhoneFontSizeNormal}"
+    Foreground="{StaticResource ResourceKey=PhoneForegroundBrush}"
+    Language="ja-jp"
+    Orientation="Portrait"
+    SupportedOrientations="PortraitOrLandscape">
+    <controls:Pivot
+        Title="{Binding
+            Path=StringResource.AboutPageTitle,
+            Source={StaticResource ResourceKey=StringResourceLocator}}">
+        <controls:PivotItem>
+            <controls:PivotItem.Header>
+                <TextBlock
+                    FontFamily="{StaticResource ResourceKey=PhoneFontFamilySemiLight}"
+                    FontSize="{StaticResource ResourceKey=PhoneFontSizeLarge}"
+                    Foreground="{StaticResource ResourceKey=PhoneForegroundBrush}"
+                    Margin="{StaticResource ResourceKey=PhoneVerticalMargin}"
+                    Text="{Binding
+                        Path=StringResource.VersionTitle,
+                        Source={StaticResource ResourceKey=StringResourceLocator}}" />
+            </controls:PivotItem.Header>
+            <Border Margin="{StaticResource ResourceKey=PhoneHorizontalMargin}">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock
+                        FontFamily="{StaticResource ResourceKey=PhoneFontFamilyNormal}"
+                        FontSize="{StaticResource ResourceKey=PhoneFontSizeNormal}"
+                        Foreground="{StaticResource ResourceKey=PhoneForegroundBrush}">
+                        <Run Text="Version: " />
+                        <Run Text="{Binding Path=Version}" />
+                    </TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            FontFamily="{StaticResource ResourceKey=PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource ResourceKey=PhoneFontSizeNormal}"
+                            Foreground="{StaticResource ResourceKey=PhoneForegroundBrush}"
+                            Text="Author: " />
+                        <HyperlinkButton
+                            Command="{Binding
+                                Path=WebBrowserTaskCommand,
+                                Source={StaticResource ResourceKey=TaskCommands}}"
+                            Content="@karamem0"
+                            FontFamily="{StaticResource ResourceKey=PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource ResourceKey=PhoneFontSizeNormal}"
+                            Foreground="{StaticResource ResourceKey=PhoneForegroundBrush}">
+                            <HyperlinkButton.CommandParameter>
+                                <li:WebBrowserTaskContext Uri="https://twitter.com/saku_karamomo" />
+                            </HyperlinkButton.CommandParameter>
+                        </HyperlinkButton>
+                    </StackPanel>
+                    <StackPanel Margin="{StaticResource ResourceKey=PhoneMargin}">
+                        <HyperlinkButton
+                            Command="{Binding
+                                Path=WebBrowserTaskCommand,
+                                Source={StaticResource ResourceKey=TaskCommands}}"
+                            Content="{Binding
+                                Path=StringResource.PrivacyPolicyLabel,
+                                Source={StaticResource ResourceKey=StringResourceLocator}}"
+                            FontFamily="{StaticResource ResourceKey=PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource ResourceKey=PhoneFontSizeSmall}"
+                            Foreground="{StaticResource ResourceKey=PhoneSubtleBrush}"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Stretch">
+                            <HyperlinkButton.CommandParameter>
+                                <li:WebBrowserTaskContext Uri="https://kanpuchi.azurewebsites.net/privacy.aspx" />
+                            </HyperlinkButton.CommandParameter>
+                        </HyperlinkButton>
+                        <HyperlinkButton
+                            Command="{Binding
+                                Path=MarketplaceReviewTaskCommand,
+                                Source={StaticResource ResourceKey=TaskCommands}}"
+                            Content="{Binding
+                                Path=StringResource.ReviewAppLabel,
+                                Source={StaticResource ResourceKey=StringResourceLocator}}"
+                            FontFamily="{StaticResource ResourceKey=PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource ResourceKey=PhoneFontSizeSmall}"
+                            Foreground="{StaticResource ResourceKey=PhoneSubtleBrush}"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Stretch" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <li:PivotApplicationBar.ApplicationBar>
+                <shell:ApplicationBar>
+                    <shell:ApplicationBar.Buttons>
+                        <shell:ApplicationBarIconButton
+                            IconUri="/Icons/dark/appbar.close.rest.png"
+                            Text="close" />
+                    </shell:ApplicationBar.Buttons>
+                </shell:ApplicationBar>
+            </li:PivotApplicationBar.ApplicationBar>
+            <li:PivotApplicationBar.CommandBindings>
+                <li:PivotApplicationBarCommandBinding
+                    Command="{Binding
+                        Path=GoBackCommand,
+                        Source={StaticResource ResourceKey=NavigationCommands}}"
+                    Text="close"
+                    DisplayText="{Binding
+                        Path=StringResource.CloseMenu,
+                        Source={StaticResource ResourceKey=StringResourceLocator}}" />
+            </li:PivotApplicationBar.CommandBindings>
+        </controls:PivotItem>
+        <controls:PivotItem>
+            <controls:PivotItem.Header>
+                <TextBlock
+                    FontFamily="{StaticResource ResourceKey=PhoneFontFamilySemiLight}"
+                    FontSize="{StaticResource ResourceKey=PhoneFontSizeLarge}"
+                    Foreground="{StaticResource ResourceKey=PhoneForegroundBrush}"
+                    Margin="{StaticResource ResourceKey=PhoneVerticalMargin}"
+                    Text="{Binding
+                        Path=StringResource.LicenseTitle,
+                        Source={StaticResource ResourceKey=StringResourceLocator}}" />
+            </controls:PivotItem.Header>
+            <ScrollViewer
+                Margin="{StaticResource ResourceKey=PhoneHorizontalMargin}"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Visible">
+                <StackPanel>
+                    <TextBlock
+                        FontFamily="{StaticResource ResourceKey=PhoneFontFamilyNormal}"
+                        FontSize="{StaticResource ResourceKey=PhoneFontSizeNormal}"
+                        Foreground="{StaticResource ResourceKey=PhoneForegroundBrush}"
+                        Text="Json.NET" />
+                    <HyperlinkButton
+                            Command="{Binding
+                                Path=WebBrowserTaskCommand,
+                                Source={StaticResource ResourceKey=TaskCommands}}"
+                            Content="The MIT License (MIT)"
+                            FontFamily="{StaticResource ResourceKey=PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource ResourceKey=PhoneFontSizeSmall}"
+                            Foreground="{StaticResource ResourceKey=PhoneSubtleBrush}"
+                            Margin="{StaticResource ResourceKey=PhoneMargin}">
+                        <HyperlinkButton.CommandParameter>
+                            <li:WebBrowserTaskContext
+                                Uri="https://raw.githubusercontent.com/JamesNK/Newtonsoft.Json/master/LICENSE.md"
+                                UseAppInBrowser="False" />
+                        </HyperlinkButton.CommandParameter>
+                    </HyperlinkButton>
+                    <TextBlock
+                        FontFamily="{StaticResource ResourceKey=PhoneFontFamilyNormal}"
+                        FontSize="{StaticResource ResourceKey=PhoneFontSizeNormal}"
+                        Foreground="{StaticResource ResourceKey=PhoneForegroundBrush}"
+                        Text="patterns &amp; practices: Prism" />
+                    <HyperlinkButton
+                            Command="{Binding
+                                Path=WebBrowserTaskCommand,
+                                Source={StaticResource ResourceKey=TaskCommands}}"
+                            Content="Apache License 2.0"
+                            FontFamily="{StaticResource ResourceKey=PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource ResourceKey=PhoneFontSizeSmall}"
+                            Foreground="{StaticResource ResourceKey=PhoneSubtleBrush}"
+                            Margin="{StaticResource ResourceKey=PhoneMargin}">
+                        <HyperlinkButton.CommandParameter>
+                            <li:WebBrowserTaskContext
+                                Uri="http://compositewpf.codeplex.com/license"
+                                UseAppInBrowser="False" />
+                        </HyperlinkButton.CommandParameter>
+                    </HyperlinkButton>
+                    <TextBlock
+                        FontFamily="{StaticResource ResourceKey=PhoneFontFamilyNormal}"
+                        FontSize="{StaticResource ResourceKey=PhoneFontSizeNormal}"
+                        Foreground="{StaticResource ResourceKey=PhoneForegroundBrush}"
+                        Text="Windows Phone Toolkit" />
+                    <HyperlinkButton
+                            Command="{Binding
+                                Path=WebBrowserTaskCommand,
+                                Source={StaticResource ResourceKey=TaskCommands}}"
+                            Content="Microsoft Public License"
+                            FontFamily="{StaticResource ResourceKey=PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource ResourceKey=PhoneFontSizeSmall}"
+                            Foreground="{StaticResource ResourceKey=PhoneSubtleBrush}"
+                            Margin="{StaticResource ResourceKey=PhoneMargin}">
+                        <HyperlinkButton.CommandParameter>
+                            <li:WebBrowserTaskContext
+                                Uri="http://phone.codeplex.com/license"
+                                UseAppInBrowser="False" />
+                        </HyperlinkButton.CommandParameter>
+                    </HyperlinkButton>
+                </StackPanel>
+            </ScrollViewer>
+            <li:PivotApplicationBar.ApplicationBar>
+                <shell:ApplicationBar>
+                    <shell:ApplicationBar.Buttons>
+                        <shell:ApplicationBarIconButton
+                            IconUri="/Icons/dark/appbar.close.rest.png"
+                            Text="Close" />
+                    </shell:ApplicationBar.Buttons>
+                </shell:ApplicationBar>
+            </li:PivotApplicationBar.ApplicationBar>
+            <li:PivotApplicationBar.CommandBindings>
+                <li:PivotApplicationBarCommandBinding
+                    Command="{Binding
+                        Path=GoBackCommand,
+                        Source={StaticResource ResourceKey=NavigationCommands}}"
+                    Text="Close"
+                    DisplayText="{Binding
+                        Path=StringResource.CloseMenu,
+                        Source={StaticResource ResourceKey=StringResourceLocator}}" />
+            </li:PivotApplicationBar.CommandBindings>
+        </controls:PivotItem>
+        <i:Interaction.Behaviors>
+            <li:PivotApplicationBarBehavior />
+            <li:PivotSelectionBehavior />
+        </i:Interaction.Behaviors>
+    </controls:Pivot>
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn" />
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn" />
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut" />
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut" />
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+</phone:PhoneApplicationPage>

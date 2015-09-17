@@ -1,0 +1,102 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Kanpuchi.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:ir="clr-namespace:Microsoft.Practices.Prism.Interactivity.InteractionRequest;assembly=Microsoft.Practices.Prism.Interactivity"
+    xmlns:li="clr-namespace:Kanpuchi.Interactivity"
+    xmlns:vi="clr-namespace:Kanpuchi.Views"
+    mc:Ignorable="d"
+    d:DesignWidth="480"
+    d:DesignHeight="768"
+    shell:SystemTray.IsVisible="True"
+    DataContext="{Binding
+        Path=SettingsViewModel,
+        Source={StaticResource ResourceKey=ViewModelLocator}}"
+    FontFamily="{StaticResource ResourceKey=PhoneFontFamilyNormal}"
+    FontSize="{StaticResource ResourceKey=PhoneFontSizeNormal}"
+    Foreground="{StaticResource ResourceKey=PhoneForegroundBrush}"
+    Language="ja-jp"
+    Orientation="Portrait"
+    SupportedOrientations="PortraitOrLandscape">
+    <controls:Pivot
+        Title="{Binding
+            Path=StringResource.SettingsPageTitle,
+            Source={StaticResource ResourceKey=StringResourceLocator}}">
+        <controls:PivotItem>
+            <controls:PivotItem.Header>
+                <TextBlock
+                    FontFamily="{StaticResource ResourceKey=PhoneFontFamilySemiLight}"
+                    FontSize="{StaticResource ResourceKey=PhoneFontSizeLarge}"
+                    Foreground="{StaticResource ResourceKey=PhoneForegroundBrush}"
+                    Margin="{StaticResource ResourceKey=PhoneVerticalMargin}"
+                    Text="{Binding
+                        Path=StringResource.GeneralTitle,
+                        Source={StaticResource ResourceKey=StringResourceLocator}}" />
+            </controls:PivotItem.Header>
+            <Border Margin="{StaticResource ResourceKey=PhoneHorizontalMargin}">
+                <StackPanel Orientation="Vertical">
+                    <CheckBox
+                        Content="{Binding
+                            Path=StringResource.UseAppInBrowserLabel,
+                            Source={StaticResource ResourceKey=StringResourceLocator}}"
+                        FontFamily="{StaticResource ResourceKey=PhoneFontFamilyNormal}"
+                        FontSize="{StaticResource ResourceKey=PhoneFontSizeNormal}"
+                        IsChecked="{Binding Path=UseAppInBrowser, Mode=TwoWay}" />
+                </StackPanel>
+            </Border>
+            <li:PivotApplicationBar.ApplicationBar>
+                <shell:ApplicationBar>
+                    <shell:ApplicationBar.Buttons>
+                        <shell:ApplicationBarIconButton
+                            IconUri="/Icons/dark/appbar.close.rest.png"
+                            Text="close" />
+                    </shell:ApplicationBar.Buttons>
+                </shell:ApplicationBar>
+            </li:PivotApplicationBar.ApplicationBar>
+            <li:PivotApplicationBar.CommandBindings>
+                <li:PivotApplicationBarCommandBinding
+                    Command="{Binding
+                        Path=GoBackCommand,
+                        Source={StaticResource ResourceKey=NavigationCommands}}"
+                    Text="close"
+                    DisplayText="{Binding
+                        Path=StringResource.CloseMenu,
+                        Source={StaticResource ResourceKey=StringResourceLocator}}" />
+            </li:PivotApplicationBar.CommandBindings>
+        </controls:PivotItem>
+        <i:Interaction.Behaviors>
+            <li:PivotApplicationBarBehavior />
+            <li:PivotSelectionBehavior />
+        </i:Interaction.Behaviors>
+    </controls:Pivot>
+    <i:Interaction.Behaviors>
+        <li:ViewModelBehavior />
+    </i:Interaction.Behaviors>
+    <toolkit:TransitionService.NavigationInTransition>
+        <toolkit:NavigationInTransition>
+            <toolkit:NavigationInTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardIn" />
+            </toolkit:NavigationInTransition.Backward>
+            <toolkit:NavigationInTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardIn" />
+            </toolkit:NavigationInTransition.Forward>
+        </toolkit:NavigationInTransition>
+    </toolkit:TransitionService.NavigationInTransition>
+    <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut" />
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut" />
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+</phone:PhoneApplicationPage>

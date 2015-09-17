@@ -1,0 +1,120 @@
+﻿<PivotItem
+    x:Class="Kanpuchi.Views.TweetPivotItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vi="using:Kanpuchi.Views"
+    mc:Ignorable="d"
+    DataContext="{Binding MainViewModel, Source={StaticResource ViewModelLocator}}"
+    Language="ja-JP">
+    <PivotItem.Header>
+        <TextBlock
+            x:Uid="TweetPivotHeader"
+            Style="{StaticResource PivotHeadeerTextBlockStyle}"
+            Text="tweets" />
+    </PivotItem.Header>
+    <Border>
+        <ListBox ItemsSource="{Binding TweetService.Items}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,0,0,0">
+                        <Button
+                            Command="{Binding MainViewModel.LaunchBrowserCommand, Source={StaticResource ViewModelLocator}}"
+                            CommandParameter="{Binding Permalink}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border>
+                                        <Grid x:Name="Grid">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.RenderTransform>
+                                                <TranslateTransform X="0" Y="0" />
+                                            </Grid.RenderTransform>
+                                            <Border
+                                                Grid.Column="0"
+                                                Grid.Row="0"
+                                                Background="{ThemeResource PhoneDisabledBrush}"
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Top">
+                                                <Image
+                                                    Source="{Binding ProfileImageUrl}"
+                                                    Height="48"
+                                                    Width="48" />
+                                            </Border>
+                                            <StackPanel
+                                                Grid.Column="1"
+                                                Grid.Row="0"
+                                                Margin="12,0,0,0">
+                                                <TextBlock
+                                                    FontSize="{ThemeResource TextStyleLargeFontSize}"
+                                                    FontWeight="Normal"
+                                                    Foreground="{ThemeResource PhoneAccentBrush}"
+                                                    Text="{Binding UserName}" />
+                                                <TextBlock
+                                                    FontSize="{ThemeResource TextStyleMediumFontSize}"
+                                                    FontWeight="Normal"
+                                                    Foreground="{ThemeResource PhoneLowBrush}"
+                                                    Text="{Binding ScreenName}" />
+                                                <TextBlock
+                                                    FontSize="{ThemeResource TextStyleMediumFontSize}"
+                                                    FontWeight="Normal"
+                                                    Foreground="{ThemeResource PhoneForegroundBrush}"
+                                                    Text="{Binding Path=Text}"
+                                                    TextWrapping="Wrap" />
+                                                <TextBlock
+                                                    FontSize="{ThemeResource TextStyleMediumFontSize}"
+                                                    FontWeight="Normal"
+                                                    Foreground="{ThemeResource PhoneLowBrush}"
+                                                    Text="{Binding CreatedAt, Converter={StaticResource LocalTimeConverter}}" />
+                                            </StackPanel>
+                                        </Grid>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal" />
+                                                <VisualState x:Name="Pressed">
+                                                    <Storyboard>
+                                                        <DoubleAnimation
+                                                            Duration="00:00:00"
+                                                            To="3"
+                                                            Storyboard.TargetName="Grid"
+                                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" />
+                                                        <DoubleAnimation
+                                                            Duration="00:00:00"
+                                                            To="3"
+                                                            Storyboard.TargetName="Grid"
+                                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)" />
+                                                    </Storyboard>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.Template>
+                <ControlTemplate TargetType="ListBox">
+                    <ScrollViewer>
+                        <StackPanel>
+                            <ItemsPresenter />
+                            <Button
+                                x:Uid="LoadMoreButton"
+                                Content="load more"
+                                Command="{Binding LoadPreviousCommand}"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch" />
+                        </StackPanel>
+                    </ScrollViewer>
+                </ControlTemplate>
+            </ListBox.Template>
+        </ListBox>
+    </Border>
+</PivotItem>
