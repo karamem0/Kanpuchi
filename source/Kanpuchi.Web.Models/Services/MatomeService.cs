@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
@@ -25,6 +27,7 @@ namespace Kanpuchi.Services {
         /// </summary>
         public MatomeService() {
             this.dbContext = new DefaultConnection();
+            this.dbContext.Database.Log = str => Debug.WriteLine(str);
         }
 
         /// <summary>
@@ -65,11 +68,14 @@ namespace Kanpuchi.Services {
             var storeCount = default(int);
             var storeCountString = ConfigurationManager.AppSettings["MatomeEntryStoreCount"];
             if (int.TryParse(storeCountString, out storeCount) == true) {
-                this.dbContext.MatomeEntries
-                    .OrderByDescending(matomeEntry => matomeEntry.CreatedAt)
-                    .Skip(storeCount)
-                    .ToList()
-                    .ForEach(matomeEntry => dbContext.MatomeEntries.Remove(matomeEntry));
+                this.dbContext.Database.ExecuteSqlCommand(
+                    " DELETE T FROM (" +
+                    " SELECT * FROM [dbo].[MatomeEntry]" +
+                    " ORDER BY [CreatedAt] DESC" +
+                    " OFFSET @offset ROWS" +
+                    " ) AS T",
+                    new SqlParameter("@offset", storeCount)
+                );
             }
         }
 

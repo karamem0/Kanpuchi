@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity.Migrations;
+using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -42,6 +44,7 @@ namespace Kanpuchi.Services {
             };
             this.twitterContext = new TwitterContext(authorizer);
             this.dbContext = new DefaultConnection();
+            this.dbContext.Database.Log = str => Debug.WriteLine(str);
         }
 
         /// <summary>
@@ -89,11 +92,14 @@ namespace Kanpuchi.Services {
             var storeCount = default(int);
             var storeCountString = ConfigurationManager.AppSettings["TwitterStatusStoreCount"];
             if (int.TryParse(storeCountString, out storeCount) == true) {
-                this.dbContext.TwitterStatuses
-                    .OrderByDescending(twitterStatus => twitterStatus.CreatedAt)
-                    .Skip(storeCount)
-                    .ToList()
-                    .ForEach(twitterStatus => dbContext.TwitterStatuses.Remove(twitterStatus));
+                this.dbContext.Database.ExecuteSqlCommand(
+                    " DELETE T FROM (" +
+                    " SELECT * FROM [dbo].[TwitterStatus]" +
+                    " ORDER BY [CreatedAt] DESC" +
+                    " OFFSET @offset ROWS" +
+                    " ) AS T",
+                    new SqlParameter("@offset", storeCount)
+                );
             }
         }
 
