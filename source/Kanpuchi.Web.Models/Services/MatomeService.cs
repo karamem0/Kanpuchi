@@ -59,6 +59,7 @@ namespace Kanpuchi.Services {
                     })
                     .ToArray()
             );
+            this.dbContext.SaveChanges();
         }
 
         /// <summary>
@@ -77,12 +78,6 @@ namespace Kanpuchi.Services {
                     new SqlParameter("@offset", storeCount)
                 );
             }
-        }
-
-        /// <summary>
-        /// データベースへの変更を保存します。
-        /// </summary>
-        public void SaveChanges() {
             this.dbContext.SaveChanges();
         }
 

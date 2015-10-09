@@ -21,7 +21,6 @@ namespace Kanpuchi {
             using (var matomeService = new MatomeService()) {
                 matomeService.AddMatomeEntry();
                 matomeService.RemoveMatomeEntry();
-                matomeService.SaveChanges();
             }
         }
 

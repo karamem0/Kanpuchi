@@ -21,7 +21,6 @@ namespace Kanpuchi {
             using (var tweetService = new TweetService()) {
                 tweetService.AddTwitterStatus();
                 tweetService.RemoveTwitterStatus();
-                tweetService.SaveChanges();
             }
         }
 
