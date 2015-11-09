@@ -197,7 +197,9 @@ namespace Kanpuchi.Infrastructure {
         /// <summary>
         /// ビュー モデルがアンロードされると呼び出されます。
         /// </summary>
-        public virtual void OnUnloaded() { }
+        public virtual void OnUnloaded() {
+            this.EndBusy();
+        }
 
         /// <summary>
         /// 指定した型で表されるページに移動します。

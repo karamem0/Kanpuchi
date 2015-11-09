@@ -1,14 +1,13 @@
 ﻿using Kanpuchi.Infrastructure;
-using Kanpuchi.Interactivity;
+using Kanpuchi.Models;
 using Kanpuchi.Services;
 using Kanpuchi.Views;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Resources;
-using Windows.UI.Popups;
 
 namespace Kanpuchi.ViewModels {
 
@@ -45,10 +44,16 @@ namespace Kanpuchi.ViewModels {
         private void LoadLatest() {
             var index = (PivotIndex)this.SelectedIndex;
             if (index == PivotIndex.Tweet) {
-                this.TweetService.LoadLatestAsync();
+                var tweetService = new TweetService(this);
+                tweetService.AsyncStarted += this.OnTweetServiceAsyncStarted;
+                tweetService.AsyncCompleted += this.OnTweetServiceAsyncCompleted;
+                tweetService.LoadLatestAsync();
             }
             if (index == PivotIndex.MatomeEntry) {
-                this.MatomeEntryService.LoadLatestAsync();
+                var matomeEntryService = new MatomeEntryService(this);
+                matomeEntryService.AsyncStarted += this.OnMatomeEntryServiceAsyncStarted;
+                matomeEntryService.AsyncCompleted += this.OnMatomeEntryServiceAsyncCompleted;
+                matomeEntryService.LoadLatestAsync();
             }
         }
 
@@ -74,10 +79,16 @@ namespace Kanpuchi.ViewModels {
         private void LoadPrevious() {
             var index = (PivotIndex)this.SelectedIndex;
             if (index == PivotIndex.Tweet) {
-                this.TweetService.LoadPreviousAsync();
+                var tweetService = new TweetService(this);
+                tweetService.AsyncStarted += this.OnTweetServiceAsyncStarted;
+                tweetService.AsyncCompleted += this.OnTweetServiceAsyncCompleted;
+                tweetService.LoadPreviousAsync();
             }
             if (index == PivotIndex.MatomeEntry) {
-                this.MatomeEntryService.LoadPreviousAsync();
+                var matomeEntryService = new MatomeEntryService(this);
+                matomeEntryService.AsyncStarted += this.OnTweetServiceAsyncStarted;
+                matomeEntryService.AsyncCompleted += this.OnTweetServiceAsyncCompleted;
+                matomeEntryService.LoadPreviousAsync();
             }
         }
 
@@ -117,14 +128,40 @@ namespace Kanpuchi.ViewModels {
         }
 
         /// <summary>
-        /// ツイートを取得するサービスを取得します。
+        /// ツイートのコレクションを表します。
         /// </summary>
-        public TweetService TweetService { get; private set; }
+        private ObservableCollection<Tweet> tweets;
 
         /// <summary>
-        /// まとめ記事を取得するサービスを取得します。
+        /// ツイートのコレクションを取得します。
         /// </summary>
-        public MatomeEntryService MatomeEntryService { get; private set; }
+        public ObservableCollection<Tweet> Tweets {
+            get { return this.tweets; }
+            private set {
+                if (this.tweets != value) {
+                    this.tweets = value;
+                    this.RaisePropertyChanged(() => this.Tweets);
+                }
+            }
+        }
+
+        /// <summary>
+        /// まとめ記事のコレクションを表します。
+        /// </summary>
+        private ObservableCollection<MatomeEntry> matomeEntries;
+
+        /// <summary>
+        /// まとめ記事のコレクションを取得します。
+        /// </summary>
+        public ObservableCollection<MatomeEntry> MatomeEntries {
+            get { return this.matomeEntries; }
+            private set {
+                if (this.matomeEntries != value) {
+                    this.matomeEntries = value;
+                    this.RaisePropertyChanged(() => this.MatomeEntries);
+                }
+            }
+        }
 
         /// <summary>
         /// ピボットの選択項目のインデックス番号を表します。
@@ -149,12 +186,13 @@ namespace Kanpuchi.ViewModels {
         /// <see cref="Kanpuchi.ViewModels.MainViewModel"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public MainViewModel() {
+            this.Tweets = new ObservableCollection<Tweet>();
+            this.MatomeEntries = new ObservableCollection<MatomeEntry>();
+            this.SelectedIndex = (int)PivotIndex.Tweet;
             this.LoadLatestCommand = new DelegateCommand(this.LoadLatest, this.CanLoadLatest);
             this.LoadPreviousCommand = new DelegateCommand(this.LoadPrevious, this.CanLoadPrevious);
             this.GoToSettingsPageCommand = new DelegateCommand(this.GoToSettingsPage);
             this.GoToAboutPageCommand = new DelegateCommand(this.GoToAboutPage);
-            this.TweetService = new TweetService();
-            this.MatomeEntryService = new MatomeEntryService();
         }
 
         /// <summary>
@@ -162,7 +200,6 @@ namespace Kanpuchi.ViewModels {
         /// </summary>
         public override void OnLoaded() {
             base.OnLoaded();
-            this.SubscribeService();
             this.LoadLatest();
         }
 
@@ -171,28 +208,14 @@ namespace Kanpuchi.ViewModels {
         /// </summary>
         public override void OnUnloaded() {
             base.OnUnloaded();
-            this.UnsubscribeService();
-            this.EndBusy();
         }
 
         /// <summary>
-        /// サービスのイベントの購読を開始します。
+        /// コレクションをの要素をすべて削除します。
         /// </summary>
-        private void SubscribeService() {
-            this.TweetService.AsyncStarted += this.OnTweetServiceAsyncStarted;
-            this.TweetService.AsyncCompleted += this.OnTweetServiceAsyncCompleted;
-            this.MatomeEntryService.AsyncStarted += this.OnMatomeEntryServiceAsyncStarted;
-            this.MatomeEntryService.AsyncCompleted += this.OnMatomeEntryServiceAsyncCompleted;
-        }
-
-        /// <summary>
-        /// サービスのイベントの購読を解除します。
-        /// </summary>
-        private void UnsubscribeService() {
-            this.TweetService.AsyncStarted -= this.OnTweetServiceAsyncStarted;
-            this.TweetService.AsyncCompleted -= this.OnTweetServiceAsyncCompleted;
-            this.MatomeEntryService.AsyncStarted -= this.OnMatomeEntryServiceAsyncStarted;
-            this.MatomeEntryService.AsyncCompleted -= this.OnMatomeEntryServiceAsyncCompleted;
+        public void Clear() {
+            this.Tweets.Clear();
+            this.MatomeEntries.Clear();
         }
 
         /// <summary>
@@ -213,6 +236,10 @@ namespace Kanpuchi.ViewModels {
         /// イベントのデータを格納する <see cref="Kanpuchi.Infrastructure.AsyncStartedEventArgs"/>。
         /// </param>
         private void OnTweetServiceAsyncStarted(object sender, AsyncStartedEventArgs e) {
+            var tweetService = sender as TweetService;
+            if (tweetService != null) {
+                tweetService.AsyncStarted -= this.OnTweetServiceAsyncStarted;
+            }
             this.BeginBusy("LoadTweet");
         }
 
@@ -222,6 +249,10 @@ namespace Kanpuchi.ViewModels {
         /// <param name="sender">イベントを発生させた <see cref="System.Object"/>。</param>
         /// <param name="e">イベントのデータを格納する <see cref="Kanpuchi.Infrastructure.AsyncCompletedEventArgs"/>。</param>
         private void OnTweetServiceAsyncCompleted(object sender, AsyncCompletedEventArgs e) {
+            var tweetService = sender as TweetService;
+            if (tweetService != null) {
+                tweetService.AsyncCompleted -= this.OnTweetServiceAsyncCompleted;
+            }
             this.EndBusy();
             if (e.Exception != null) {
                 this.RaiseError("LoadError");
@@ -234,6 +265,10 @@ namespace Kanpuchi.ViewModels {
         /// <param name="sender">イベントを発生させた <see cref="System.Object"/>。</param>
         /// <param name="e">イベントのデータを格納する <see cref="Kanpuchi.Infrastructure.AsyncStartedEventArgs"/>。</param>
         private void OnMatomeEntryServiceAsyncStarted(object sender, AsyncStartedEventArgs e) {
+            var matomeEntryService = sender as MatomeEntryService;
+            if (matomeEntryService != null) {
+                matomeEntryService.AsyncStarted -= this.OnMatomeEntryServiceAsyncStarted;
+            }
             this.BeginBusy("LoadMatomeEntry");
         }
 
@@ -243,6 +278,10 @@ namespace Kanpuchi.ViewModels {
         /// <param name="sender">イベントを発生させた <see cref="System.Object"/>。</param>
         /// <param name="e">イベントのデータを格納する <see cref="Kanpuchi.Infrastructure.AsyncCompletedEventArgs"/>。</param>
         private void OnMatomeEntryServiceAsyncCompleted(object sender, AsyncCompletedEventArgs e) {
+            var matomeEntryService = sender as MatomeEntryService;
+            if (matomeEntryService != null) {
+                matomeEntryService.AsyncCompleted -= this.OnMatomeEntryServiceAsyncCompleted;
+            }
             this.EndBusy();
             if (e.Exception != null) {
                 this.RaiseError("LoadError");

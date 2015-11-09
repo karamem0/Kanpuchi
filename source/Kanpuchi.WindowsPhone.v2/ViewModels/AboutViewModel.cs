@@ -15,9 +15,22 @@ namespace Kanpuchi.ViewModels {
     public sealed class AboutViewModel : ViewModel {
 
         /// <summary>
+        /// バージョン情報を表します。
+        /// </summary>
+        private string version;
+
+        /// <summary>
         /// バージョン情報を取得します。
         /// </summary>
-        public string Version { get; private set; }
+        public string Version {
+            get { return this.version; }
+            private set {
+                if (this.version != value) {
+                    this.version = value;
+                    this.RaisePropertyChanged(() => this.Version);
+                }
+            }
+        }
 
         /// <summary>
         /// <see cref="Kanpuchi.ViewModels.AboutViewModel"/> クラスの新しいインスタンスを初期化します。

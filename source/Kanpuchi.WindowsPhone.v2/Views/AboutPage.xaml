@@ -13,7 +13,6 @@
     NavigationCacheMode="Required">
     <Page.Resources>
         <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}" />
-        <Style TargetType="HyperlinkButton" BasedOn="{StaticResource HyperlinkButtonStyle}" />
     </Page.Resources>
     <Grid>
         <Grid.ChildrenTransitions>
@@ -48,7 +47,7 @@
                             Style="{StaticResource PivotHeadeerTextBlockStyle}"
         					Text="about" />
                     </PivotItem.Header>
-                    <Border Margin="0,12,0,0">
+                    <Border Margin="0,0,0,0">
                         <StackPanel Orientation="Vertical">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock
@@ -66,20 +65,22 @@
                                     x:Uid="AuthorButton"
                                     Command="{Binding LaunchBrowserCommand}"
                                     CommandParameter="https://twitter.com/karamem0"
-                                    Content="@karamem0" />
+                                    Content="@karamem0"
+                                    Style="{StaticResource HyperlinkButtonStyle}" />
                             </StackPanel>
                             <HyperlinkButton
                                 x:Uid="PrivacyPolicyButton"
                                 Command="{Binding LaunchBrowserCommand}"
                                 CommandParameter="https://kanpuchi.azurewebsites.net/privacy.aspx"
                                 Content="Privacy policy"
-                                Margin="0,6,0,0" />
+                                Margin="0,6,0,0"
+                                Style="{StaticResource HyperlinkButtonStyle}" />
                             <HyperlinkButton
                                 x:Uid="ReviewButton"
                                 Command="{Binding LaunchReviewAppCommand}"
                                 Content="Review app"
-                                Margin="0,6,0,0">
-                            </HyperlinkButton>
+                                Margin="0,6,0,0"
+                                Style="{StaticResource HyperlinkButtonStyle}" />
                         </StackPanel>
                     </Border>
                 </PivotItem>
@@ -95,7 +96,8 @@
                         <HyperlinkButton
                             Command="{Binding LaunchBrowserCommand}"
                             CommandParameter="https://raw.githubusercontent.com/JamesNK/Newtonsoft.Json/master/LICENSE.md"
-                            Content="The MIT License (MIT)" />
+                            Content="The MIT License (MIT)"
+                            Style="{StaticResource HyperlinkButtonStyle}" />
                     </StackPanel>
                 </PivotItem>
             </Pivot>

@@ -1,0 +1,74 @@
+﻿<PivotItem
+    x:Class="Kanpuchi.Views.MatomeSitePivotItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding SettingsViewModel, Source={StaticResource ViewModelLocator}}"
+    Language="ja-JP">
+    <PivotItem.Header>
+        <TextBlock
+            x:Uid="SiteHeader"
+            Style="{StaticResource PivotHeadeerTextBlockStyle}"
+            Text="site" />
+    </PivotItem.Header>
+    <Border>
+        <ListBox ItemsSource="{Binding MatomeSites}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <CheckBox
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            FontSize="{ThemeResource TextStyleMediumFontSize}"
+                            Foreground="{ThemeResource PhoneForegroundBrush}"
+                            HorizontalAlignment="Stretch"
+                            IsChecked="{Binding Enabled, Mode=TwoWay}"
+                            MinWidth="0"
+                            VerticalAlignment="Top" />
+                        <Button
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            Command="{Binding SettingsViewModel.LaunchBrowserCommand, Source={StaticResource ViewModelLocator}}"
+                            CommandParameter="{Binding SiteUrl}"
+                            Margin="6,0,0,0">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <StackPanel>
+                                        <TextBlock
+                                            FontSize="{ThemeResource TextStyleMediumFontSize}"
+                                            FontWeight="Normal"
+                                            Foreground="{ThemeResource PhoneForegroundBrush}"
+                                            Text="{Binding SiteName}" />
+                                        <TextBlock
+                                            FontSize="{ThemeResource TextStyleMediumFontSize}"
+                                            FontWeight="Normal"
+                                            Foreground="{ThemeResource PhoneLowBrush}"
+                                            Text="{Binding SiteUrl}" />
+                                    </StackPanel>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.Template>
+                <ControlTemplate TargetType="ListBox">
+                    <ScrollViewer>
+                        <StackPanel>
+                            <ItemsPresenter />
+                        </StackPanel>
+                    </ScrollViewer>
+                </ControlTemplate>
+            </ListBox.Template>
+        </ListBox>
+    </Border>
+</PivotItem>

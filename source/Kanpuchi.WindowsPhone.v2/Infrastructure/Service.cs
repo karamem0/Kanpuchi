@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kanpuchi.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,7 +35,7 @@ namespace Kanpuchi.Infrastructure {
         /// <see cref="Kanpuchi.Infrastructure.Service.AsyncStarted"/> イベントを発生させます。
         /// </summary>
         protected void RaiseAsyncStarted() {
-            this.OnAsyncStarted(new AsyncStartedEventArgs());
+            SynchronizationContext.Current.Post(param => this.OnAsyncStarted(param), new AsyncStartedEventArgs());
         }
 
         /// <summary>
@@ -60,7 +61,7 @@ namespace Kanpuchi.Infrastructure {
         /// </summary>\
         /// <param name="ex">発生した例外を示す <see cref="System.Exception"/>。</param>
         protected void RaiseAsyncCompleted(Exception ex = null) {
-            this.OnAsyncCompleted(new AsyncCompletedEventArgs(ex));
+            SynchronizationContext.Current.Post(param => this.OnAsyncCompleted(param), new AsyncCompletedEventArgs(ex));
         }
 
         /// <summary>

@@ -135,8 +135,8 @@
   <data name="ForwardButton.Label" xml:space="preserve">
     <value>forward</value>
   </data>
-  <data name="GeneralLabel.Text" xml:space="preserve">
-    <value>general</value>
+  <data name="GeneralHeader.Text" xml:space="preserve">
+    <value>settings</value>
   </data>
   <data name="LicenseHeader.Text" xml:space="preserve">
     <value>license</value>
@@ -156,6 +156,9 @@
   <data name="ReviewButton.Content" xml:space="preserve">
     <value>Review app</value>
   </data>
+  <data name="SaveButton.Label" xml:space="preserve">
+    <value>save</value>
+  </data>
   <data name="ScrollBottomButton.Label" xml:space="preserve">
     <value>bottom</value>
   </data>
@@ -165,14 +168,11 @@
   <data name="SettingsButton.Label" xml:space="preserve">
     <value>settings</value>
   </data>
-  <data name="SettingsHeader.Text" xml:space="preserve">
-    <value>settings</value>
-  </data>
-  <data name="SettingsHeaderLabel.Text" xml:space="preserve">
-    <value>settings</value>
-  </data>
   <data name="ShareButton.Label" xml:space="preserve">
     <value>share</value>
+  </data>
+  <data name="SiteHeader.Text" xml:space="preserve">
+    <value>site</value>
   </data>
   <data name="TweetPivotHeader.Text" xml:space="preserve">
     <value>timeline</value>

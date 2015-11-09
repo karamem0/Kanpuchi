@@ -51,6 +51,14 @@ namespace Kanpuchi.Configuration {
         }
 
         /// <summary>
+        /// 有効なイト ID の配列を取得または設定します。
+        /// </summary>
+        public int[] EnableSiteIds {
+            get { return (int[])this["EnableSiteIds"]; }
+            set { this["EnableSiteIds"] = value; }
+        }
+
+        /// <summary>
         /// <see cref="Kanpuchi.Configuration.AppSettings"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         private AppSettings() { }

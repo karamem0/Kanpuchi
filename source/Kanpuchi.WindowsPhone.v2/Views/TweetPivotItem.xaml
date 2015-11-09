@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:vi="using:Kanpuchi.Views"
     mc:Ignorable="d"
     DataContext="{Binding MainViewModel, Source={StaticResource ViewModelLocator}}"
     Language="ja-JP">
@@ -15,7 +14,7 @@
             Text="tweets" />
     </PivotItem.Header>
     <Border>
-        <ListBox ItemsSource="{Binding TweetService.Items}">
+        <ListBox ItemsSource="{Binding Tweets}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="0,0,0,0">

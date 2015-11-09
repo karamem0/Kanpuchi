@@ -123,6 +123,9 @@
   <data name="LoadMatomeEntry" xml:space="preserve">
     <value>Loading matome entries...</value>
   </data>
+  <data name="LoadSettings" xml:space="preserve">
+    <value>Loading settings...</value>
+  </data>
   <data name="LoadTweet" xml:space="preserve">
     <value>Loading tweets...</value>
   </data>

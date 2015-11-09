@@ -123,6 +123,9 @@
   <data name="LoadMatomeEntry" xml:space="preserve">
     <value>まとめ記事を読み込んでいます...</value>
   </data>
+  <data name="LoadSettings" xml:space="preserve">
+    <value>設定情報を読み込んでいます...</value>
+  </data>
   <data name="LoadTweet" xml:space="preserve">
     <value>ツイートを読み込んでいます...</value>
   </data>

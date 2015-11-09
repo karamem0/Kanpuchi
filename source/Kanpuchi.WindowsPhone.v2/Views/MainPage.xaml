@@ -44,7 +44,7 @@
                 x:Name="Pivot"
                 SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
                 <vi:TweetPivotItem />
-                <vi:MatomePivotItem />
+                <vi:MatomeEntryPivotItem />
             </Pivot>
         </Grid>
     </Grid>

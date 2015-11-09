@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="36781sakukaramomo.2392946EC1B02" Publisher="CN=91F30E46-FB0A-4C95-9B51-A0814047B58E" Version="2.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="d5904041-f9c5-460c-9cb7-e09ec6142355" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="36781sakukaramomo.2392946EC1B02" Publisher="CN=91F30E46-FB0A-4C95-9B51-A0814047B58E" Version="2.1.0.0" />
+  <mp:PhoneIdentity PhoneProductId="e3c29d8a-a875-421f-b184-02b251c98c65" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>艦ぷち</DisplayName>
     <PublisherDisplayName>karamem0</PublisherDisplayName>

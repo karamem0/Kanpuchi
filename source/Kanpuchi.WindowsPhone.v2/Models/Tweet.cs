@@ -11,7 +11,7 @@ namespace Kanpuchi.Models {
     /// <summary>
     /// ツイートのデータを格納します。
     /// </summary>
-    [DataContract()]
+    [DataContract(Name = "Tweet")]
     public class Tweet : Model {
 
         /// <summary>

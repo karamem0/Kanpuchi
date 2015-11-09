@@ -6,6 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:li="using:Kanpuchi.Interactivity"
+    xmlns:vi="using:Kanpuchi.Views"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     DataContext="{Binding SettingsViewModel, Source={StaticResource ViewModelLocator}}"
@@ -40,28 +41,24 @@
             Grid.Column="0"
             Grid.Row="1">
             <Pivot>
-                <PivotItem>
-                    <PivotItem.Header>
-                        <TextBlock
-                            x:Uid="SettingsHeader"
-                            Style="{StaticResource PivotHeadeerTextBlockStyle}"
-                            Text="settings" />
-                    </PivotItem.Header>
-                    <StackPanel>
-                        <CheckBox
-                            x:Uid="UseInAppBrowserCheckBox"
-                            IsChecked="{Binding UseInAppBrowser,Mode=TwoWay}"
-                            FontSize="{ThemeResource TextStyleMediumFontSize}"
-                            Foreground="{ThemeResource PhoneForegroundBrush}"
-                            Content="use in-app browser" />
-                    </StackPanel>
-                </PivotItem>
+                <vi:GeneralPivotItem />
+                <vi:MatomeSitePivotItem />
             </Pivot>
         </Grid>
     </Grid>
     <Page.BottomAppBar>
         <CommandBar IsOpen="False">
             <CommandBar.PrimaryCommands>
+                <AppBarButton
+                    x:Uid="SaveButton"
+                    Command="{Binding SaveCommand}"
+                    Label="save">
+                    <AppBarButton.Icon>
+                        <FontIcon
+                            Glyph="&#xE105;"
+                            FontFamily="Segoe UI Symbol" />
+                    </AppBarButton.Icon>
+                </AppBarButton>
                 <AppBarButton
                     x:Uid="CloseButton"
                     Command="{Binding GoBackCommand}"

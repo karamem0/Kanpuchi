@@ -10,12 +10,12 @@ namespace Kanpuchi.Views {
     /// <summary>
     /// まとめ記事を表示するピボット項目を表します。
     /// </summary>
-    public sealed partial class MatomePivotItem : PivotItem {
+    public sealed partial class MatomeEntryPivotItem : PivotItem {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Views.MatomePivotItem"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Kanpuchi.Views.MatomeEntryPivotItem"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        public MatomePivotItem() {
+        public MatomeEntryPivotItem() {
             this.InitializeComponent();
         }
 

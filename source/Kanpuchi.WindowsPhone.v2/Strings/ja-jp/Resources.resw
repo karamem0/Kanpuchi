@@ -135,8 +135,8 @@
   <data name="ForwardButton.Label" xml:space="preserve">
     <value>進む</value>
   </data>
-  <data name="GeneralLabel.Text" xml:space="preserve">
-    <value>一般</value>
+  <data name="GeneralHeader.Text" xml:space="preserve">
+    <value>全般</value>
   </data>
   <data name="LicenseHeader.Text" xml:space="preserve">
     <value>ライセンス</value>
@@ -156,6 +156,9 @@
   <data name="ReviewButton.Content" xml:space="preserve">
     <value>アプリのレビュー</value>
   </data>
+  <data name="SaveButton.Label" xml:space="preserve">
+    <value>保存</value>
+  </data>
   <data name="ScrollBottomButton.Label" xml:space="preserve">
     <value>下に移動</value>
   </data>
@@ -165,14 +168,11 @@
   <data name="SettingsButton.Label" xml:space="preserve">
     <value>設定</value>
   </data>
-  <data name="SettingsHeader.Text" xml:space="preserve">
-    <value>設定</value>
-  </data>
-  <data name="SettingsHeaderLabel.Text" xml:space="preserve">
-    <value>設定</value>
-  </data>
   <data name="ShareButton.Label" xml:space="preserve">
     <value>共有</value>
+  </data>
+  <data name="SiteHeader.Text" xml:space="preserve">
+    <value>サイト</value>
   </data>
   <data name="TweetPivotHeader.Text" xml:space="preserve">
     <value>ツイート</value>

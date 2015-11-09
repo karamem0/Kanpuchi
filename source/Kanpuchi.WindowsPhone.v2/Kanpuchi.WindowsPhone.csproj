@@ -20,7 +20,7 @@
     <SccProvider>SAK</SccProvider>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -63,6 +63,11 @@
     <Compile Include="Infrastructure\NotifyPropertyChanged.cs" />
     <Compile Include="Infrastructure\ErrorEventArgs.cs" />
     <Compile Include="Interactivity\LocalTimeConverter.cs" />
+    <Compile Include="Models\MatomeSite.cs" />
+    <Compile Include="Models\Settings.cs" />
+    <Compile Include="Repositories\SettingsRepository.cs" />
+    <Compile Include="Repositories\MatomeSiteRepository.cs" />
+    <Compile Include="Services\SettingsService.cs" />
     <Compile Include="ViewModels\AboutViewModel.cs" />
     <Compile Include="Infrastructure\Repository.cs" />
     <Compile Include="Infrastructure\Service.cs" />
@@ -85,14 +90,20 @@
     <Compile Include="Views\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\GeneralPivotItem.xaml.cs">
+      <DependentUpon>GeneralPivotItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MatomeSitePivotItem.xaml.cs">
+      <DependentUpon>MatomeSitePivotItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TweetPivotItem.xaml.cs">
       <DependentUpon>TweetPivotItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MatomePivotItem.xaml.cs">
-      <DependentUpon>MatomePivotItem.xaml</DependentUpon>
+    <Compile Include="Views\MatomeEntryPivotItem.xaml.cs">
+      <DependentUpon>MatomeEntryPivotItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
@@ -129,15 +140,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\GeneralPivotItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MatomeSitePivotItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\TweetPivotItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\MatomePivotItem.xaml">
+    <Page Include="Views\MatomeEntryPivotItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,13 +1,11 @@
 ﻿using Kanpuchi.Extensions;
 using Kanpuchi.Infrastructure;
-using Kanpuchi.Models;
 using Kanpuchi.Repositories;
+using Kanpuchi.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Kanpuchi.Services {
@@ -18,70 +16,75 @@ namespace Kanpuchi.Services {
     public class TweetService : Service {
 
         /// <summary>
-        /// ツイートのコレクションを取得します。
+        /// ビュー モデルを表します。
         /// </summary>
-        public ObservableCollection<Tweet> Items { get; private set; }
+        private MainViewModel viewModel;
+
+        /// <summary>
+        /// デバイスを格納するリポジトリを表します。
+        /// </summary>
+        private DeviceRepository deviceRepository;
+
+        /// <summary>
+        /// ツイートのコレクションを格納するリポジトリを表します。
+        /// </summary>
+        private TweetRepository tweetRepository;
 
         /// <summary>
         /// <see cref="Kanpuchi.Services.TweetService"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        public TweetService() {
-            this.Items = new ObservableCollection<Tweet>();
+        private TweetService() {
+            this.deviceRepository = new DeviceRepository();
+            this.tweetRepository = new TweetRepository();
+        }
+
+        /// <summary>
+        /// <see cref="Kanpuchi.Services.TweetService"/> クラスの新しいインスタンスを初期化します。
+        /// </summary>
+        /// <param name="viewModel"><see cref="Kanpuchi.ViewModels.MainViewModel"/>。</param>
+        public TweetService(MainViewModel viewModel)
+            : this() {
+            this.viewModel = viewModel;
         }
 
         /// <summary>
         /// 最新のツイートを読み込みます。
         /// </summary>
-        /// <returns>非同期操作を示す <see cref="System.Threading.Tasks.Task"/>。</returns>
         public async void LoadLatestAsync() {
-            var context = SynchronizationContext.Current;
             try {
-                context.Post(() => this.RaiseAsyncStarted());
-                var deviceRepository = new DeviceRepository();
-                var device = deviceRepository.Load();
-                if (device == null) {
-                    device = await deviceRepository.PostAsync(deviceRepository.Create());
-                    if (device != null) {
-                        deviceRepository.Save(device);
-                    }
-                }
-                var tweetRepository = new TweetRepository();
-                var tweets = await tweetRepository.GetAsync();
+                this.RaiseAsyncStarted();
+                var device = await this.deviceRepository.RegisterAsync();
+                var tweets = await this.tweetRepository.SearchAsync(
+                    deviceId: device.DeviceId.ToString(),
+                    deviceKey: device.DeviceKey);
                 if (tweets != null) {
-                    this.Items.InsertRangeIf(0, tweets.OrderByDescending(x => x.StatusId), x => x.StatusId);
-                    this.RaiseAsyncCompleted();
+                    this.viewModel.Tweets.InsertRangeIf(0, tweets.OrderByDescending(x => x.StatusId), x => x.StatusId);
                 }
+                this.RaiseAsyncCompleted();
             } catch (Exception ex) {
-                context.Post(() => this.RaiseAsyncCompleted(ex));
+                this.RaiseAsyncCompleted(ex);
             }
         }
 
         /// <summary>
         /// 現在読み込まれているツイートより前のツイートを読み込みます。
         /// </summary>
-        /// <returns>非同期操作を示す <see cref="System.Threading.Tasks.Task"/>。</returns>
         public async void LoadPreviousAsync() {
-            var context = SynchronizationContext.Current;
             try {
-                context.Post(() => this.RaiseAsyncStarted());
-                var deviceRepository = new DeviceRepository();
-                var device = deviceRepository.Load();
-                if (device == null) {
-                    device = await deviceRepository.PostAsync(deviceRepository.Create());
-                    if (device != null) {
-                        deviceRepository.Save(device);
-                    }
-                }
-                var maxTweet = this.Items.LastOrDefault();
+                this.RaiseAsyncStarted();
+                var device = await this.deviceRepository.RegisterAsync();
+                var maxTweet = this.viewModel.Tweets.LastOrDefault();
                 var maxId = (maxTweet == null) ? null : maxTweet.StatusId;
-                var tweetRepository = new TweetRepository();
-                var tweets = await tweetRepository.GetAsync(maxId: maxId);
+                var tweets = await this.tweetRepository.SearchAsync(
+                    deviceId: device.DeviceId.ToString(),
+                    deviceKey: device.DeviceKey,
+                    maxId: maxId);
                 if (tweets != null) {
-                    this.Items.AddRangeIf(tweets.OrderByDescending(x => x.StatusId), x => x.StatusId);
-                    this.RaiseAsyncCompleted();
+                    this.viewModel.Tweets.AddRangeIf(tweets.OrderByDescending(x => x.StatusId), x => x.StatusId);
                 }
+                this.RaiseAsyncCompleted();
             } catch (Exception ex) {
-                context.Post(() => this.RaiseAsyncCompleted(ex));
+                this.RaiseAsyncCompleted(ex);
             }
         }
 
