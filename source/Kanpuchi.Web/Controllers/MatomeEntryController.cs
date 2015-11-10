@@ -63,6 +63,7 @@ namespace Kanpuchi.Controllers {
                     SiteName = x.Site.SiteName,
                     Title = x.Title,
                     Url = x.Url,
+                    ThumbnailUrl = x.ThumbnailUrl,
                     CreatedAt = x.CreatedAt,
                 })
                 .ToArray();

@@ -25,21 +25,32 @@ namespace Kanpuchi.Models {
         public virtual int SiteId { get; set; }
 
         /// <summary>
-        /// タイトルを取得または設定します。
-        /// </summary>
-        [StringLength(200)]
-        public virtual string Title { get; set; }
-
-        /// <summary>
         /// URL を取得または設定します。
         /// </summary>
         [StringLength(1000)]
         public virtual string Url { get; set; }
 
         /// <summary>
+        /// タイトルを取得または設定します。
+        /// </summary>
+        [StringLength(200)]
+        public virtual string Title { get; set; }
+
+        /// <summary>
         /// 内容を取得または設定します。
         /// </summary>
         public virtual string Content { get; set; }
+
+        /// <summary>
+        /// サムネイル画像を更新したかどうかを示す値を取得または設定します。
+        /// </summary>
+        public virtual bool ThumbnailUpdated { get; set; }
+
+        /// <summary>
+        /// サムネイル画像の URL を取得または設定します。
+        /// </summary>
+        [StringLength(1000)]
+        public virtual string ThumbnailUrl { get; set; }
 
         /// <summary>
         /// 作成日時を取得または設定します。

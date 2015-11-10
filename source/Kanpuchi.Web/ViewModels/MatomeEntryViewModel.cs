@@ -43,6 +43,12 @@ namespace Kanpuchi.ViewModels {
         public virtual string Url { get; set; }
 
         /// <summary>
+        /// URL を取得または設定します。
+        /// </summary>
+        [DataMember()]
+        public virtual string ThumbnailUrl { get; set; }
+
+        /// <summary>
         /// 作成日時を取得または設定します。
         /// </summary>
         [DataMember()]
