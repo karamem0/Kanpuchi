@@ -50,7 +50,7 @@ namespace Kanpuchi.Services {
         /// <summary>
         /// API を読み込んで Twitter ステータスを追加します。
         /// </summary>
-        public void AddTwitterStatus() {
+        public void AddOrUpdateTwitterStatus() {
             this.dbContext.TwitterStatuses.AddOrUpdate(
                 this.dbContext.TwitterUsers.ToList()
                     .Select(dbUser => {

@@ -48,9 +48,9 @@ namespace Kanpuchi.Services {
         }
 
         /// <summary>
-        /// フィードを読み込んでまとめ記事を追加します。
+        /// フィードを読み込んでまとめ記事を追加または更新します。
         /// </summary>
-        public void AddMatomeEntry() {
+        public void AddOrUpdateMatomeEntry() {
             this.dbContext.MatomeEntries.AddOrUpdate(
                 matomeEntry => matomeEntry.Url,
                 this.dbContext.MatomeSites
@@ -74,25 +74,6 @@ namespace Kanpuchi.Services {
                     })
                     .ToArray()
             );
-            this.dbContext.SaveChanges();
-        }
-
-        /// <summary>
-        /// 古くなったまとめ記事を削除します。
-        /// </summary>
-        public void RemoveMatomeEntry() {
-            var storeCount = default(int);
-            var storeCountString = ConfigurationManager.AppSettings["MatomeEntryStoreCount"];
-            if (int.TryParse(storeCountString, out storeCount) == true) {
-                this.dbContext.Database.ExecuteSqlCommand(
-                    " DELETE T FROM (" +
-                    " SELECT * FROM [dbo].[MatomeEntry]" +
-                    " ORDER BY [CreatedAt] DESC" +
-                    " OFFSET @offset ROWS" +
-                    " ) AS T",
-                    new SqlParameter("@offset", storeCount)
-                );
-            }
             this.dbContext.SaveChanges();
         }
 
@@ -151,6 +132,25 @@ namespace Kanpuchi.Services {
                     matomeEntry.UpdatedAt = DateTime.UtcNow;
                     this.dbContext.SaveChanges();
                 });
+        }
+
+        /// <summary>
+        /// 古くなったまとめ記事を削除します。
+        /// </summary>
+        public void RemoveMatomeEntry() {
+            var storeCount = default(int);
+            var storeCountString = ConfigurationManager.AppSettings["MatomeEntryStoreCount"];
+            if (int.TryParse(storeCountString, out storeCount) == true) {
+                this.dbContext.Database.ExecuteSqlCommand(
+                    " DELETE T FROM (" +
+                    " SELECT * FROM [dbo].[MatomeEntry]" +
+                    " ORDER BY [CreatedAt] DESC" +
+                    " OFFSET @offset ROWS" +
+                    " ) AS T",
+                    new SqlParameter("@offset", storeCount)
+                );
+            }
+            this.dbContext.SaveChanges();
         }
 
         /// <summary>

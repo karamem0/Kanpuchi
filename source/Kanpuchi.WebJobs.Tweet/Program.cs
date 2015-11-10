@@ -19,11 +19,13 @@ namespace Kanpuchi {
         /// </summary>
         /// <param name="args">プログラムの引数を示す <see cref="System.String"/> 配列。</param>
         private static void Main(string[] args) {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DefaultConnection, DefaultConnectionConfiguration>());
             Debug.Listeners.Add(new TextWriterTraceListener(Console.Out));
-            using (var tweetService = new TweetService()) {
-                tweetService.AddTwitterStatus();
-                tweetService.RemoveTwitterStatus();
+            try {
+                using (var tweetService = new TweetService()) {
+                    tweetService.AddOrUpdateTwitterStatus();
+                }
+            } catch (Exception ex) {
+                Console.WriteLine(ex);
             }
         }
 

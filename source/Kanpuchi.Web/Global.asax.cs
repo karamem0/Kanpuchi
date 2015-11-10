@@ -18,7 +18,6 @@ namespace Kanpuchi {
         /// </summary>
         protected void Application_Start() {
             WebApiConfig.Register(GlobalConfiguration.Configuration);
-            DatabaseConfig.Register();
         }
 
     }

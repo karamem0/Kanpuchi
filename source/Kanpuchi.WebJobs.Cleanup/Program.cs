@@ -1,10 +1,10 @@
-﻿using Kanpuchi.Models;
-using Kanpuchi.Services;
+﻿using Kanpuchi.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Kanpuchi {
 
@@ -20,9 +20,10 @@ namespace Kanpuchi {
         private static void Main(string[] args) {
             Debug.Listeners.Add(new TextWriterTraceListener(Console.Out));
             try {
+                using (var tweetService = new TweetService())
                 using (var matomeService = new MatomeService()) {
-                    matomeService.AddOrUpdateMatomeEntry();
-                    matomeService.UpdateMatomeEntryThumbnail();
+                    tweetService.RemoveTwitterStatus();
+                    matomeService.RemoveMatomeEntry();
                 }
             } catch (Exception ex) {
                 Console.WriteLine(ex);
