@@ -1,4 +1,5 @@
 ﻿using Kanpuchi.Configuration;
+using Kanpuchi.Extensions;
 using Kanpuchi.Infrastructure;
 using Kanpuchi.Models;
 using Newtonsoft.Json;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 
 namespace Kanpuchi.Repositories {
@@ -48,6 +50,7 @@ namespace Kanpuchi.Repositories {
                 FirmwareVersion = eas.SystemFirmwareVersion,
                 HardwareVersion = eas.SystemHardwareVersion,
                 Manufacturer = eas.SystemManufacturer,
+                AppVersion = Package.Current.Id.Version.ToFormattedString(),
                 Name = eas.SystemProductName,
             };
             var requestUri = new Uri(PostUri, UriKind.Absolute);
