@@ -86,8 +86,8 @@ namespace Kanpuchi.ViewModels {
             }
             if (index == PivotIndex.MatomeEntry) {
                 var matomeEntryService = new MatomeEntryService(this);
-                matomeEntryService.AsyncStarted += this.OnTweetServiceAsyncStarted;
-                matomeEntryService.AsyncCompleted += this.OnTweetServiceAsyncCompleted;
+                matomeEntryService.AsyncStarted += this.OnMatomeEntryServiceAsyncStarted;
+                matomeEntryService.AsyncCompleted += this.OnMatomeEntryServiceAsyncCompleted;
                 matomeEntryService.LoadPreviousAsync();
             }
         }
