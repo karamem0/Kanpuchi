@@ -12,9 +12,6 @@
     DataContext="{Binding MainViewModel, Source={StaticResource ViewModelLocator}}"
     Language="ja-JP"
     NavigationCacheMode="Required">
-    <Page.Resources>
-        <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}" />
-    </Page.Resources>
     <Grid>
         <Grid.ChildrenTransitions>
             <TransitionCollection>

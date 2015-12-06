@@ -10,7 +10,10 @@
     <PivotItem.Header>
         <TextBlock
             x:Uid="TweetPivotHeader"
-            Style="{StaticResource PivotHeadeerTextBlockStyle}"
+            CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"
+            FontSize="{ThemeResource TextStyleExtraExtraLargeFontSize}"
+            Foreground="{ThemeResource PhoneForegroundBrush}"
+            Margin="0,3,0,0"
             Text="tweets" />
     </PivotItem.Header>
     <Border>
@@ -20,7 +23,9 @@
                     <Grid Margin="0,0,0,0">
                         <Button
                             Command="{Binding MainViewModel.LaunchBrowserCommand, Source={StaticResource ViewModelLocator}}"
-                            CommandParameter="{Binding Permalink}">
+                            CommandParameter="{Binding Permalink}"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch">
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Border>
@@ -42,8 +47,8 @@
                                                 HorizontalAlignment="Stretch"
                                                 VerticalAlignment="Top">
                                                 <Image
-                                                    Source="{Binding ProfileImageUrl}"
                                                     Height="48"
+                                                    Source="{Binding ProfileImageUrl}"
                                                     Width="48" />
                                             </Border>
                                             <StackPanel
@@ -109,6 +114,7 @@
                                 Content="load more"
                                 Command="{Binding LoadPreviousCommand}"
                                 HorizontalAlignment="Stretch"
+                                Margin="0,0,0,12"
                                 VerticalAlignment="Stretch" />
                         </StackPanel>
                     </ScrollViewer>

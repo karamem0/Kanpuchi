@@ -62,6 +62,7 @@
     <Compile Include="Infrastructure\DelegateCommand.generic.cs" />
     <Compile Include="Infrastructure\NotifyPropertyChanged.cs" />
     <Compile Include="Infrastructure\ErrorEventArgs.cs" />
+    <Compile Include="Interactivity\StringToVisibilityConveter.cs" />
     <Compile Include="Interactivity\LocalTimeConverter.cs" />
     <Compile Include="Models\MatomeSite.cs" />
     <Compile Include="Models\Settings.cs" />

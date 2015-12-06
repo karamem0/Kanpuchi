@@ -10,7 +10,10 @@
     <PivotItem.Header>
         <TextBlock
             x:Uid="SiteHeader"
-            Style="{StaticResource PivotHeadeerTextBlockStyle}"
+            CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"
+            FontSize="{ThemeResource TextStyleExtraExtraLargeFontSize}"
+            Foreground="{ThemeResource PhoneForegroundBrush}"
+            Margin="0,3,0,0"
             Text="site" />
     </PivotItem.Header>
     <Border>

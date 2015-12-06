@@ -10,6 +10,7 @@
                 <ResourceDictionary>
                     <li:ViewModelLocator x:Key="ViewModelLocator" />
                     <li:LocalTimeConverter x:Key="LocalTimeConverter" />
+                    <li:StringToVisibilityConveter x:Key="StringToVisibilityConveter" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

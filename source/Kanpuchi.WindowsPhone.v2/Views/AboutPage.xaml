@@ -11,9 +11,6 @@
     DataContext="{Binding AboutViewModel, Source={StaticResource ViewModelLocator}}"
     Language="ja-JP"
     NavigationCacheMode="Required">
-    <Page.Resources>
-        <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockStyle}" />
-    </Page.Resources>
     <Grid>
         <Grid.ChildrenTransitions>
             <TransitionCollection>
@@ -44,7 +41,10 @@
                     <PivotItem.Header>
                         <TextBlock
         					x:Uid="AboutHeader"
-                            Style="{StaticResource PivotHeadeerTextBlockStyle}"
+                            CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"
+                            FontSize="{ThemeResource TextStyleExtraExtraLargeFontSize}"
+                            Foreground="{ThemeResource PhoneForegroundBrush}"
+                            Margin="0,3,0,0"
         					Text="about" />
                     </PivotItem.Header>
                     <Border Margin="0,0,0,0">
@@ -65,22 +65,19 @@
                                     x:Uid="AuthorButton"
                                     Command="{Binding LaunchBrowserCommand}"
                                     CommandParameter="https://twitter.com/karamem0"
-                                    Content="@karamem0"
-                                    Style="{StaticResource HyperlinkButtonStyle}" />
+                                    Content="@karamem0" />
                             </StackPanel>
                             <HyperlinkButton
                                 x:Uid="PrivacyPolicyButton"
                                 Command="{Binding LaunchBrowserCommand}"
                                 CommandParameter="https://kanpuchi.azurewebsites.net/privacy.aspx"
                                 Content="Privacy policy"
-                                Margin="0,6,0,0"
-                                Style="{StaticResource HyperlinkButtonStyle}" />
+                                Margin="0,6,0,0" />
                             <HyperlinkButton
                                 x:Uid="ReviewButton"
                                 Command="{Binding LaunchReviewAppCommand}"
                                 Content="Review app"
-                                Margin="0,6,0,0"
-                                Style="{StaticResource HyperlinkButtonStyle}" />
+                                Margin="0,6,0,0" />
                         </StackPanel>
                     </Border>
                 </PivotItem>
@@ -88,7 +85,10 @@
                     <PivotItem.Header>
                         <TextBlock
         					x:Uid="LicenseHeader"
-                            Style="{StaticResource PivotHeadeerTextBlockStyle}"
+                            CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"
+                            FontSize="{ThemeResource TextStyleExtraExtraLargeFontSize}"
+                            Foreground="{ThemeResource PhoneForegroundBrush}"
+                            Margin="0,3,0,0"
         					Text="licence" />
                     </PivotItem.Header>
                     <StackPanel>
@@ -96,8 +96,7 @@
                         <HyperlinkButton
                             Command="{Binding LaunchBrowserCommand}"
                             CommandParameter="https://raw.githubusercontent.com/JamesNK/Newtonsoft.Json/master/LICENSE.md"
-                            Content="The MIT License (MIT)"
-                            Style="{StaticResource HyperlinkButtonStyle}" />
+                            Content="The MIT License (MIT)" />
                     </StackPanel>
                 </PivotItem>
             </Pivot>
