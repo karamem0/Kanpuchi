@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Kanpuchi.Reflection {
+namespace Karamem0.Kanpuchi.Reflection {
 
     /// <summary>
     /// アセンブリのバージョン情報を取得します。

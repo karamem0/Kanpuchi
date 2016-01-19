@@ -1,5 +1,5 @@
-﻿using Kanpuchi.Configuration;
-using Kanpuchi.ViewModels;
+﻿using Karamem0.Kanpuchi.Configuration;
+using Karamem0.Kanpuchi.ViewModels;
 using Microsoft.Phone.Tasks;
 using Microsoft.Practices.Prism.Commands;
 using System;
@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Kanpuchi.Interactivity {
+namespace Karamem0.Kanpuchi.Interactivity {
 
     /// <summary>
     /// タスクに関するコマンドを定義します。
@@ -30,7 +30,7 @@ namespace Kanpuchi.Interactivity {
         public DelegateCommand<ShareStatusTaskContext> ShareStatusTaskCommand { get; private set; }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.TaskCommands"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.TaskCommands"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public TaskCommands() {
             this.MarketplaceReviewTaskCommand = new DelegateCommand(
@@ -54,7 +54,7 @@ namespace Kanpuchi.Interactivity {
         /// <summary>
         /// 指定した URI をブラウザーで表示するタスクを起動します。
         /// </summary>
-        /// <param name="context">コンテキストを示す <see cref="Kanpuchi.Interactivity.WebBrowserTaskContext"/>。</param>
+        /// <param name="context">コンテキストを示す <see cref="Karamem0.Kanpuchi.Interactivity.WebBrowserTaskContext"/>。</param>
         private void WebBrowserTask(WebBrowserTaskContext context) {
             var useAppInBrowser = context.UseAppInBrowser.GetValueOrDefault(AppSettings.Current.UseAppInBrowser);
             if (useAppInBrowser == true) {
@@ -73,7 +73,7 @@ namespace Kanpuchi.Interactivity {
         /// <summary>
         /// ソーシャル ネットワークに共有するタスクを起動します。
         /// </summary>
-        /// <param name="parameter"><see cref="Kanpuchi.Interactivity.ShareStatusTaskContext"/>。</param>
+        /// <param name="parameter"><see cref="Karamem0.Kanpuchi.Interactivity.ShareStatusTaskContext"/>。</param>
         private void ShareStatusTask(ShareStatusTaskContext parameter) {
             var task = new ShareLinkTask();
             task.LinkUri = new Uri(parameter.Uri, UriKind.Absolute);

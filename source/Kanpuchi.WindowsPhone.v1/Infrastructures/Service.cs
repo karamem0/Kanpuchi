@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 
-namespace Kanpuchi.Infrastructures {
+namespace Karamem0.Kanpuchi.Infrastructures {
 
     /// <summary>
     /// サービスの基本機能を提供します。
@@ -19,10 +19,10 @@ namespace Kanpuchi.Infrastructures {
         public event EventHandler<AsyncStartedEventArgs> AsyncStarted;
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructures.Service.AsyncStarted"/> イベントを発生させます。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructures.Service.AsyncStarted"/> イベントを発生させます。
         /// </summary>
         /// <param name="e">
-        /// イベントのデータを格納する <see cref="Kanpuchi.Infrastructures.AsyncStartedEventArgs"/>。
+        /// イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructures.AsyncStartedEventArgs"/>。
         /// </param>
         protected virtual void OnAsyncStarted(AsyncStartedEventArgs e) {
             var handler = this.AsyncStarted;
@@ -32,7 +32,7 @@ namespace Kanpuchi.Infrastructures {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructures.Service.AsyncStarted"/> イベントを発生させます。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructures.Service.AsyncStarted"/> イベントを発生させます。
         /// </summary>
         protected void RaiseAsyncStarted() {
             this.OnAsyncStarted(new AsyncStartedEventArgs());
@@ -44,10 +44,10 @@ namespace Kanpuchi.Infrastructures {
         public event EventHandler<AsyncCompletedEventArgs> AsyncCompleted;
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructures.Service.AsyncCompleted"/> イベントを発生させます。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructures.Service.AsyncCompleted"/> イベントを発生させます。
         /// </summary>
         /// <param name="e">
-        /// イベントのデータを格納する <see cref="Kanpuchi.Infrastructures.AsyncCompletedEventArgs"/>。
+        /// イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructures.AsyncCompletedEventArgs"/>。
         /// </param>
         protected virtual void OnAsyncCompleted(AsyncCompletedEventArgs e) {
             var handler = this.AsyncCompleted;
@@ -57,7 +57,7 @@ namespace Kanpuchi.Infrastructures {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructures.Service.AsyncCompleted"/> イベントを発生させます。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructures.Service.AsyncCompleted"/> イベントを発生させます。
         /// </summary>
         protected void RaiseAsyncCompleted() {
             this.OnAsyncCompleted(new AsyncCompletedEventArgs());
@@ -69,10 +69,10 @@ namespace Kanpuchi.Infrastructures {
         public event EventHandler<AsyncErrorEventArgs> AsyncError;
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructures.Service.AsyncError"/> イベントを発生させます。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructures.Service.AsyncError"/> イベントを発生させます。
         /// </summary>
         /// <param name="e">
-        /// イベントのデータを格納する <see cref="Kanpuchi.Infrastructures.AsyncErrorEventArgs"/>。
+        /// イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructures.AsyncErrorEventArgs"/>。
         /// </param>
         protected virtual void OnAsyncError(AsyncErrorEventArgs e) {
             var handler = this.AsyncError;
@@ -82,7 +82,7 @@ namespace Kanpuchi.Infrastructures {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructures.Service.AsyncError"/> イベントを発生させます。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructures.Service.AsyncError"/> イベントを発生させます。
         /// </summary>
         /// <param name="exception">発生した例外を示す <see cref="System.Exception"/>。</param>
         protected void RaiseAsyncError(Exception exception) {
@@ -97,7 +97,7 @@ namespace Kanpuchi.Infrastructures {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructures.Service"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructures.Service"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         protected Service() { }
 

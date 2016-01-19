@@ -1,14 +1,14 @@
-﻿using Kanpuchi.Extensions;
-using Kanpuchi.Infrastructure;
-using Kanpuchi.Repositories;
-using Kanpuchi.ViewModels;
+﻿using Karamem0.Kanpuchi.Extensions;
+using Karamem0.Kanpuchi.Infrastructure;
+using Karamem0.Kanpuchi.Repositories;
+using Karamem0.Kanpuchi.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kanpuchi.Services {
+namespace Karamem0.Kanpuchi.Services {
 
     /// <summary>
     /// ツイートを管理するためのサービスを表します。
@@ -31,7 +31,7 @@ namespace Kanpuchi.Services {
         private TweetRepository tweetRepository;
 
         /// <summary>
-        /// <see cref="Kanpuchi.Services.TweetService"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Services.TweetService"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         private TweetService() {
             this.deviceRepository = new DeviceRepository();
@@ -39,9 +39,9 @@ namespace Kanpuchi.Services {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Services.TweetService"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Services.TweetService"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="viewModel"><see cref="Kanpuchi.ViewModels.MainViewModel"/>。</param>
+        /// <param name="viewModel"><see cref="Karamem0.Kanpuchi.ViewModels.MainViewModel"/>。</param>
         public TweetService(MainViewModel viewModel)
             : this() {
             this.viewModel = viewModel;

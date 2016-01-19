@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Kanpuchi.Interactivity {
+namespace Karamem0.Kanpuchi.Interactivity {
 
     /// <summary>
     /// ビジー状態を管理します。
@@ -12,7 +12,7 @@ namespace Kanpuchi.Interactivity {
     public class BusyStateManager : NotificationObject {
 
         /// <summary>
-        /// アプリケーションの <see cref="Kanpuchi.Interactivity.BusyStateManager"/>
+        /// アプリケーションの <see cref="Karamem0.Kanpuchi.Interactivity.BusyStateManager"/>
         /// クラスのインスタンスを取得します。
         /// </summary>
         public static BusyStateManager Current {
@@ -20,12 +20,12 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.BusyStateManager.IsBusy"/> プロパティが変更されると発生します。
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.BusyStateManager.IsBusy"/> プロパティが変更されると発生します。
         /// </summary>
         public event EventHandler<BusyStateEventArgs> BusyStateChanged;
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.BusyStateManager.BusyStateChanged"/> イベントを発生させます。
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.BusyStateManager.BusyStateChanged"/> イベントを発生させます。
         /// </summary>
         /// <param name="e">イベントのデータを格納する <see cref="System.EventArgs"/>。</param>
         protected virtual void OnBusyStateChanged(BusyStateEventArgs e) {
@@ -36,7 +36,7 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.BusyStateManager.BusyStateChanged"/> イベントを発生させます。
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.BusyStateManager.BusyStateChanged"/> イベントを発生させます。
         /// </summary>
         protected void RaiseBusyStateChanged() {
             this.OnBusyStateChanged(new BusyStateEventArgs(this.IsBusy, this.Text));
@@ -79,7 +79,7 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.BusyStateManager"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.BusyStateManager"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public BusyStateManager() { }
 

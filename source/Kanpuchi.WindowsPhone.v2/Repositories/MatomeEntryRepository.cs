@@ -1,6 +1,6 @@
-﻿using Kanpuchi.Configuration;
-using Kanpuchi.Infrastructure;
-using Kanpuchi.Models;
+﻿using Karamem0.Kanpuchi.Configuration;
+using Karamem0.Kanpuchi.Infrastructure;
+using Karamem0.Kanpuchi.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kanpuchi.Repositories {
+namespace Karamem0.Kanpuchi.Repositories {
 
     /// <summary>
     /// まとめ記事のコレクションを格納するリポジトリを表します。
@@ -31,7 +31,7 @@ namespace Kanpuchi.Repositories {
 #endif
 
         /// <summary>
-        /// <see cref="Kanpuchi.Repositories.MatomeEntryRepository"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Repositories.MatomeEntryRepository"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public MatomeEntryRepository() { }
 

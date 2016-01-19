@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kanpuchi.Configuration {
+namespace Karamem0.Kanpuchi.Configuration {
 
     /// <summary>
     /// アプリケーションの設定情報を表します。
@@ -13,13 +13,13 @@ namespace Kanpuchi.Configuration {
     public class AppSettings : AppSettingsBase {
 
         /// <summary>
-        /// アプリケーションの <see cref="Kanpuchi.Configuration.AppSettings"/>
+        /// アプリケーションの <see cref="Karamem0.Kanpuchi.Configuration.AppSettings"/>
         /// クラスのインスタンスを取得します。
         /// </summary>
         public static AppSettings Current { get; private set; }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Configuration.AppSettings"/> クラスの静的メンバーを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Configuration.AppSettings"/> クラスの静的メンバーを初期化します。
         /// </summary>
         static AppSettings() {
             AppSettings.Current = new AppSettings();
@@ -59,7 +59,7 @@ namespace Kanpuchi.Configuration {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Configuration.AppSettings"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Configuration.AppSettings"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         private AppSettings() { }
 

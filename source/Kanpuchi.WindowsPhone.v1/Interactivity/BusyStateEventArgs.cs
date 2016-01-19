@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Kanpuchi.Interactivity {
+namespace Karamem0.Kanpuchi.Interactivity {
 
     /// <summary>
-    /// <see cref="Kanpuchi.Interactivity.BusyStateManager.BusyStateChanged"/> イベントのデータを格納します。
+    /// <see cref="Karamem0.Kanpuchi.Interactivity.BusyStateManager.BusyStateChanged"/> イベントのデータを格納します。
     /// </summary>
     public class BusyStateEventArgs : EventArgs {
 
@@ -21,7 +21,7 @@ namespace Kanpuchi.Interactivity {
         public string Text { get; private set; }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.BusyStateEventArgs"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.BusyStateEventArgs"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="isBusy">ビジーかどうかを示す <see cref="System.Boolean"/>。</param>
         /// <param name="text">ビジー状態のときに表示するテキストを示す <see cref="System.String"/>。</param>

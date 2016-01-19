@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 
-namespace Kanpuchi.Interactivity {
+namespace Karamem0.Kanpuchi.Interactivity {
 
     /// <summary>
     /// ウェブ ブラウザーで開くときのパラメーターを表します。
@@ -12,7 +12,7 @@ namespace Kanpuchi.Interactivity {
     public class WebBrowserTaskContext : DependencyObject {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.WebBrowserTaskContext.Uri"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.WebBrowserTaskContext.Uri"/>
         /// 依存関係プロパティを識別します。
         /// </summary>
         public static readonly DependencyProperty UriProperty =
@@ -31,7 +31,7 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.WebBrowserTaskContext.UseAppInBrowser"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.WebBrowserTaskContext.UseAppInBrowser"/>
         /// 依存関係プロパティを識別します。
         /// </summary>
         public static readonly DependencyProperty UseAppInBrowserProperty =
@@ -50,7 +50,7 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.WebBrowserTaskContext"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.WebBrowserTaskContext"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public WebBrowserTaskContext() { }
 

@@ -6,7 +6,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Kanpuchi.Views {
+namespace Karamem0.Kanpuchi.Views {
 
     /// <summary>
     /// メイン ページを表します。
@@ -14,7 +14,7 @@ namespace Kanpuchi.Views {
     public partial class MainPage : PhoneApplicationPage {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Views.MainPage"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Views.MainPage"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public MainPage() {
             this.InitializeComponent();

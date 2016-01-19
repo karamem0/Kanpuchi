@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 
-namespace Kanpuchi.Interactivity {
+namespace Karamem0.Kanpuchi.Interactivity {
 
     /// <summary>
-    /// <see cref="Kanpuchi.Interactivity.PivotApplicationBarBehavior"/>
+    /// <see cref="Karamem0.Kanpuchi.Interactivity.PivotApplicationBarBehavior"/>
     /// で使用される添付プロパティを定義します。
     /// </summary>
     public static class PivotApplicationBar {
@@ -64,7 +64,7 @@ namespace Kanpuchi.Interactivity {
         /// </summary>
         /// <param name="element"><see cref="Microsoft.Phone.Controls.PivotItem"/>。</param>
         /// <returns>
-        /// <see cref="Kanpuchi.Interactivity.PivotApplicationBarCommandBindingCollection"/>。
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.PivotApplicationBarCommandBindingCollection"/>。
         /// </returns>
         public static PivotApplicationBarCommandBindingCollection GetCommandBindings(PivotItem element) {
             return (PivotApplicationBarCommandBindingCollection)element.GetValue(CommandBindingsProperty);
@@ -76,7 +76,7 @@ namespace Kanpuchi.Interactivity {
         /// </summary>
         /// <param name="element"><see cref="Microsoft.Phone.Controls.PivotItem"/>。</param>
         /// <param name="value">
-        /// <see cref="Kanpuchi.Interactivity.PivotApplicationBarCommandBindingCollection"/>。
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.PivotApplicationBarCommandBindingCollection"/>。
         /// </param>
         public static void SetCommandBindings(PivotItem element, PivotApplicationBarCommandBindingCollection value) {
             element.SetValue(CommandBindingsProperty, value);

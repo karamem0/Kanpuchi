@@ -5,7 +5,7 @@ using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Text;
 
-namespace Kanpuchi.Configuration {
+namespace Karamem0.Kanpuchi.Configuration {
 
     /// <summary>
     /// アプリケーションの設定情報の基本機能を提供します。
@@ -18,7 +18,7 @@ namespace Kanpuchi.Configuration {
         private Dictionary<string, object> workSettings;
 
         /// <summary>
-        /// <see cref="Kanpuchi.Configuration.AppSettingsBase"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Configuration.AppSettingsBase"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         protected AppSettingsBase() {
             this.Reset();

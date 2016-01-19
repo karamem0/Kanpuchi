@@ -1,4 +1,4 @@
-﻿using Kanpuchi.Views;
+﻿using Karamem0.Kanpuchi.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace Kanpuchi {
+namespace Karamem0.Kanpuchi {
 
     /// <summary>
     /// Windows Phone アプリケーションを表します。
@@ -22,7 +22,7 @@ namespace Kanpuchi {
         public Frame RootFrame { get; private set; }
 
         /// <summary>
-        /// <see cref="Kanpuchi.App"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.App"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public App() {
             this.InitializeComponent();

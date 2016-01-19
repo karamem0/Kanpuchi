@@ -7,8 +7,8 @@
     <ProjectGuid>{FD7397F2-7F89-431E-A4D1-93C80AF5ED7F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kanpuchi</RootNamespace>
-    <AssemblyName>Kanpuchi.Web.Models</AssemblyName>
+    <RootNamespace>Karamem0.Kanpuchi</RootNamespace>
+    <AssemblyName>Karamem0.Kanpuchi.Web.Models</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
@@ -119,7 +119,7 @@
   <ItemGroup>
     <Compile Include="Extensions\TaskExtensions.cs" />
     <Compile Include="Models\AccessLog.cs" />
-    <Compile Include="Models\DefaultConnection.cs" />
+    <Compile Include="Models\DefaultConnectionContext.cs" />
     <Compile Include="Models\DefaultConnectionConfiguration.cs" />
     <Compile Include="Models\Device.cs" />
     <Compile Include="Models\MatomeEntry.cs" />

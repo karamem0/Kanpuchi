@@ -1,5 +1,5 @@
-﻿using Kanpuchi.Models;
-using Kanpuchi.ViewModels;
+﻿using Karamem0.Kanpuchi.Models;
+using Karamem0.Kanpuchi.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Http;
 
-namespace Kanpuchi.Controllers {
+namespace Karamem0.Kanpuchi.Controllers {
 
     /// <summary>
     /// ツイートを取得する API コントローラーを表します。
@@ -22,13 +22,13 @@ namespace Kanpuchi.Controllers {
         /// <summary>
         /// データベース コンテキストを表します。
         /// </summary>
-        private DefaultConnection dbContext;
+        private DefaultConnectionContext dbContext;
 
         /// <summary>
-        /// <see cref="Kanpuchi.Controllers.TweetController"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Controllers.TweetController"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public TweetController() {
-            this.dbContext = new DefaultConnection();
+            this.dbContext = new DefaultConnectionContext();
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Kanpuchi.Controllers {
         /// 指定したステータス ID のツイートを返します。
         /// </summary>
         /// <param name="statusId">ステータス ID を示す <see cref="System.String"/>。</param>
-        /// <returns>検索結果を示す <see cref="Kanpuchi.ViewModels.TweetViewModel"/>。</returns>
+        /// <returns>検索結果を示す <see cref="Karamem0.Kanpuchi.ViewModels.TweetViewModel"/>。</returns>
         public TweetViewModel GetTweet(string statusId) {
             return this.dbContext.TwitterStatuses
                 .Where(x => x.StatusId == statusId)

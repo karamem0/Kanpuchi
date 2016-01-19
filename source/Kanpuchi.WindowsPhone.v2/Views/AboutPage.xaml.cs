@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace Kanpuchi.Views {
+namespace Karamem0.Kanpuchi.Views {
 
     /// <summary>
     /// アプリについての情報を表示するページを表します。
@@ -14,7 +14,7 @@ namespace Kanpuchi.Views {
     public sealed partial class AboutPage : Page {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Views.AboutPage"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Views.AboutPage"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public AboutPage() {
             this.InitializeComponent();

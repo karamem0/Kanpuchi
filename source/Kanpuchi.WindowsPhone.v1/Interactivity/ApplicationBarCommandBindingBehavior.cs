@@ -1,4 +1,4 @@
-﻿using Kanpuchi.Extensions;
+﻿using Karamem0.Kanpuchi.Extensions;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System;
@@ -10,7 +10,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interactivity;
 
-namespace Kanpuchi.Interactivity {
+namespace Karamem0.Kanpuchi.Interactivity {
 
     /// <summary>
     /// アプリケーション バーのメニューをクリックしたときにコマンドを実行するためのビヘイビアーを表します。
@@ -18,7 +18,7 @@ namespace Kanpuchi.Interactivity {
     public class ApplicationBarCommandBindingBehavior : Behavior<PhoneApplicationPage> {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.PivotApplicationBarCommandBinding.Text"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.PivotApplicationBarCommandBinding.Text"/>
         /// 依存関係プロパティを識別します。
         /// </summary>
         public static readonly DependencyProperty TextProperty =
@@ -37,7 +37,7 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.PivotApplicationBarCommandBinding.Command"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.PivotApplicationBarCommandBinding.Command"/>
         /// 依存関係プロパティを識別します。
         /// </summary>
         public static readonly DependencyProperty CommandProperty =
@@ -56,7 +56,7 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.PivotApplicationBarCommandBinding.CommandParameter"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.PivotApplicationBarCommandBinding.CommandParameter"/>
         /// 依存関係プロパティを識別します。
         /// </summary>
         public static readonly DependencyProperty CommandParameterProperty =
@@ -75,7 +75,7 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.PivotApplicationBarCommandBinding.DisplayText"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.PivotApplicationBarCommandBinding.DisplayText"/>
         /// 依存関係プロパティを識別します。
         /// </summary>
         public static readonly DependencyProperty DisplayTextProperty =

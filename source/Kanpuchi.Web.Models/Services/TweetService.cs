@@ -1,4 +1,4 @@
-﻿using Kanpuchi.Models;
+﻿using Karamem0.Kanpuchi.Models;
 using LinqToTwitter;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace Kanpuchi.Services {
+namespace Karamem0.Kanpuchi.Services {
 
     /// <summary>
     /// Twitter データを操作するオブジェクトを表します。
@@ -24,10 +24,10 @@ namespace Kanpuchi.Services {
         /// <summary>
         /// データベース コンテキストを表します。
         /// </summary>
-        private DefaultConnection dbContext;
+        private DefaultConnectionContext dbContext;
 
         /// <summary>
-        /// <see cref="Kanpuchi.Services.TweetService"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Services.TweetService"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public TweetService() {
             var consumerKey = ConfigurationManager.AppSettings["TwitterConsumerKey"];
@@ -43,7 +43,7 @@ namespace Kanpuchi.Services {
                 }
             };
             this.twitterContext = new TwitterContext(authorizer);
-            this.dbContext = new DefaultConnection();
+            this.dbContext = new DefaultConnectionContext();
             this.dbContext.Database.Log = str => Debug.WriteLine(str);
         }
 

@@ -1,4 +1,4 @@
-﻿using Kanpuchi.Infrastructure;
+﻿using Karamem0.Kanpuchi.Infrastructure;
 using Microsoft.Xaml.Interactivity;
 using System;
 using System.Collections.Generic;
@@ -13,10 +13,10 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-namespace Kanpuchi.Interactivity {
+namespace Karamem0.Kanpuchi.Interactivity {
 
     /// <summary>
-    /// <see cref="Kanpuchi.Infrastructure.ViewModel"/> をサポートするビヘイビアーを表します。
+    /// <see cref="Karamem0.Kanpuchi.Infrastructure.ViewModel"/> をサポートするビヘイビアーを表します。
     /// </summary>
     public sealed class ViewModelBehavior : Behavior<Page> {
 
@@ -28,7 +28,7 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.ViewModelBehavior"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.ViewModelBehavior"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public ViewModelBehavior() { }
 

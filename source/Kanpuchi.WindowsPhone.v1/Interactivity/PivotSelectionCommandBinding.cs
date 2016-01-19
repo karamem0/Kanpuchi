@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Input;
 
-namespace Kanpuchi.Interactivity {
+namespace Karamem0.Kanpuchi.Interactivity {
 
     /// <summary>
     /// <see cref="Microsoft.Phone.Controls.Pivot"/> のイベントに関連付けられたコマンドを実行します。
@@ -13,7 +13,7 @@ namespace Kanpuchi.Interactivity {
     public class PivotSelectionCommandBinding : DependencyObject {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.PivotSelectionCommandBinding.Command"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.PivotSelectionCommandBinding.Command"/>
         /// 依存関係プロパティを識別します。
         /// </summary>
         public static readonly DependencyProperty CommandProperty =
@@ -32,7 +32,7 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.PivotSelectionCommandBinding.CommandParameter"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.PivotSelectionCommandBinding.CommandParameter"/>
         /// 依存関係プロパティを識別します。
         /// </summary>
         public static readonly DependencyProperty CommandParameterProperty =
@@ -51,7 +51,7 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.PivotSelectionCommandBinding"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.PivotSelectionCommandBinding"/>
         /// クラスの新しいインスタンスを初期化します。
         /// </summary>
         public PivotSelectionCommandBinding() { }

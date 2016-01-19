@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Input;
 
-namespace Kanpuchi.Interactivity {
+namespace Karamem0.Kanpuchi.Interactivity {
 
     /// <summary>
     /// <see cref="Microsoft.Phone.Shell.ApplicationBar"/>
@@ -14,7 +14,7 @@ namespace Kanpuchi.Interactivity {
     public class PivotApplicationBarCommandBinding : DependencyObject {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.PivotApplicationBarCommandBinding.Text"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.PivotApplicationBarCommandBinding.Text"/>
         /// 依存関係プロパティを識別します。
         /// </summary>
         public static readonly DependencyProperty TextProperty =
@@ -33,7 +33,7 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.PivotApplicationBarCommandBinding.Command"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.PivotApplicationBarCommandBinding.Command"/>
         /// 依存関係プロパティを識別します。
         /// </summary>
         public static readonly DependencyProperty CommandProperty =
@@ -52,7 +52,7 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.PivotApplicationBarCommandBinding.CommandParameter"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.PivotApplicationBarCommandBinding.CommandParameter"/>
         /// 依存関係プロパティを識別します。
         /// </summary>
         public static readonly DependencyProperty CommandParameterProperty =
@@ -71,7 +71,7 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.PivotApplicationBarCommandBinding.DisplayText"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.PivotApplicationBarCommandBinding.DisplayText"/>
         /// 依存関係プロパティを識別します。
         /// </summary>
         public static readonly DependencyProperty DisplayTextProperty =
@@ -90,7 +90,7 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.PivotApplicationBarCommandBinding"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.PivotApplicationBarCommandBinding"/>
         /// クラスの新しいインスタンスを初期化します。
         /// </summary>
         public PivotApplicationBarCommandBinding() { }

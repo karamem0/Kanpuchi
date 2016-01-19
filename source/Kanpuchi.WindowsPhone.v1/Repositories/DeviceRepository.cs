@@ -1,7 +1,7 @@
-﻿using Kanpuchi.Configuration;
-using Kanpuchi.Infrastructures;
-using Kanpuchi.Models;
-using Kanpuchi.Reflection;
+﻿using Karamem0.Kanpuchi.Configuration;
+using Karamem0.Kanpuchi.Infrastructures;
+using Karamem0.Kanpuchi.Models;
+using Karamem0.Kanpuchi.Reflection;
 using Microsoft.Phone.Info;
 using Newtonsoft.Json;
 using System;
@@ -15,7 +15,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kanpuchi.Repositories {
+namespace Karamem0.Kanpuchi.Repositories {
 
     /// <summary>
     /// デバイス トークンを格納するリポジトリを表します。
@@ -35,7 +35,7 @@ namespace Kanpuchi.Repositories {
 #endif
 
         /// <summary>
-        /// <see cref="Kanpuchi.Repositories.DeviceRepository"/>
+        /// <see cref="Karamem0.Kanpuchi.Repositories.DeviceRepository"/>
         /// クラスの新しいインスタンスを初期化します。
         /// </summary>
         public DeviceRepository() { }
@@ -43,7 +43,7 @@ namespace Kanpuchi.Repositories {
         /// <summary>
         /// デバイスを作成して返します。
         /// </summary>
-        /// <returns>デバイスを示す <see cref="Kanpuchi.Models.Device"/>。</returns>
+        /// <returns>デバイスを示す <see cref="Karamem0.Kanpuchi.Models.Device"/>。</returns>
         public Device Create() {
             return new Device() {
                 DeviceId = AppSettings.Current.DeviceId,
@@ -58,7 +58,7 @@ namespace Kanpuchi.Repositories {
         /// <summary>
         /// 指定したデバイスのデバイス ID およびデバイス キーをストレージに保存します。
         /// </summary>
-        /// <param name="device">デバイスを示す <see cref="Kanpuchi.Models.Device"/>。</param>
+        /// <param name="device">デバイスを示す <see cref="Karamem0.Kanpuchi.Models.Device"/>。</param>
         public void Save(Device device) {
             if (device != null) {
                 AppSettings.Current.DeviceId = device.DeviceId;
@@ -70,7 +70,7 @@ namespace Kanpuchi.Repositories {
         /// <summary>
         /// 指定したデバイスを追加または更新します。
         /// </summary>
-        /// <param name="device">デバイスを示す <see cref="Kanpuchi.Models.Device"/>。</param>
+        /// <param name="device">デバイスを示す <see cref="Karamem0.Kanpuchi.Models.Device"/>。</param>
         /// <returns>非同期操作を示す <see cref="T:System.Threading.Tasks.Task`1"/>。</returns>
         public Task<Device> PostAsync(Device device) {
             var requestUri = new Uri(PostUri, UriKind.Absolute);

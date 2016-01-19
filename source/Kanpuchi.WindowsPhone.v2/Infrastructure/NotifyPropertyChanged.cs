@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kanpuchi.Infrastructure {
+namespace Karamem0.Kanpuchi.Infrastructure {
 
     /// <summary>
     /// プロパティの変更を通知可能なオブジェクトを表します。
@@ -19,7 +19,7 @@ namespace Kanpuchi.Infrastructure {
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructure.NotifyPropertyChanged.PropertyChanged"/>
+        /// <see cref="Karamem0.Kanpuchi.Infrastructure.NotifyPropertyChanged.PropertyChanged"/>
         /// イベントを発生させます。
         /// </summary>
         /// <param name="e">

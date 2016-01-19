@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace Kanpuchi.ViewModels {
+namespace Karamem0.Kanpuchi.ViewModels {
 
     /// <summary>
     /// デバイスのデータを格納します。
@@ -55,7 +55,7 @@ namespace Kanpuchi.ViewModels {
         public string AppVersion { get; set; }
 
         /// <summary>
-        /// <see cref="Kanpuchi.ViewModels.DeviceViewModel"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.DeviceViewModel"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public DeviceViewModel() { }
 

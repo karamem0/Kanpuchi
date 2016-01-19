@@ -1,5 +1,5 @@
-﻿using Kanpuchi.Infrastructure;
-using Kanpuchi.ViewModels;
+﻿using Karamem0.Kanpuchi.Infrastructure;
+using Karamem0.Kanpuchi.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 
-namespace Kanpuchi.Interactivity {
+namespace Karamem0.Kanpuchi.Interactivity {
     
     /// <summary>
     /// ビュー モデルを格納します。
@@ -15,7 +15,7 @@ namespace Kanpuchi.Interactivity {
     public class ViewModelLocator : DependencyObject {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.ViewModelLocator.MainViewModel"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.ViewModelLocator.MainViewModel"/>
         /// 依存関係プロパティを識別します。
         /// </summary>
         public static readonly DependencyProperty MainViewModelProperty =
@@ -26,7 +26,7 @@ namespace Kanpuchi.Interactivity {
                 new PropertyMetadata(new MainViewModel()));
 
         /// <summary>
-        /// <see cref="Kanpuchi.ViewModels.MainViewModel"/> を取得または設定します。
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.MainViewModel"/> を取得または設定します。
         /// </summary>
         public ViewModel MainViewModel {
             get { return (ViewModel)this.GetValue(MainViewModelProperty); }
@@ -34,7 +34,7 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.ViewModelLocator.SettingsViewModel"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.ViewModelLocator.SettingsViewModel"/>
         /// 依存関係プロパティを識別します。
         /// </summary>
         public static readonly DependencyProperty SettingsViewModelProperty =
@@ -45,7 +45,7 @@ namespace Kanpuchi.Interactivity {
                 new PropertyMetadata(new SettingsViewModel()));
 
         /// <summary>
-        /// <see cref="Kanpuchi.ViewModels.SettingsViewModel"/> を取得または設定します。
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.SettingsViewModel"/> を取得または設定します。
         /// </summary>
         public ViewModel SettingsViewModel {
             get { return (ViewModel)this.GetValue(SettingsViewModelProperty); }
@@ -53,7 +53,7 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.ViewModelLocator.AboutViewModel"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.ViewModelLocator.AboutViewModel"/>
         /// 依存関係プロパティを識別します。
         /// </summary>
         public static readonly DependencyProperty AboutViewModelProperty =
@@ -64,7 +64,7 @@ namespace Kanpuchi.Interactivity {
                 new PropertyMetadata(new AboutViewModel()));
 
         /// <summary>
-        /// <see cref="Kanpuchi.ViewModels.AboutViewModel"/> を取得または設定します。
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.AboutViewModel"/> を取得または設定します。
         /// </summary>
         public ViewModel AboutViewModel {
             get { return (ViewModel)this.GetValue(AboutViewModelProperty); }
@@ -72,7 +72,7 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.ViewModelLocator.WebBrowserViewModel"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.ViewModelLocator.WebBrowserViewModel"/>
         /// 依存関係プロパティを識別します。
         /// </summary>
         public static readonly DependencyProperty WebBrowserViewModelProperty =
@@ -83,7 +83,7 @@ namespace Kanpuchi.Interactivity {
                 new PropertyMetadata(new WebBrowserViewModel()));
 
         /// <summary>
-        /// <see cref="Kanpuchi.ViewModels.WebBrowserViewModel"/> を取得または設定します。
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.WebBrowserViewModel"/> を取得または設定します。
         /// </summary>
         public ViewModel WebBrowserViewModel {
             get { return (ViewModel)this.GetValue(WebBrowserViewModelProperty); }
@@ -91,7 +91,7 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.ViewModelLocator"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.ViewModelLocator"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public ViewModelLocator() { }
 

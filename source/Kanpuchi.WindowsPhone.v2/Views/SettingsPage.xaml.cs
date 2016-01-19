@@ -7,7 +7,7 @@ using Windows.Phone.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace Kanpuchi.Views {
+namespace Karamem0.Kanpuchi.Views {
 
     /// <summary>
     /// 設定情報を表示および変更するページを表します。
@@ -15,7 +15,7 @@ namespace Kanpuchi.Views {
     public sealed partial class SettingsPage : Page {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Views.SettingsPage"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Views.SettingsPage"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public SettingsPage() {
             this.InitializeComponent();

@@ -1,4 +1,4 @@
-﻿using Kanpuchi.Infrastructure;
+﻿using Karamem0.Kanpuchi.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kanpuchi.Models {
+namespace Karamem0.Kanpuchi.Models {
 
     /// <summary>
     /// まとめ記事のデータを格納します。
@@ -57,7 +57,7 @@ namespace Kanpuchi.Models {
         public virtual DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Models.MatomeEntry"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Models.MatomeEntry"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public MatomeEntry() { }
 

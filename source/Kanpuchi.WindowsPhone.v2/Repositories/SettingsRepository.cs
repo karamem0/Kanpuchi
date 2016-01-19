@@ -1,13 +1,13 @@
-﻿using Kanpuchi.Configuration;
-using Kanpuchi.Infrastructure;
-using Kanpuchi.Models;
+﻿using Karamem0.Kanpuchi.Configuration;
+using Karamem0.Kanpuchi.Infrastructure;
+using Karamem0.Kanpuchi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kanpuchi.Repositories {
+namespace Karamem0.Kanpuchi.Repositories {
 
     /// <summary>
     /// 設定情報を格納するリポジトリを表します。
@@ -15,7 +15,7 @@ namespace Kanpuchi.Repositories {
     public sealed class SettingsRepository : Repository<Settings> {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Repositories.SettingsRepository"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Repositories.SettingsRepository"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public SettingsRepository() { }
 

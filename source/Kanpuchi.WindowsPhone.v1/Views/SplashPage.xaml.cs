@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace Kanpuchi.Views {
+namespace Karamem0.Kanpuchi.Views {
   
     /// <summary>
     /// スプラッシュ ページを表します。
@@ -15,7 +15,7 @@ namespace Kanpuchi.Views {
     public partial class SplashPage : PhoneApplicationPage {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Views.SplashPage"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Views.SplashPage"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public SplashPage() {
             this.InitializeComponent();

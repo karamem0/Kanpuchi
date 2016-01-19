@@ -1,14 +1,14 @@
-﻿using Kanpuchi.Infrastructures;
-using Kanpuchi.Interactivity;
-using Kanpuchi.Resources;
-using Kanpuchi.Services;
+﻿using Karamem0.Kanpuchi.Infrastructures;
+using Karamem0.Kanpuchi.Interactivity;
+using Karamem0.Kanpuchi.Resources;
+using Karamem0.Kanpuchi.Services;
 using Microsoft.Practices.Prism.Interactivity.InteractionRequest;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Kanpuchi.ViewModels {
+namespace Karamem0.Kanpuchi.ViewModels {
 
     /// <summary>
     /// スプラッシュ ページのビュー モデルを表します。
@@ -21,7 +21,7 @@ namespace Kanpuchi.ViewModels {
         public event EventHandler InitializeCompleted;
 
         /// <summary>
-        /// <see cref="Kanpuchi.ViewModels.SplashViewModel.InitializeCompleted"/> イベントを発生させます。
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.SplashViewModel.InitializeCompleted"/> イベントを発生させます。
         /// </summary>
         /// <param name="e">イベントのデータを格納する <see cref="System.EventArgs"/>。</param>
         protected virtual void OnInitializeCompleted(EventArgs e) {
@@ -32,7 +32,7 @@ namespace Kanpuchi.ViewModels {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.ViewModels.SplashViewModel.InitializeCompleted"/> イベントを発生させます。
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.SplashViewModel.InitializeCompleted"/> イベントを発生させます。
         /// </summary>
         public void RaiseInitializeCompleted() {
             this.OnInitializeCompleted(new EventArgs());
@@ -44,7 +44,7 @@ namespace Kanpuchi.ViewModels {
         public DeviceService Service { get; private set; }
 
         /// <summary>
-        /// <see cref="Kanpuchi.ViewModels.SplashViewModel"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.SplashViewModel"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public SplashViewModel() {
             this.Service = new DeviceService();
@@ -62,7 +62,7 @@ namespace Kanpuchi.ViewModels {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructures.Service.AsyncStarted"/> イベントで追加の処理を実行します。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructures.Service.AsyncStarted"/> イベントで追加の処理を実行します。
         /// </summary>
         /// <param name="sender">イベントを発生させた <see cref="System.Object"/>。</param>
         /// <param name="e">イベントのデータを格納する <see cref="System.EventArgs"/>。</param>
@@ -71,7 +71,7 @@ namespace Kanpuchi.ViewModels {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructures.Service.AsyncCompleted"/> イベントで追加の処理を実行します。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructures.Service.AsyncCompleted"/> イベントで追加の処理を実行します。
         /// </summary>
         /// <param name="sender">イベントを発生させた <see cref="System.Object"/>。</param>
         /// <param name="e">イベントのデータを格納する <see cref="System.EventArgs"/>。</param>
@@ -81,11 +81,11 @@ namespace Kanpuchi.ViewModels {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructures.Service.AsyncError"/> イベントで追加の処理を実行します。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructures.Service.AsyncError"/> イベントで追加の処理を実行します。
         /// </summary>
         /// <param name="sender">イベントを発生させた <see cref="System.Object"/>。</param>
         /// <param name="e">
-        /// イベントのデータを格納する <see cref="Kanpuchi.Infrastructures.AsyncErrorEventArgs"/>。
+        /// イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructures.AsyncErrorEventArgs"/>。
         /// </param>
         private void OnAsyncError(object sender, AsyncErrorEventArgs e) {
             BusyStateManager.Current.End();

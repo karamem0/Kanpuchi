@@ -6,7 +6,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Kanpuchi.Views {
+namespace Karamem0.Kanpuchi.Views {
 
     /// <summary>
     /// ウェブ ブラウザーを表示するページを表します。
@@ -14,7 +14,7 @@ namespace Kanpuchi.Views {
     public partial class WebBrowserPage : PhoneApplicationPage {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Views.WebBrowserPage"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Views.WebBrowserPage"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public WebBrowserPage() {
             this.InitializeComponent();

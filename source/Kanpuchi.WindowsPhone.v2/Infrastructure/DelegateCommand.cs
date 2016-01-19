@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Kanpuchi.Infrastructure {
+namespace Karamem0.Kanpuchi.Infrastructure {
 
     /// <summary>
     /// パラメーターを受け取らないコマンドを表します。
@@ -18,7 +18,7 @@ namespace Kanpuchi.Infrastructure {
         public event EventHandler CanExecuteChanged;
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructure.DelegateCommand.CanExecuteChanged"/> イベントを発生させます。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructure.DelegateCommand.CanExecuteChanged"/> イベントを発生させます。
         /// </summary>
         /// <param name="e">イベントのデータを格納する <see cref="System.EventArgs"/>。</param>
         protected virtual void OnCanExecuteChanged(EventArgs e) {
@@ -46,7 +46,7 @@ namespace Kanpuchi.Infrastructure {
         private Func<bool> onCanExecute;
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructure.DelegateCommand"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructure.DelegateCommand"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="onExecute">コマンドが実行されたときに呼び出される <see cref="System.Action"/>。</param>
         public DelegateCommand(Action onExecute) {
@@ -55,7 +55,7 @@ namespace Kanpuchi.Infrastructure {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructure.DelegateCommand"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructure.DelegateCommand"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="onExecute">コマンドが実行されたときに呼び出される <see cref="System.Action"/>。</param>
         /// <param name="onCanExecute">コマンドを実行できるかどうかを判断するときに呼び出される <see cref="T:System.Func`1"/>。</param>

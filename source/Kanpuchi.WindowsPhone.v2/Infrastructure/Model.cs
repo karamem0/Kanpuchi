@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kanpuchi.Infrastructure {
+namespace Karamem0.Kanpuchi.Infrastructure {
 
     /// <summary>
     /// データ モデルの基本機能を提供します。
@@ -16,7 +16,7 @@ namespace Kanpuchi.Infrastructure {
     public abstract class Model {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructure.Model"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructure.Model"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         protected Model() { }
 

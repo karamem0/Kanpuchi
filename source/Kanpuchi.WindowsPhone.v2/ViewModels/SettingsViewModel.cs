@@ -1,8 +1,8 @@
-﻿using Kanpuchi.Configuration;
-using Kanpuchi.Infrastructure;
-using Kanpuchi.Interactivity;
-using Kanpuchi.Models;
-using Kanpuchi.Services;
+﻿using Karamem0.Kanpuchi.Configuration;
+using Karamem0.Kanpuchi.Infrastructure;
+using Karamem0.Kanpuchi.Interactivity;
+using Karamem0.Kanpuchi.Models;
+using Karamem0.Kanpuchi.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kanpuchi.ViewModels {
+namespace Karamem0.Kanpuchi.ViewModels {
 
     /// <summary>
     /// 設定ページのビュー モデルを表します。
@@ -39,7 +39,7 @@ namespace Kanpuchi.ViewModels {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.ViewModels.SettingsViewModel.CanSave"/> を実行できるか判断します。
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.SettingsViewModel.CanSave"/> を実行できるか判断します。
         /// </summary>
         /// <returns></returns>
         private bool CanSave() {
@@ -83,7 +83,7 @@ namespace Kanpuchi.ViewModels {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.ViewModels.SettingsViewModel"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.SettingsViewModel"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public SettingsViewModel() {
             this.MatomeSites = new ObservableCollection<MatomeSite>();
@@ -112,7 +112,7 @@ namespace Kanpuchi.ViewModels {
         /// まとめ記事の取得の非同期操作が開始するときに追加の処理を実行します。
         /// </summary>
         /// <param name="sender">イベントを発生させた <see cref="System.Object"/>。</param>
-        /// <param name="e">イベントのデータを格納する <see cref="Kanpuchi.Infrastructure.AsyncStartedEventArgs"/>。</param>
+        /// <param name="e">イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructure.AsyncStartedEventArgs"/>。</param>
         private void OnSettingsServiceAsyncStarted(object sender, AsyncStartedEventArgs e) {
             var settingsService = sender as SettingsService;
             if (settingsService != null) {
@@ -125,7 +125,7 @@ namespace Kanpuchi.ViewModels {
         /// まとめ記事の取得の非同期操作が完了するときに追加の処理を実行します。
         /// </summary>
         /// <param name="sender">イベントを発生させた <see cref="System.Object"/>。</param>
-        /// <param name="e">イベントのデータを格納する <see cref="Kanpuchi.Infrastructure.AsyncCompletedEventArgs"/>。</param>
+        /// <param name="e">イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructure.AsyncCompletedEventArgs"/>。</param>
         private void OnSettingsServiceAsyncCompleted(object sender, AsyncCompletedEventArgs e) {
             var settingsService = sender as SettingsService;
             if (settingsService != null) {

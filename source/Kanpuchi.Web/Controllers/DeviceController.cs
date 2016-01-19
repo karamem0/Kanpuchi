@@ -1,5 +1,5 @@
-﻿using Kanpuchi.Models;
-using Kanpuchi.ViewModels;
+﻿using Karamem0.Kanpuchi.Models;
+using Karamem0.Kanpuchi.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -12,7 +12,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web.Http;
 
-namespace Kanpuchi.Controllers {
+namespace Karamem0.Kanpuchi.Controllers {
 
     /// <summary>
     /// デバイス トークンを管理する API コントローラーを表します。
@@ -22,19 +22,19 @@ namespace Kanpuchi.Controllers {
         /// <summary>
         /// データベース コンテキストを表します。
         /// </summary>
-        private DefaultConnection dbContext;
+        private DefaultConnectionContext dbContext;
 
         /// <summary>
-        /// <see cref="Kanpuchi.Controllers.DeviceController"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Controllers.DeviceController"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public DeviceController() {
-            this.dbContext = new DefaultConnection();
+            this.dbContext = new DefaultConnectionContext();
         }
 
         /// <summary>
         /// デバイスを追加または更新します。
         /// </summary>
-        /// <param name="viewModel">追加する <see cref="Kanpuchi.ViewModels.DeviceViewModel"/>。</param>
+        /// <param name="viewModel">追加する <see cref="Karamem0.Kanpuchi.ViewModels.DeviceViewModel"/>。</param>
         /// <returns>応答メッセージを示す <see cref="System.Net.Http.HttpResponseMessage"/>。</returns>
         public HttpResponseMessage PostDevice(DeviceViewModel viewModel) {
             if (this.ModelState.IsValid == true) {

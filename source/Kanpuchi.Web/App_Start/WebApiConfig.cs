@@ -1,11 +1,11 @@
-﻿using Kanpuchi.Filters;
+﻿using Karamem0.Kanpuchi.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Http;
 
-namespace Kanpuchi {
+namespace Karamem0.Kanpuchi {
 
     /// <summary>
     /// アプリケーションの Web API の設定を構成します。

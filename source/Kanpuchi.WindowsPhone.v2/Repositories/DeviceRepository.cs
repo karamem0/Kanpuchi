@@ -1,7 +1,7 @@
-﻿using Kanpuchi.Configuration;
-using Kanpuchi.Extensions;
-using Kanpuchi.Infrastructure;
-using Kanpuchi.Models;
+﻿using Karamem0.Kanpuchi.Configuration;
+using Karamem0.Kanpuchi.Extensions;
+using Karamem0.Kanpuchi.Infrastructure;
+using Karamem0.Kanpuchi.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.Security.ExchangeActiveSyncProvisioning;
 
-namespace Kanpuchi.Repositories {
+namespace Karamem0.Kanpuchi.Repositories {
 
     /// <summary>
     /// デバイスを格納するリポジトリを表します。
@@ -32,7 +32,7 @@ namespace Kanpuchi.Repositories {
         private static readonly string PostUri = "https://kanpuchi.azurewebsites.net/api/device";
 #endif
         /// <summary>
-        /// <see cref="Kanpuchi.Repositories.DeviceRepository"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Repositories.DeviceRepository"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public DeviceRepository() { }
 
@@ -75,7 +75,7 @@ namespace Kanpuchi.Repositories {
         /// <summary>
         /// 現在のデバイス情報を返します。
         /// </summary>
-        /// <returns>デバイスのデータを格納する <see cref="Kanpuchi.Models.Device"/>。</returns>
+        /// <returns>デバイスのデータを格納する <see cref="Karamem0.Kanpuchi.Models.Device"/>。</returns>
         private Device GetCurrent() {
             if (App.Current.Resources.ContainsKey("Device") == true) {
                 return (Device)App.Current.Resources["Device"];
@@ -86,7 +86,7 @@ namespace Kanpuchi.Repositories {
         /// <summary>
         /// 指定したデバイスを現在のデバイス情報として設定します。
         /// </summary>
-        /// <param name="value">デバイスのデータを格納する <see cref="Kanpuchi.Models.Device"/>。</param>
+        /// <param name="value">デバイスのデータを格納する <see cref="Karamem0.Kanpuchi.Models.Device"/>。</param>
         private void SetCurrent(Device value) {
             App.Current.Resources["Device"] = value;
         }

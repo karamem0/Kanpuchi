@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace Kanpuchi.ViewModels {
+namespace Karamem0.Kanpuchi.ViewModels {
 
     /// <summary>
     /// ツイートのデータを格納します。
@@ -61,7 +61,7 @@ namespace Kanpuchi.ViewModels {
         public string Text { get; set; }
 
         /// <summary>
-        /// <see cref="Kanpuchi.ViewModels.TweetViewModel"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.TweetViewModel"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public TweetViewModel() { }
 

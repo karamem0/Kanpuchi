@@ -1,4 +1,4 @@
-﻿using Kanpuchi.Extensions;
+﻿using Karamem0.Kanpuchi.Extensions;
 using Microsoft.Phone.Reactive;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Interactivity;
 using System.Windows.Media;
 
-namespace Kanpuchi.Interactivity {
+namespace Karamem0.Kanpuchi.Interactivity {
 
     /// <summary>
     /// リスト ボックスを最上部にスクロールするアクションを表します。
@@ -17,7 +17,7 @@ namespace Kanpuchi.Interactivity {
     public class ScrollToTopAction : TriggerAction<ListBox> {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.ScrollToTopAction"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.ScrollToTopAction"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public ScrollToTopAction() { }
 

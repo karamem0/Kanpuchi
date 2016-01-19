@@ -1,5 +1,5 @@
-﻿using Kanpuchi.Models;
-using Kanpuchi.ViewModels;
+﻿using Karamem0.Kanpuchi.Models;
+using Karamem0.Kanpuchi.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -9,7 +9,7 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
-namespace Kanpuchi.Controllers {
+namespace Karamem0.Kanpuchi.Controllers {
 
     /// <summary>
     /// まとめ記事を管理する API コントローラーを表します。
@@ -19,13 +19,13 @@ namespace Kanpuchi.Controllers {
         /// <summary>
         /// データベース コンテキストを表します。
         /// </summary>
-        private DefaultConnection dbContext;
+        private DefaultConnectionContext dbContext;
 
         /// <summary>
-        /// <see cref="Kanpuchi.Controllers.MatomeEntryController"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Controllers.MatomeEntryController"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public MatomeEntryController() {
-            this.dbContext = new DefaultConnection();
+            this.dbContext = new DefaultConnectionContext();
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Kanpuchi.Controllers {
         /// </summary>
         /// <param name="entryId">記事 ID を示す <see cref="System.Guid"/>。</param>
         /// <returns>
-        /// まとめ記事を示す <see cref="Kanpuchi.ViewModels.MatomeEntryViewModel"/>。
+        /// まとめ記事を示す <see cref="Karamem0.Kanpuchi.ViewModels.MatomeEntryViewModel"/>。
         /// </returns>
         public MatomeEntryViewModel GetMatomeEntry(Guid entryId) {
             var model = this.dbContext.MatomeEntries.Find(entryId);

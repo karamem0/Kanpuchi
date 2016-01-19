@@ -7,8 +7,8 @@
     <ProjectGuid>{8DDFAA39-BF02-444F-8F19-7977A96DAB71}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kanpuchi</RootNamespace>
-    <AssemblyName>Kanpuchi.WebJobs.Cleanup</AssemblyName>
+    <RootNamespace>Karamem0.Kanpuchi</RootNamespace>
+    <AssemblyName>Karamem0.Kanpuchi.WebJobs.Cleanup</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

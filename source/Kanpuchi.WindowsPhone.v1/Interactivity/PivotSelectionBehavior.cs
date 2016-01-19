@@ -1,4 +1,4 @@
-﻿using Kanpuchi.Extensions;
+﻿using Karamem0.Kanpuchi.Extensions;
 using Microsoft.Phone.Controls;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interactivity;
 
-namespace Kanpuchi.Interactivity {
+namespace Karamem0.Kanpuchi.Interactivity {
 
     /// <summary>
     /// ピボットの選択項目が変更されたときにコマンドを実行するビヘイビアーを表します。
@@ -17,7 +17,7 @@ namespace Kanpuchi.Interactivity {
     public class PivotSelectionBehavior : Behavior<Pivot> {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.PivotSelectionBehavior"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.PivotSelectionBehavior"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public PivotSelectionBehavior() { }
 

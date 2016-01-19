@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kanpuchi.Extensions {
+namespace Karamem0.Kanpuchi.Extensions {
 
     /// <summary>
     /// <see cref="T:System.Collections.ObjectModel.ObservableCollection`1"/> クラスの拡張メソッドを定義します。

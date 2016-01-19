@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
 
-namespace Kanpuchi.Extensions {
+namespace Karamem0.Kanpuchi.Extensions {
 
     /// <summary>
     /// <see cref="Windows.UI.Xaml.DependencyObject"/> クラスの拡張メソッドを定義します。

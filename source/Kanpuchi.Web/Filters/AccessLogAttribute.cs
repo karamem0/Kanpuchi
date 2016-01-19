@@ -1,4 +1,4 @@
-﻿using Kanpuchi.Models;
+﻿using Karamem0.Kanpuchi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 
-namespace Kanpuchi.Filters {
+namespace Karamem0.Kanpuchi.Filters {
 
     /// <summary>
     /// アクセス ログを取得するアクション フィルターを表します。
@@ -34,7 +34,7 @@ namespace Kanpuchi.Filters {
                     }
                 }
             } catch { }
-            using (var dbContext = new DefaultConnection()) {
+            using (var dbContext = new DefaultConnectionContext()) {
                 dbContext.AccessLogs.Add(new AccessLog() {
                     LogId = Guid.NewGuid(),
                     DeviceId = deviceId,

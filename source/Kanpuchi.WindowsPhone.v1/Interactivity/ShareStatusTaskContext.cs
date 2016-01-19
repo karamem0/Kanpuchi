@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 
-namespace Kanpuchi.Interactivity {
+namespace Karamem0.Kanpuchi.Interactivity {
 
     /// <summary>
     /// ソーシャル ネットワークに共有するときのパラメーターを表します。
@@ -12,7 +12,7 @@ namespace Kanpuchi.Interactivity {
     public class ShareStatusTaskContext : DependencyObject {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.ShareStatusTaskContext.Uri"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.ShareStatusTaskContext.Uri"/>
         /// 依存関係プロパティを識別します。
         /// </summary>
         public static readonly DependencyProperty UriProperty =
@@ -31,7 +31,7 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.ShareStatusTaskContext.Message"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.ShareStatusTaskContext.Message"/>
         /// 依存関係プロパティを識別します。
         /// </summary>
         public static readonly DependencyProperty MessageProperty =
@@ -50,7 +50,7 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.ShareStatusTaskContext"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.ShareStatusTaskContext"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public ShareStatusTaskContext() { }
 

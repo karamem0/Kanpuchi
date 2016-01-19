@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Kanpuchi.Extensions {
+namespace Karamem0.Kanpuchi.Extensions {
 
     /// <summary>
     /// <see cref="T:System.Collections.Generic.IEnumerable`1"/> インターフェースの拡張メソッドを定義します。

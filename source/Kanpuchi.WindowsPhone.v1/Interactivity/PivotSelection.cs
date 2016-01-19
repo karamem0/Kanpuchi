@@ -6,10 +6,10 @@ using System.Text;
 using System.Windows;
 using System.Windows.Input;
 
-namespace Kanpuchi.Interactivity {
+namespace Karamem0.Kanpuchi.Interactivity {
 
     /// <summary>
-    /// <see cref="Kanpuchi.Interactivity.PivotSelectionBehavior"/> で使用される添付プロパティを定義します。
+    /// <see cref="Karamem0.Kanpuchi.Interactivity.PivotSelectionBehavior"/> で使用される添付プロパティを定義します。
     /// </summary>
     public static class PivotSelection {
 
@@ -30,7 +30,7 @@ namespace Kanpuchi.Interactivity {
         /// プロパティの値を取得します。
         /// </summary>
         /// <param name="element"><see cref="Microsoft.Phone.Controls.PivotItem"/>。</param>
-        /// <returns><see cref="Kanpuchi.Interactivity.PivotSelectionCommandBinding"/>。</returns>
+        /// <returns><see cref="Karamem0.Kanpuchi.Interactivity.PivotSelectionCommandBinding"/>。</returns>
         public static PivotSelectionCommandBinding GetSelectedCommandBinding(PivotItem element) {
             return (PivotSelectionCommandBinding)element.GetValue(SelectedCommandBindingProperty);
         }
@@ -40,7 +40,7 @@ namespace Kanpuchi.Interactivity {
         /// プロパティの値を指定した <see cref="Microsoft.Phone.Controls.PivotItem"/> に設定します。
         /// </summary>
         /// <param name="element"><see cref="Microsoft.Phone.Controls.PivotItem"/>。</param>
-        /// <param name="value"><see cref="Kanpuchi.Interactivity.PivotSelectionCommandBinding"/>。</param>
+        /// <param name="value"><see cref="Karamem0.Kanpuchi.Interactivity.PivotSelectionCommandBinding"/>。</param>
         public static void SetSelectedCommandBinding(PivotItem element, PivotSelectionCommandBinding value) {
             element.SetValue(SelectedCommandBindingProperty, value);
         }
@@ -62,7 +62,7 @@ namespace Kanpuchi.Interactivity {
         /// プロパティの値を取得します。
         /// </summary>
         /// <param name="element"><see cref="Microsoft.Phone.Controls.PivotItem"/>。</param>
-        /// <returns><see cref="Kanpuchi.Interactivity.PivotSelectionCommandBinding"/>。</returns>
+        /// <returns><see cref="Karamem0.Kanpuchi.Interactivity.PivotSelectionCommandBinding"/>。</returns>
         public static PivotSelectionCommandBinding GetUnselectedCommandBinding(PivotItem element) {
             return (PivotSelectionCommandBinding)element.GetValue(UnselectedCommandBindingProperty);
         }
@@ -72,7 +72,7 @@ namespace Kanpuchi.Interactivity {
         /// プロパティの値を指定した <see cref="Microsoft.Phone.Controls.PivotItem"/> に設定します。
         /// </summary>
         /// <param name="element"><see cref="Microsoft.Phone.Controls.PivotItem"/>。</param>
-        /// <param name="value"><see cref="Kanpuchi.Interactivity.PivotSelectionCommandBinding"/>。</param>
+        /// <param name="value"><see cref="Karamem0.Kanpuchi.Interactivity.PivotSelectionCommandBinding"/>。</param>
         public static void SetUnselectedCommandBinding(PivotItem element, PivotSelectionCommandBinding value) {
             element.SetValue(UnselectedCommandBindingProperty, value);
         }

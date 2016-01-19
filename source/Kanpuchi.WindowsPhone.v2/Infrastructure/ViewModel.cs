@@ -1,6 +1,6 @@
-﻿using Kanpuchi.Configuration;
-using Kanpuchi.Extensions;
-using Kanpuchi.Views;
+﻿using Karamem0.Kanpuchi.Configuration;
+using Karamem0.Kanpuchi.Extensions;
+using Karamem0.Kanpuchi.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ using Windows.ApplicationModel.Store;
 using Windows.System;
 using Windows.UI.ViewManagement;
 
-namespace Kanpuchi.Infrastructure {
+namespace Karamem0.Kanpuchi.Infrastructure {
 
     /// <summary>
     /// ビュー モデルを表します。
@@ -24,9 +24,9 @@ namespace Kanpuchi.Infrastructure {
         public event EventHandler<ErrorEventArgs> Error;
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructure.ViewModel.Error"/> イベントを発生させます。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructure.ViewModel.Error"/> イベントを発生させます。
         /// </summary>
-        /// <param name="e">イベントのデータを格納する <see cref="Kanpuchi.Infrastructure..ErrorEventArgs"/>。</param>
+        /// <param name="e">イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructure..ErrorEventArgs"/>。</param>
         protected virtual void OnError(ErrorEventArgs e) {
             var handler = this.Error;
             if (handler != null) {
@@ -35,7 +35,7 @@ namespace Kanpuchi.Infrastructure {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructure.ViewModel.Error"/> イベントを発生させます。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructure.ViewModel.Error"/> イベントを発生させます。
         /// </summary>
         /// <param name="resourceKey">メッセージ リソースのキー文字列を示す <see cref="System.String"/>。</param>
         protected void RaiseError(string resourceKey) {
@@ -50,7 +50,7 @@ namespace Kanpuchi.Infrastructure {
         public event EventHandler BusyStateChanged;
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructure.ViewModel.BusyStateChanged"/> イベントを発生させます。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructure.ViewModel.BusyStateChanged"/> イベントを発生させます。
         /// </summary>
         /// <param name="e">イベントのデータを格納する <see cref="System.EventArgs"/>。</param>
         protected virtual void OnBusyStateChanged(EventArgs e) {
@@ -61,7 +61,7 @@ namespace Kanpuchi.Infrastructure {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructure.ViewModel.BusyStateChanged"/> イベントを発生させます。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructure.ViewModel.BusyStateChanged"/> イベントを発生させます。
         /// </summary>
         protected void RaiseBusyStateChanged() {
             this.OnBusyStateChanged(new EventArgs());
@@ -83,7 +83,7 @@ namespace Kanpuchi.Infrastructure {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructure.ViewModel.GoBack"/> を実行できるかどうかを判断します。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructure.ViewModel.GoBack"/> を実行できるかどうかを判断します。
         /// </summary>
         /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
         protected bool CanGoBack() {
@@ -106,7 +106,7 @@ namespace Kanpuchi.Infrastructure {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructure.ViewModel.GoForward"/> を実行できるかどうかを判断します。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructure.ViewModel.GoForward"/> を実行できるかどうかを判断します。
         /// </summary>
         /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
         protected bool CanGoForward() {
@@ -131,7 +131,7 @@ namespace Kanpuchi.Infrastructure {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructure.ViewModel.LaunchBrowser"/> を実行できるかどうかを判断します。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructure.ViewModel.LaunchBrowser"/> を実行できるかどうかを判断します。
         /// </summary>
         /// <param name="parameter">URI を示す <see cref="System.String"/>。</param>
         /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
@@ -152,7 +152,7 @@ namespace Kanpuchi.Infrastructure {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructure.ViewModel.LaunchReviewApp"/> を実行できるかどうかを判断します。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructure.ViewModel.LaunchReviewApp"/> を実行できるかどうかを判断します。
         /// </summary>
         /// <param name="parameter">URI を示す <see cref="System.String"/>。</param>
         /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
@@ -180,7 +180,7 @@ namespace Kanpuchi.Infrastructure {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructure.ViewModel"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructure.ViewModel"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public ViewModel() {
             this.GoBackCommand = new DelegateCommand(this.GoBack, this.CanGoBack);

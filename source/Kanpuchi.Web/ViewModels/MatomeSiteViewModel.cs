@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace Kanpuchi.ViewModels {
+namespace Karamem0.Kanpuchi.ViewModels {
 
     /// <summary>
     /// まとめサイトのデータを格納します。
@@ -37,7 +37,7 @@ namespace Kanpuchi.ViewModels {
         public virtual string FeedUrl { get; set; }
 
         /// <summary>
-        /// <see cref="Kanpuchi.ViewModels.MatomeSiteViewModel"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.MatomeSiteViewModel"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public MatomeSiteViewModel() { }
 

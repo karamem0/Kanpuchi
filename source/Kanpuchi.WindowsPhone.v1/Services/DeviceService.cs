@@ -1,14 +1,14 @@
-﻿using Kanpuchi.Extensions;
-using Kanpuchi.Infrastructures;
-using Kanpuchi.Models;
-using Kanpuchi.Repositories;
+﻿using Karamem0.Kanpuchi.Extensions;
+using Karamem0.Kanpuchi.Infrastructures;
+using Karamem0.Kanpuchi.Models;
+using Karamem0.Kanpuchi.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kanpuchi.Services {
+namespace Karamem0.Kanpuchi.Services {
 
     /// <summary>
     /// デバイスを管理するためのサービスを表します。
@@ -16,7 +16,7 @@ namespace Kanpuchi.Services {
     public class DeviceService : Service {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Services.DeviceService"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Services.DeviceService"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public DeviceService() { }
 

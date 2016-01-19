@@ -7,7 +7,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 
 
-namespace Kanpuchi.Views {
+namespace Karamem0.Kanpuchi.Views {
 
     /// <summary>
     /// まとめサイトの設定を変更するピボット項目を表します。
@@ -15,7 +15,7 @@ namespace Kanpuchi.Views {
     public sealed partial class MatomeSitePivotItem : PivotItem {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Views.MatomeSitePivotItem"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Views.MatomeSitePivotItem"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public MatomeSitePivotItem() {
             this.InitializeComponent();

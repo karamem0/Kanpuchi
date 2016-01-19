@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kanpuchi.Infrastructure {
+namespace Karamem0.Kanpuchi.Infrastructure {
 
     /// <summary>
     /// リポジトリの基本機能を提供します。

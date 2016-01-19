@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 
-namespace Kanpuchi.Extensions {
+namespace Karamem0.Kanpuchi.Extensions {
 
     /// <summary>
     /// <see cref="Windows.ApplicationModel.PackageVersion"/> クラスの拡張メソッドを定義します。

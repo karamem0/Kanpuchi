@@ -9,7 +9,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-namespace Kanpuchi.Views {
+namespace Karamem0.Kanpuchi.Views {
 
     /// <summary>
     /// アプリ内ブラウザーを表示するページを表します。
@@ -17,7 +17,7 @@ namespace Kanpuchi.Views {
     public sealed partial class WebBrowserPage : Page {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Views.WebBrowserPage"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Views.WebBrowserPage"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public WebBrowserPage() {
             this.InitializeComponent();
@@ -58,7 +58,7 @@ namespace Kanpuchi.Views {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Views.WebBrowserPage.WebView"/> でナビゲーションを完了したときに追加の処理を実行します。
+        /// <see cref="Karamem0.Kanpuchi.Views.WebBrowserPage.WebView"/> でナビゲーションを完了したときに追加の処理を実行します。
         /// </summary>
         /// <param name="sender">イベントを発生させた <see cref="System.Object"/>。</param>
         /// <param name="e">イベントのデータを格納する <see cref="Windows.UI.Xaml.Controls.WebViewNavigationCompletedEventArgs"/>。</param>
@@ -68,7 +68,7 @@ namespace Kanpuchi.Views {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Views.WebBrowserPage.BackButton"/> をクリックしたときに追加の処理を実行します。
+        /// <see cref="Karamem0.Kanpuchi.Views.WebBrowserPage.BackButton"/> をクリックしたときに追加の処理を実行します。
         /// </summary>
         /// <param name="sender">イベントを発生させた <see cref="System.Object"/>。</param>
         /// <param name="e">イベントのデータを格納する <see cref="Windows.UI.Xaml.RoutedEventArgs"/>。</param>
@@ -79,7 +79,7 @@ namespace Kanpuchi.Views {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Views.WebBrowserPage.FormardButton"/> をクリックしたときに追加の処理を実行します。
+        /// <see cref="Karamem0.Kanpuchi.Views.WebBrowserPage.FormardButton"/> をクリックしたときに追加の処理を実行します。
         /// </summary>
         /// <param name="sender">イベントを発生させた <see cref="System.Object"/>。</param>
         /// <param name="e">イベントのデータを格納する <see cref="Windows.UI.Xaml.RoutedEventArgs"/>。</param>
@@ -90,7 +90,7 @@ namespace Kanpuchi.Views {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Views.WebBrowserPage.ShareButton"/> をクリックしたときに追加の処理を実行します。
+        /// <see cref="Karamem0.Kanpuchi.Views.WebBrowserPage.ShareButton"/> をクリックしたときに追加の処理を実行します。
         /// </summary>
         /// <param name="sender">イベントを発生させた <see cref="System.Object"/>。</param>
         /// <param name="e">イベントのデータを格納する <see cref="Windows.UI.Xaml.RoutedEventArgs"/>。</param>

@@ -1,5 +1,5 @@
-﻿using Kanpuchi.Extensions;
-using Kanpuchi.Resources;
+﻿using Karamem0.Kanpuchi.Extensions;
+using Karamem0.Kanpuchi.Resources;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System;
@@ -10,7 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Interactivity;
 
-namespace Kanpuchi.Interactivity {
+namespace Karamem0.Kanpuchi.Interactivity {
 
     /// <summary>
     /// ピボットの選択項目が変更されたときにアプリケーション バーを切り替えるビヘイビアーを表します。
@@ -18,7 +18,7 @@ namespace Kanpuchi.Interactivity {
     public class PivotApplicationBarBehavior : Behavior<Pivot> {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.PivotApplicationBarBehavior"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.PivotApplicationBarBehavior"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public PivotApplicationBarBehavior() { }
 

@@ -1,5 +1,5 @@
-﻿using Kanpuchi.Models;
-using Kanpuchi.ViewModels;
+﻿using Karamem0.Kanpuchi.Models;
+using Karamem0.Kanpuchi.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 
-namespace Kanpuchi.Controllers {
+namespace Karamem0.Kanpuchi.Controllers {
 
     /// <summary>
     /// まとめサイトを管理する API コントローラーを表します。
@@ -18,13 +18,13 @@ namespace Kanpuchi.Controllers {
         /// <summary>
         /// データベース コンテキストを表します。
         /// </summary>
-        private DefaultConnection dbContext;
+        private DefaultConnectionContext dbContext;
 
         /// <summary>
-        /// <see cref="Kanpuchi.Controllers.MatomeSiteController"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Controllers.MatomeSiteController"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public MatomeSiteController() {
-            this.dbContext = new DefaultConnection();
+            this.dbContext = new DefaultConnectionContext();
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Kanpuchi.Controllers {
         /// </summary>
         /// <param name="siteId">サイト ID を示す <see cref="System.Int32"/>。</param>
         /// <returns>
-        /// まとめサイトを示す <see cref="Kanpuchi.ViewModels.MatomeSiteViewModel"/>。
+        /// まとめサイトを示す <see cref="Karamem0.Kanpuchi.ViewModels.MatomeSiteViewModel"/>。
         /// </returns>
         public MatomeSiteViewModel GetMatomeSite(int siteId) {
             var model = this.dbContext.MatomeSites.Find(siteId);

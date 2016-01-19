@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Kanpuchi {
+namespace Karamem0.Kanpuchi {
     
     /// <summary>
-    /// <see cref="Kanpuchi.Application"/> クラスを取得します。
+    /// <see cref="Karamem0.Kanpuchi.Application"/> クラスを取得します。
     /// </summary>
     public static class ApplicationContext {
 

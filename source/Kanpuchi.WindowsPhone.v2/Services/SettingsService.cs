@@ -1,8 +1,8 @@
-﻿using Kanpuchi.Extensions;
-using Kanpuchi.Infrastructure;
-using Kanpuchi.Models;
-using Kanpuchi.Repositories;
-using Kanpuchi.ViewModels;
+﻿using Karamem0.Kanpuchi.Extensions;
+using Karamem0.Kanpuchi.Infrastructure;
+using Karamem0.Kanpuchi.Models;
+using Karamem0.Kanpuchi.Repositories;
+using Karamem0.Kanpuchi.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Kanpuchi.Services {
+namespace Karamem0.Kanpuchi.Services {
 
     /// <summary>
     /// まとめサイトを管理するためのサービスを表します。
@@ -35,7 +35,7 @@ namespace Kanpuchi.Services {
         private MatomeSiteRepository matomeSiteRepository;
 
         /// <summary>
-        /// <see cref="Kanpuchi.Services.SettingsService"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Services.SettingsService"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         private SettingsService() {
             this.settingsRepository = new SettingsRepository();
@@ -44,9 +44,9 @@ namespace Kanpuchi.Services {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Services.SettingsService"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Services.SettingsService"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="viewModel"><see cref="Kanpuchi.ViewModels.SettingsViewModel"/>。</param>
+        /// <param name="viewModel"><see cref="Karamem0.Kanpuchi.ViewModels.SettingsViewModel"/>。</param>
         public SettingsService(SettingsViewModel viewModel)
             : this() {
             this.viewModel = viewModel;

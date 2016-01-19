@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Kanpuchi.Infrastructures {
+namespace Karamem0.Kanpuchi.Infrastructures {
 
     /// <summary>
     /// 非同期操作でエラーが発生したときに発生するイベントのデータを格納します。
@@ -16,7 +16,7 @@ namespace Kanpuchi.Infrastructures {
         public Exception Exception { get; private set; }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructures.AsyncErrorEventArgs"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructures.AsyncErrorEventArgs"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="exception">発生した例外を示す <see cref="System.Exception"/>。</param>
         public AsyncErrorEventArgs(Exception exception) {

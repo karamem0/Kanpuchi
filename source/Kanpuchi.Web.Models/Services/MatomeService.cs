@@ -1,5 +1,5 @@
-﻿using Kanpuchi.Extensions;
-using Kanpuchi.Models;
+﻿using Karamem0.Kanpuchi.Extensions;
+using Karamem0.Kanpuchi.Models;
 using Microsoft.Azure;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Storage;
@@ -21,7 +21,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
-namespace Kanpuchi.Services {
+namespace Karamem0.Kanpuchi.Services {
 
     /// <summary>
     /// まとめデータを操作するオブジェクトを表します。
@@ -37,13 +37,13 @@ namespace Kanpuchi.Services {
         /// <summary>
         /// データベース コンテキストを表します。
         /// </summary>
-        private DefaultConnection dbContext;
+        private DefaultConnectionContext dbContext;
 
         /// <summary>
-        /// <see cref="Kanpuchi.Services.MatomeService"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Services.MatomeService"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public MatomeService() {
-            this.dbContext = new DefaultConnection();
+            this.dbContext = new DefaultConnectionContext();
             this.dbContext.Database.Log = str => Debug.WriteLine(str);
         }
 
@@ -81,7 +81,7 @@ namespace Kanpuchi.Services {
         /// サムネイル画像を更新します。
         /// </summary>
         public void UpdateMatomeEntryThumbnail() {
-            var connectionString = ConfigurationManager.ConnectionStrings["StorageConnection"].ConnectionString;
+            var connectionString = ConfigurationManager.ConnectionStrings["StorageConnectionContext"].ConnectionString;
             var storageAccount = CloudStorageAccount.Parse(connectionString);
             var blobClient = storageAccount.CreateCloudBlobClient();
             var blobContainer = blobClient.GetContainerReference("thumbnails");

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Kanpuchi.Interactivity {
+namespace Karamem0.Kanpuchi.Interactivity {
 
     /// <summary>
     /// ナビゲーションに関するコマンドを定義します。
@@ -22,7 +22,7 @@ namespace Kanpuchi.Interactivity {
         public DelegateCommand GoBackCommand { get; private set; }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.NavigationCommands"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.NavigationCommands"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public NavigationCommands() {
             this.GoToPageCommand = new DelegateCommand<string>(

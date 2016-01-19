@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Kanpuchi.Views {
+namespace Karamem0.Kanpuchi.Views {
 
     /// <summary>
     /// まとめ記事を表示するピボットの項目を表します。
@@ -13,7 +13,7 @@ namespace Kanpuchi.Views {
     public partial class MatomePivotItem : PivotItem {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Views.MatomePivotItem"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Views.MatomePivotItem"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public MatomePivotItem() {
             this.InitializeComponent();

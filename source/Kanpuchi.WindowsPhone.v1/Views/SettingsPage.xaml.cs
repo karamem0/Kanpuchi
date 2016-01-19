@@ -8,7 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
-namespace Kanpuchi.Views {
+namespace Karamem0.Kanpuchi.Views {
 
     /// <summary>
     /// 設定を変更するページを表します。
@@ -16,7 +16,7 @@ namespace Kanpuchi.Views {
     public partial class SettingsPage : PhoneApplicationPage {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Views.SettingsPage"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Views.SettingsPage"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public SettingsPage() {
             this.InitializeComponent();

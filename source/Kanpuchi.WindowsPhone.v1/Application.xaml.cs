@@ -1,5 +1,5 @@
-﻿using Kanpuchi.Infrastructures;
-using Kanpuchi.Services;
+﻿using Karamem0.Kanpuchi.Infrastructures;
+using Karamem0.Kanpuchi.Services;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using System;
@@ -13,7 +13,7 @@ using System.Windows.Controls;
 using System.Windows.Markup;
 using System.Windows.Navigation;
 
-namespace Kanpuchi {
+namespace Karamem0.Kanpuchi {
 
     /// <summary>
     /// Phone アプリケーションを表します。
@@ -26,7 +26,7 @@ namespace Kanpuchi {
         public PhoneApplicationFrame RootFrame { get; private set; }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Application"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Application"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public Application() {
             this.UnhandledException += this.OnApplicationUnhandledException;

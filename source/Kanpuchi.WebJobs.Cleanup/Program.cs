@@ -1,4 +1,4 @@
-﻿using Kanpuchi.Services;
+﻿using Karamem0.Kanpuchi.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kanpuchi {
+namespace Karamem0.Kanpuchi {
 
     /// <summary>
     /// アプリケーションのエントリ ポイントを定義します。

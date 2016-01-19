@@ -1,7 +1,7 @@
-﻿using Kanpuchi.Extensions;
-using Kanpuchi.Infrastructures;
-using Kanpuchi.Models;
-using Kanpuchi.Repositories;
+﻿using Karamem0.Kanpuchi.Extensions;
+using Karamem0.Kanpuchi.Infrastructures;
+using Karamem0.Kanpuchi.Models;
+using Karamem0.Kanpuchi.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kanpuchi.Services {
+namespace Karamem0.Kanpuchi.Services {
 
     /// <summary>
     /// ツイートを管理するためのサービスを表します。
@@ -22,7 +22,7 @@ namespace Kanpuchi.Services {
         public ObservableCollection<Tweet> Items { get; private set; }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Services.TweetService"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Services.TweetService"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public TweetService() {
             this.Items = new ObservableCollection<Tweet>();

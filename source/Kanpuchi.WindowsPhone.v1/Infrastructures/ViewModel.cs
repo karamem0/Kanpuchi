@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Kanpuchi.Infrastructures {
+namespace Karamem0.Kanpuchi.Infrastructures {
 
     /// <summary>
     /// ビュー モデルの基本機能を提供します。
@@ -25,7 +25,7 @@ namespace Kanpuchi.Infrastructures {
         public InteractionRequest<Confirmation> ConfirmationRequest { get; private set; }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructures.ViewModel"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructures.ViewModel"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         protected ViewModel() {
             this.NotificationRequest = new InteractionRequest<Notification>();

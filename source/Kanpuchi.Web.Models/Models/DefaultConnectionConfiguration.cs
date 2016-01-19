@@ -4,15 +4,15 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 
-namespace Kanpuchi.Models {
+namespace Karamem0.Kanpuchi.Models {
 
     /// <summary>
     /// データベースを移行するための構成を表します。
     /// </summary>
-    public class DefaultConnectionConfiguration : DbMigrationsConfiguration<DefaultConnection> {
+    public class DefaultConnectionConfiguration : DbMigrationsConfiguration<DefaultConnectionContext> {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Models.DefaultConnectionConfiguration"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Models.DefaultConnectionConfiguration"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public DefaultConnectionConfiguration() {
             this.AutomaticMigrationDataLossAllowed = true;
@@ -22,8 +22,8 @@ namespace Kanpuchi.Models {
         /// <summary>
         /// データベースをシードします。
         /// </summary>
-        /// <param name="context"><see cref="Kanpuchi.Models.DefaultConnection"/>。</param>
-        protected override void Seed(DefaultConnection context) { }
+        /// <param name="context"><see cref="Karamem0.Kanpuchi.Models.DefaultConnectionContext"/>。</param>
+        protected override void Seed(DefaultConnectionContext context) { }
 
     }
 

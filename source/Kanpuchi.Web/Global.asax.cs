@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Routing;
 
-namespace Kanpuchi {
+namespace Karamem0.Kanpuchi {
 
     /// <summary>
     /// Web API アプリケーションを表します。

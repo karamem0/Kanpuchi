@@ -7,8 +7,8 @@
     <ProjectGuid>{73E66899-17AD-4A0B-BDD4-BF22255563C8}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kanpuchi</RootNamespace>
-    <AssemblyName>Kanpuchi.WebJobs.Matome</AssemblyName>
+    <RootNamespace>Karamem0.Kanpuchi</RootNamespace>
+    <AssemblyName>Karamem0.Kanpuchi.WebJobs.Matome</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>

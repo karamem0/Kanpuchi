@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 
-namespace Kanpuchi.Models {
+namespace Karamem0.Kanpuchi.Models {
 
     /// <summary>
     /// アクセス ログのデータを格納します。
@@ -47,7 +47,7 @@ namespace Kanpuchi.Models {
         public virtual Device Device { get; set; }
         
         /// <summary>
-        /// <see cref="Kanpuchi.Models.AccessLog"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Models.AccessLog"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public AccessLog() { }
 

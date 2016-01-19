@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 
-namespace Kanpuchi.Models {
+namespace Karamem0.Kanpuchi.Models {
 
     /// <summary>
     /// Twitter のユーザーのデータを格納します。
@@ -54,7 +54,7 @@ namespace Kanpuchi.Models {
         public virtual ICollection<TwitterStatus> Statuses { get; set; }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Models.TwitterUser"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Models.TwitterUser"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public TwitterUser() { }
 

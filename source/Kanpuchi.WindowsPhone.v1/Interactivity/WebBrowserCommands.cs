@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 
-namespace Kanpuchi.Interactivity {
+namespace Karamem0.Kanpuchi.Interactivity {
 
     /// <summary>
     /// ウェブ ブラウザーに関するコマンドを定義します。
@@ -22,7 +22,7 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.WebBrowserCommands.WebBrowser"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.WebBrowserCommands.WebBrowser"/>
         /// 依存関係プロパティを識別します。
         /// </summary>
         public static readonly DependencyProperty WebBrowserProperty =
@@ -53,7 +53,7 @@ namespace Kanpuchi.Interactivity {
         public DelegateCommand RefreshCommand { get; private set; }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.WebBrowserCommands"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.WebBrowserCommands"/>
         /// クラスの新しいインスタンスを初期化します。
         /// </summary>
         public WebBrowserCommands() {

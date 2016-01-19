@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Threading;
 
-namespace Kanpuchi.Extensions {
+namespace Karamem0.Kanpuchi.Extensions {
 
     /// <summary>
     /// <see cref="System.Windows.Threading.Dispatcher"/> クラスの拡張メソッドを定義します。

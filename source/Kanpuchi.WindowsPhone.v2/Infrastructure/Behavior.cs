@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml;
 
-namespace Kanpuchi.Infrastructure {
+namespace Karamem0.Kanpuchi.Infrastructure {
 
     /// <summary>
     /// ビヘイビアーの基本機能を提供します。
@@ -26,7 +26,7 @@ namespace Kanpuchi.Infrastructure {
         public T AssociatedObject { get; private set; }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructure.Behavior"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructure.Behavior"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         protected Behavior() { }
 

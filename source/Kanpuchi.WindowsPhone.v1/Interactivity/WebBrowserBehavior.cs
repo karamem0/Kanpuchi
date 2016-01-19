@@ -1,4 +1,4 @@
-﻿using Kanpuchi.ViewModels;
+﻿using Karamem0.Kanpuchi.ViewModels;
 using Microsoft.Phone.Controls;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Windows;
 using System.Windows.Interactivity;
 using System.Windows.Navigation;
 
-namespace Kanpuchi.Interactivity {
+namespace Karamem0.Kanpuchi.Interactivity {
 
     /// <summary>
     /// ウェブ ブラウザーの URI が変更されたときにビュー モデルに変更を通知するためのビヘイビアーを表します。
@@ -17,7 +17,7 @@ namespace Kanpuchi.Interactivity {
     public class WebBrowserBehavior : Behavior<WebBrowser> {
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.WebBrowserBehavior.ViewModel"/>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.WebBrowserBehavior.ViewModel"/>
         /// 依存関係プロパティを識別します。
         /// </summary>
         public static readonly DependencyProperty ViewModelProperty =
@@ -28,7 +28,7 @@ namespace Kanpuchi.Interactivity {
                 new PropertyMetadata(null));
 
         /// <summary>
-        /// <see cref="Kanpuchi.ViewModels.WebBrowserViewModel"/> を取得または設定します。
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.WebBrowserViewModel"/> を取得または設定します。
         /// </summary>
         public WebBrowserViewModel ViewModel {
             get { return (WebBrowserViewModel)this.GetValue(ViewModelProperty); }
@@ -36,7 +36,7 @@ namespace Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Interactivity.WebBrowserBehavior"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.WebBrowserBehavior"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public WebBrowserBehavior() { }
 
