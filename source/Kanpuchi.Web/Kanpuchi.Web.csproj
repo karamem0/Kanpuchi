@@ -104,9 +104,9 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Kanpuchi.Web.Models\Kanpuchi.Web.Models.csproj">
+    <ProjectReference Include="..\Kanpuchi.Web.Models\Kanpuchi.Batch.csproj">
       <Project>{fd7397f2-7f89-431e-a4d1-93c80af5ed7f}</Project>
-      <Name>Kanpuchi.Web.Models</Name>
+      <Name>Kanpuchi.Batch</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +119,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccessLog.cs" />
+    <Compile Include="Models\DefaultConnectionConfiguration.cs" />
+    <Compile Include="Models\DefaultConnectionContext.cs" />
+    <Compile Include="Models\Device.cs" />
+    <Compile Include="Models\MatomeEntry.cs" />
+    <Compile Include="Models\MatomeSite.cs" />
+    <Compile Include="Models\TwitterStatus.cs" />
+    <Compile Include="Models\TwitterUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\DeviceViewModel.cs" />
     <Compile Include="ViewModels\MatomeEntryViewModel.cs" />
