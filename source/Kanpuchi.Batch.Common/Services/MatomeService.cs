@@ -81,7 +81,7 @@ namespace Karamem0.Kanpuchi.Services {
         /// サムネイル画像を更新します。
         /// </summary>
         public void UpdateMatomeEntryThumbnail() {
-            var connectionString = ConfigurationManager.ConnectionStrings["StorageConnectionContext"].ConnectionString;
+            var connectionString = ConfigurationManager.ConnectionStrings["StorageConnection"].ConnectionString;
             var storageAccount = CloudStorageAccount.Parse(connectionString);
             var blobClient = storageAccount.CreateCloudBlobClient();
             var blobContainer = blobClient.GetContainerReference("thumbnails");

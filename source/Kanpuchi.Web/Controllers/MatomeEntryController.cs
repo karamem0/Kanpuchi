@@ -35,8 +35,8 @@ namespace Karamem0.Kanpuchi.Controllers {
         /// <param name="maxId">最大値を示す <see cref="System.Guid"/>。</param>
         /// <param name="itemCount">取得する件数を示す <see cref="System.Int32"/>。</param>
         /// <param name="siteId">取得するサイトを示す <see cref="System.Int32"/> の配列。</param>
-        /// <returns>検索結果を示す <see cref="T:System.Collections.Generic.IEnumerable`1"/>。</returns>
-        public IEnumerable<MatomeEntryViewModel> GetMatomeEntry(Guid? minId = null, Guid? maxId = null, int? itemCount = 20, [FromUri]int[] siteId = null) {
+        /// <returns>検索結果を示す <see cref="System.Collections.Generic.IEnumerable{T}"/>。</returns>
+        public IEnumerable<MatomeEntryViewModel> GetMatomeEntry(Guid? minId = null, Guid? maxId = null, int itemCount = 20, [FromUri]int[] siteId = null) {
             var minDate = (DateTime?)null;
             var minEntry = this.dbContext.MatomeEntries.Find(minId);
             if (minEntry != null) {
@@ -56,7 +56,7 @@ namespace Karamem0.Kanpuchi.Controllers {
                 .Where(x => minDate == null || x.CreatedAt.CompareTo(minDate.Value) > 0)
                 .Where(x => maxDate == null || x.CreatedAt.CompareTo(maxDate.Value) < 0)
                 .Where(x => siteId.Contains(x.SiteId) == true)
-                .Take(itemCount.Value)
+                .Take(itemCount)
                 .Select(x => new MatomeEntryViewModel() {
                     EntryId = x.EntryId,
                     SiteId = x.Site.SiteId,

@@ -161,6 +161,9 @@
     <Content Include="Fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Packages.config" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
+    <Content Include="Tests\MatomeEntry.aspx" />
+    <Content Include="Tests\MatomeSite.aspx" />
+    <Content Include="Tests\Tweet.aspx" />
     <Content Include="Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

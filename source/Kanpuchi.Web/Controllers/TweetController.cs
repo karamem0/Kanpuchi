@@ -37,7 +37,7 @@ namespace Karamem0.Kanpuchi.Controllers {
         /// <param name="minId">最小値を示す <see cref="System.String"/>。</param>
         /// <param name="maxId">最大値を示す <see cref="System.String"/>。</param>
         /// <param name="itemCount">取得する件数を示す <see cref="System.Int32"/>。</param>
-        /// <returns>検索結果を示す <see cref="T:System.Collections.Generic.IEnumerable`1"/>。</returns>
+        /// <returns>検索結果を示す <see cref="System.Collections.Generic.IEnumerable{T}"/>。</returns>
         public IEnumerable<TweetViewModel> GetTweet(string minId = null, string maxId = null, int itemCount = 20) {
             return this.dbContext.TwitterStatuses
                 .Include(x => x.User)

@@ -37,30 +37,34 @@ namespace Karamem0.Kanpuchi.Controllers {
         /// <param name="viewModel">追加する <see cref="Karamem0.Kanpuchi.ViewModels.DeviceViewModel"/>。</param>
         /// <returns>応答メッセージを示す <see cref="System.Net.Http.HttpResponseMessage"/>。</returns>
         public HttpResponseMessage PostDevice(DeviceViewModel viewModel) {
-            if (this.ModelState.IsValid == true) {
-                var model = this.dbContext.Devices.Find(viewModel.DeviceId);
-                if (model == null) {
-                    var keyGenerator = RandomNumberGenerator.Create();
-                    var keyData = new byte[32];
-                    keyGenerator.GetBytes(keyData);
-                    model = new Device();
-                    model.DeviceId = viewModel.DeviceId.GetValueOrDefault(Guid.NewGuid());
-                    model.DeviceKey = Convert.ToBase64String(keyData);
-                    model.CreatedAt = DateTime.UtcNow;
+            try {
+                if (this.ModelState.IsValid == true) {
+                    var model = this.dbContext.Devices.Find(viewModel.DeviceId);
+                    if (model == null) {
+                        var keyGenerator = RandomNumberGenerator.Create();
+                        var keyData = new byte[32];
+                        keyGenerator.GetBytes(keyData);
+                        model = new Device();
+                        model.DeviceId = viewModel.DeviceId.GetValueOrDefault(Guid.NewGuid());
+                        model.DeviceKey = Convert.ToBase64String(keyData);
+                        model.CreatedAt = DateTime.UtcNow;
+                    }
+                    model.FirmwareVersion = viewModel.FirmwareVersion;
+                    model.HardwareVersion = viewModel.HardwareVersion;
+                    model.Manufacturer = viewModel.Manufacturer;
+                    model.Name = viewModel.Name;
+                    model.AppVersion = viewModel.AppVersion;
+                    model.UpdatedAt = DateTime.UtcNow;
+                    this.dbContext.Devices.AddOrUpdate(x => x.DeviceId, model);
+                    this.dbContext.SaveChanges();
+                    viewModel.DeviceId = model.DeviceId;
+                    viewModel.DeviceKey = model.DeviceKey;
+                    return this.Request.CreateResponse(HttpStatusCode.Created, viewModel);
+                } else {
+                    return this.Request.CreateResponse(HttpStatusCode.BadRequest, this.ModelState);
                 }
-                model.FirmwareVersion = viewModel.FirmwareVersion;
-                model.HardwareVersion = viewModel.HardwareVersion;
-                model.Manufacturer = viewModel.Manufacturer;
-                model.Name = viewModel.Name;
-                model.AppVersion = viewModel.AppVersion;
-                model.UpdatedAt = DateTime.UtcNow;
-                this.dbContext.Devices.AddOrUpdate(x => x.DeviceId, model);
-                this.dbContext.SaveChanges();
-                viewModel.DeviceId = model.DeviceId;
-                viewModel.DeviceKey = model.DeviceKey;
-                return this.Request.CreateResponse(HttpStatusCode.Created, viewModel);
-            } else {
-                return this.Request.CreateResponse(HttpStatusCode.BadRequest, this.ModelState);
+            } catch (Exception ex) {
+                return this.Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
             }
         }
 
@@ -80,6 +84,8 @@ namespace Karamem0.Kanpuchi.Controllers {
                 return this.Request.CreateResponse(HttpStatusCode.OK, model);
             } catch (DbUpdateConcurrencyException ex) {
                 return this.Request.CreateResponse(HttpStatusCode.NotFound, ex);
+            } catch (Exception ex) {
+                return this.Request.CreateResponse(HttpStatusCode.InternalServerError, ex);
             }
         }
 

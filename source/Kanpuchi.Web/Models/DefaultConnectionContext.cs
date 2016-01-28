@@ -44,7 +44,7 @@ namespace Karamem0.Kanpuchi.Models {
         /// <summary>
         /// <see cref="Karamem0.Kanpuchi.Models.DefaultConnectionContext"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        public DefaultConnectionContext() {
+        public DefaultConnectionContext() : base("DefaultConnection") {
             this.Configuration.LazyLoadingEnabled = false;
             this.Configuration.ProxyCreationEnabled = false;
         }

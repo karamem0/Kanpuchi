@@ -30,7 +30,7 @@ namespace Karamem0.Kanpuchi.Controllers {
         /// <summary>
         /// まとめサイトのコレクションを返します。
         /// </summary>
-        /// <returns>検索結果を示す <see cref="T:System.Collections.Generic.IEnumerable`1"/>。</returns>
+        /// <returns>検索結果を示す <see cref="System.Collections.Generic.IEnumerable{T}"/>。</returns>
         public IEnumerable<MatomeSiteViewModel> GetMatomeSite() {
             return this.dbContext.MatomeSites
                 .Select(x => new MatomeSiteViewModel() {
