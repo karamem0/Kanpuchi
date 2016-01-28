@@ -44,7 +44,7 @@ namespace Karamem0.Kanpuchi.Infrastructure {
         /// 指定した式ツリーで表されるプロパティが変更されたことを通知します。
         /// </summary>
         /// <typeparam name="T">プロパティの型。</typeparam>
-        /// <param name="propertyExpression">プロパティの式ツリーを示す <see cref="T:System.Linq.Expressions.Expression`1"/>。</param>
+        /// <param name="propertyExpression">プロパティの式ツリーを示す <see cref="System.Linq.Expressions.Expression{TDelegate}"/>。</param>
         public void RaisePropertyChanged<T>(Expression<Func<T>> propertyExpression) {
             this.RaisePropertyChanged(((MemberExpression)propertyExpression.Body).Member.Name);
         }

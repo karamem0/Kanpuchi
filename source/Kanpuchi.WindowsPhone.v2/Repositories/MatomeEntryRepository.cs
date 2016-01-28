@@ -44,7 +44,7 @@ namespace Karamem0.Kanpuchi.Repositories {
         /// <param name="maxId">ステータス ID の最大値を示す <see cref="System.Guid"/>。</param>
         /// <param name="itemCount">取得する件数を示す <see cref="System.Int32"/>。</param>
         /// <param name="siteIds">サイト ID を示す <see cref="System.In32"/> の配列。</param>
-        /// <returns>非同期操作を示す <see cref="T:System.Threading.Tasks.Task`1"/>。</returns>
+        /// <returns>非同期操作を示す <see cref="System.Threading.Tasks.Task{TResult}"/>。</returns>
         public async Task<IEnumerable<MatomeEntry>> SearchAsync(
             string deviceId, string deviceKey, Guid? minId = null, Guid? maxId = null, int? itemCount = null, int[] siteIds = null) {
             var requestUri = new Uri(

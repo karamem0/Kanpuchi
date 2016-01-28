@@ -18,7 +18,7 @@ namespace Karamem0.Kanpuchi.Extensions {
         /// </summary>
         /// <typeparam name="T">検索する依存関係オブジェクトの型。</typeparam>
         /// <param name="target">対象の <see cref="Windows.UI.Xaml.DependencyObject"/>。</param>
-        /// <returns><see cref="T:System.Collections.Generic.IEnumerable`1"/>。</returns>
+        /// <returns><see cref="System.Collections.Generic.IEnumerable{T}"/>。</returns>
         public static IEnumerable<T> FindVisualChildren<T>(this DependencyObject target) where T : DependencyObject {
             for (int index = 0; index < VisualTreeHelper.GetChildrenCount(target); index++) {
                 var child = VisualTreeHelper.GetChild(target, index);

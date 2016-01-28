@@ -31,6 +31,12 @@ namespace Karamem0.Kanpuchi.Repositories {
         /// </summary>
         private static readonly string PostUri = "https://kanpuchi.azurewebsites.net/api/device";
 #endif
+
+        /// <summary>
+        /// アプリケーションの <see cref=".Kanpuchi.Repositories.Device"/> クラスのインスタンスを表します。
+        /// </summary>
+        private static Device Instance;
+
         /// <summary>
         /// <see cref="Karamem0.Kanpuchi.Repositories.DeviceRepository"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
@@ -39,10 +45,10 @@ namespace Karamem0.Kanpuchi.Repositories {
         /// <summary>
         /// 指定したデバイスを登録します。
         /// </summary>
-        /// <returns>非同期操作を示す <see cref="T:System.Threading.Tasks.Task`1"/>。</returns>
+        /// <returns>非同期操作を示す <see cref="System.Threading.Tasks.Task{TResult}"/>。</returns>
         public async Task<Device> RegisterAsync() {
-            if (this.GetCurrent() != null) {
-                return this.GetCurrent();
+            if (DeviceRepository.Instance != null) {
+                return DeviceRepository.Instance;
             }
             var eas = new EasClientDeviceInformation();
             var device = new Device() {
@@ -68,27 +74,8 @@ namespace Karamem0.Kanpuchi.Repositories {
             AppSettings.Current.DeviceId = device.DeviceId;
             AppSettings.Current.DeviceKey = device.DeviceKey;
             AppSettings.Current.Save();
-            this.SetCurrent(device);
+            DeviceRepository.Instance = device;
             return device;
-        }
-
-        /// <summary>
-        /// 現在のデバイス情報を返します。
-        /// </summary>
-        /// <returns>デバイスのデータを格納する <see cref="Karamem0.Kanpuchi.Models.Device"/>。</returns>
-        private Device GetCurrent() {
-            if (App.Current.Resources.ContainsKey("Device") == true) {
-                return (Device)App.Current.Resources["Device"];
-            }
-            return null;
-        }
-
-        /// <summary>
-        /// 指定したデバイスを現在のデバイス情報として設定します。
-        /// </summary>
-        /// <param name="value">デバイスのデータを格納する <see cref="Karamem0.Kanpuchi.Models.Device"/>。</param>
-        private void SetCurrent(Device value) {
-            App.Current.Resources["Device"] = value;
         }
 
     }

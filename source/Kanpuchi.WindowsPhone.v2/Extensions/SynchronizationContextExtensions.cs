@@ -30,7 +30,7 @@ namespace Karamem0.Kanpuchi.Extensions {
         /// </summary>
         /// <typeparam name="T">メソッドのパラメーターの型。</typeparam>
         /// <param name="target">非同期コンテキストを示す <see cref="System.Threading.SynchronizationContext"/>。</param>
-        /// <param name="action">実行されるメソッドを示す <see cref="T:System.Action`1"/>。</param>
+        /// <param name="action">実行されるメソッドを示す <see cref="System.Action{T}"/>。</param>
         /// <param name="parameter">メソッドのパラメーターを示すオブジェクト。</param>
         public static void Post<T>(this SynchronizationContext target, Action<T> action, T parameter) {
             if (target == null) {

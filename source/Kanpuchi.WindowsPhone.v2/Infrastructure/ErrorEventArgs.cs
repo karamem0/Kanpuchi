@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Karamem0.Kanpuchi.Infrastructure {
 
+    /// <summary>
+    /// エラーが発生したときに発生するイベントのデータを格納します。
+    /// </summary>
     public sealed class ErrorEventArgs : EventArgs {
 
         /// <summary>

@@ -58,7 +58,7 @@ namespace Karamem0.Kanpuchi.Infrastructure {
         /// <see cref="Karamem0.Kanpuchi.Infrastructure.DelegateCommand"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="onExecute">コマンドが実行されたときに呼び出される <see cref="System.Action"/>。</param>
-        /// <param name="onCanExecute">コマンドを実行できるかどうかを判断するときに呼び出される <see cref="T:System.Func`1"/>。</param>
+        /// <param name="onCanExecute">コマンドを実行できるかどうかを判断するときに呼び出される <see cref="System.Func{T, TResult}"/>。</param>
         public DelegateCommand(Action onExecute, Func<bool> onCanExecute) {
             this.onExecute = onExecute;
             this.onCanExecute = onCanExecute;

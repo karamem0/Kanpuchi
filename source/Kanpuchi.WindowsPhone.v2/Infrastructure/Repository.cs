@@ -13,7 +13,7 @@ namespace Karamem0.Kanpuchi.Infrastructure {
     public abstract class Repository<T> where T : Model {
 
         /// <summary>
-        /// <see cref="T:Kanpuchi.Infrastructures.Repository`1"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructure.Repository{T}"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         protected Repository() { }
 

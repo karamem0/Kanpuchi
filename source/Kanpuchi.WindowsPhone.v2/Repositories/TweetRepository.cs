@@ -42,7 +42,7 @@ namespace Karamem0.Kanpuchi.Repositories {
         /// <param name="minId">ステータス ID の最小値を示す <see cref="System.String"/>。</param>
         /// <param name="maxId">ステータス ID の最大値を示す <see cref="System.String"/>。</param>
         /// <param name="itemCount">取得する件数を示す <see cref="System.Int32"/>。</param>
-        /// <returns>非同期操作を示す <see cref="T:System.Threading.Tasks.Task`1"/>。</returns>
+        /// <returns>非同期操作を示す <see cref="System.Threading.Tasks.Task{TResult}"/>。</returns>
         public async Task<IEnumerable<Tweet>> SearchAsync(
             string deviceId, string deviceKey, string minId = null, string maxId = null, int? itemCount = null) {
             var requestUri = new Uri(

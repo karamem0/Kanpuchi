@@ -18,7 +18,7 @@ namespace Karamem0.Kanpuchi.Infrastructure {
         public event EventHandler CanExecuteChanged;
 
         /// <summary>
-        /// <see cref="T:Kanpuchi.Infrastructure.DelegateCommand`1.CanExecuteChanged"/> イベントを発生させます。
+        /// <see cref="Kanpuchi.Infrastructure.DelegateCommand{T}.CanExecuteChanged"/> イベントを発生させます。
         /// </summary>
         /// <param name="e">イベントのデータを格納する <see cref="System.EventArgs"/>。</param>
         protected virtual void OnCanExecuteChanged(EventArgs e) {
@@ -46,19 +46,19 @@ namespace Karamem0.Kanpuchi.Infrastructure {
         private Func<T, bool> onCanExecute;
 
         /// <summary>
-        /// <see cref="T:Kanpuchi.Infrastructure.DelegateCommand`1"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Kanpuchi.Infrastructure.DelegateCommand{T}"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="onExecute">コマンドが実行されたときに呼び出される <see cref="T:System.Action`1"/>。</param>
+        /// <param name="onExecute">コマンドが実行されたときに呼び出される <see cref="System.Action{T}"/>。</param>
         public DelegateCommand(Action<T> onExecute) {
             this.onExecute = onExecute;
             this.onCanExecute = delegate { return true; };
         }
 
         /// <summary>
-        /// <see cref="T:Kanpuchi.Infrastructure.DelegateCommand`1"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Kanpuchi.Infrastructure.DelegateCommand{T}`/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="onExecute">コマンドが実行されたときに呼び出される <see cref="T:System.Action`1"/>。</param>
-        /// <param name="onCanExecute">コマンドを実行できるかどうかを判断するときに呼び出される <see cref="T:System.Func`2"/>。</param>
+        /// <param name="onExecute">コマンドが実行されたときに呼び出される <see cref="System.Action{T}"/>。</param>
+        /// <param name="onCanExecute">コマンドを実行できるかどうかを判断するときに呼び出される <see cref="System.Func{T}"/>。</param>
         public DelegateCommand(Action<T> onExecute, Func<T, bool> onCanExecute) {
             this.onExecute = onExecute;
             this.onCanExecute = onCanExecute;

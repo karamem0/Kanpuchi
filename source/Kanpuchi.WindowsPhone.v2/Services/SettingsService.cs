@@ -22,6 +22,9 @@ namespace Karamem0.Kanpuchi.Services {
         /// </summary>
         private SettingsViewModel viewModel;
 
+        /// <summary>
+        /// 設定情報を格納するリポジトリを表します。
+        /// </summary>
         private SettingsRepository settingsRepository;
 
         /// <summary>

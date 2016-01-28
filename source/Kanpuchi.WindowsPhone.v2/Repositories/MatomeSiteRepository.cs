@@ -39,7 +39,7 @@ namespace Karamem0.Kanpuchi.Repositories {
         /// </summary>
         /// <param name="deviceId">デバイス ID を示す <see cref="System.String"/>。</param>
         /// <param name="deviceKey">デバイス キーを示す <see cref="System.String"/>。</param>
-        /// <returns>非同期操作を示す <see cref="T:System.Threading.Tasks.Task`1"/>。</returns>
+        /// <returns>非同期操作を示す <see cref="System.Threading.Tasks.Task{TResult}"/>。</returns>
         public async Task<IEnumerable<MatomeSite>> SearchAsync(string deviceId, string deviceKey) {
             var requestUri = new Uri(GetUri, UriKind.Absolute);
             var requestAuth = Convert.ToBase64String(Encoding.UTF8.GetBytes(deviceId + ":" + deviceKey));

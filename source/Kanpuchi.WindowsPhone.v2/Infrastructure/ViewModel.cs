@@ -26,7 +26,7 @@ namespace Karamem0.Kanpuchi.Infrastructure {
         /// <summary>
         /// <see cref="Karamem0.Kanpuchi.Infrastructure.ViewModel.Error"/> イベントを発生させます。
         /// </summary>
-        /// <param name="e">イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructure..ErrorEventArgs"/>。</param>
+        /// <param name="e">イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructure.ErrorEventArgs"/>。</param>
         protected virtual void OnError(ErrorEventArgs e) {
             var handler = this.Error;
             if (handler != null) {
@@ -143,10 +143,13 @@ namespace Karamem0.Kanpuchi.Infrastructure {
         }
 
         /// <summary>
-        /// コマンドを取得します。
+        /// アプリのレビューを起動するコマンドを取得します。
         /// </summary>
         public DelegateCommand LaunchReviewAppCommand { get; private set; }
 
+        /// <summary>
+        /// アプリのレビューを起動します。
+        /// </summary>
         private async void LaunchReviewApp() {
             await Launcher.LaunchUriAsync(new Uri("ms-windows-store:reviewapp?appid=" + CurrentApp.AppId));
         }

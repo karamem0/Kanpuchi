@@ -22,7 +22,7 @@ namespace Karamem0.Kanpuchi.Repositories {
         /// <summary>
         /// 保尊されている設定情報を取得します。
         /// </summary>
-        /// <returns>非同期操作を示す <see cref="T:System.Threading.Tasks.Task`1"/>。</returns>
+        /// <returns>非同期操作を示す <see cref="System.Threading.Tasks.Task{TResult}"/>。</returns>
         public async Task<Settings> LoadAsync() {
             return await Task.Factory.StartNew(() => {
                 AppSettings.Current.Reload();
