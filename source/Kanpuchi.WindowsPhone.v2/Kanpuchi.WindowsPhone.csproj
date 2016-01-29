@@ -8,7 +8,7 @@
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Karamem0.Kanpuchi</RootNamespace>
-    <AssemblyName>Karamem0.Kanpuchi.WindowsPhone</AssemblyName>
+    <AssemblyName>Kanpuchi</AssemblyName>
     <DefaultLanguage>ja-JP</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>

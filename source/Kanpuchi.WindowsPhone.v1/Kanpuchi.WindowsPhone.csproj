@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Karamem0.Kanpuchi</RootNamespace>
-    <AssemblyName>Karamem0.Kanpuchi.WindowsPhone</AssemblyName>
+    <AssemblyName>Kanpuchi</AssemblyName>
     <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
     <SilverlightVersion>
     </SilverlightVersion>
@@ -67,7 +67,7 @@
     <NoConfig>true</NoConfig>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Karamem0.Kanpuchi.WindowsPhone.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\Kanpuchi.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>

@@ -15,7 +15,7 @@
     <Resource Language="x-generate" />
   </Resources>
   <Applications>
-    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Kanpuchi.App">
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Karamem0.Kanpuchi.App">
       <m3:VisualElements DisplayName="艦ぷち" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="「艦隊これくしょん～艦これ～」の運営スタッフ (運営鎮守府) のタイムラインや関連まとめブログの更新情報を見ることができます。" ForegroundText="light" BackgroundColor="transparent">
         <m3:DefaultTile Square71x71Logo="Assets\Square71x71Logo.png" Wide310x150Logo="Assets\WideLogo.png">
           <m3:ShowNameOnTiles>
