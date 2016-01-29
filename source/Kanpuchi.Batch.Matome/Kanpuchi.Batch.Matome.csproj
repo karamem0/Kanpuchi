@@ -119,14 +119,6 @@
     <Content Include="App.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="App.Debug.config">
-      <DependentUpon>App.config</DependentUpon>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="App.Release.config">
-      <DependentUpon>App.config</DependentUpon>
-      <SubType>Designer</SubType>
-    </Content>
     <None Include="Packages.config" />
     <None Include="Properties\PublishProfiles\kanpuchi.pubxml" />
     <None Include="Properties\webjob-publish-settings.json" />
