@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="36781sakukaramomo.2392946EC1B02" Publisher="CN=91F30E46-FB0A-4C95-9B51-A0814047B58E" Version="1.1.0.0" />
-  <mp:PhoneIdentity PhoneProductId="b1bb74e8-6c6a-47bd-acfa-2d14a362266c" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="B1BB74E8-6C6A-47BD-ACFA-2D14A362266C" Publisher="CN=91F30E46-FB0A-4C95-9B51-A0814047B58E" Version="3.0.0.0" />
+  <mp:PhoneIdentity PhoneProductId="B1BB74E8-6C6A-47BD-ACFA-2D14A362266C" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>艦ぷち</DisplayName>
     <PublisherDisplayName>karamem0</PublisherDisplayName>
@@ -15,13 +15,15 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Karamem0.Kanpuchi.App">
-      <uap:VisualElements DisplayName="艦ぷち" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="「艦隊これくしょん～艦これ～」の運営スタッフ (運営鎮守府) のタイムラインや関連まとめブログの更新情報を見ることができます。" BackgroundColor="#B22222">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\Square71x71Logo.png" Square310x310Logo="Assets\Square310x310Logo.png">
+      <uap:VisualElements DisplayName="艦ぷち" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="「艦隊これくしょん～艦これ～」の運営スタッフ (運営鎮守府) のタイムラインや関連まとめブログの更新情報を見ることができます。" BackgroundColor="#A6341F">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\Square310x310Logo.png" Square71x71Logo="Assets\Square71x71Logo.png">
           <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+            <uap:ShowOn Tile="wide310x150Logo" />
             <uap:ShowOn Tile="square310x310Logo" />
           </uap:ShowNameOnTiles>
         </uap:DefaultTile>
-        <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#B22222" />
+        <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="#A6341F" />
         <uap:InitialRotationPreference>
           <uap:Rotation Preference="portrait" />
         </uap:InitialRotationPreference>

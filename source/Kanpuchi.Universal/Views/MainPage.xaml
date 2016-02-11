@@ -6,6 +6,25 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <SplitView>
+            <SplitView.Pane>
+                <Grid>
+                </Grid>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Grid>
+                </Grid>
+            </SplitView.Content>
+        </SplitView>
+        <ToggleButton
+            Background="{ThemeResource AppBarBackgroundThemeBrush}"
+            Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"
+            VerticalAlignment="Top">
+            <ToggleButton.Content>
+                <FontIcon
+                    FontFamily="Segoe MDL2 Assets"
+                    Glyph="&#xE700;" />
+            </ToggleButton.Content>
+        </ToggleButton>
     </Grid>
 </Page>
