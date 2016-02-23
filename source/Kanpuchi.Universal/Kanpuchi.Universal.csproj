@@ -26,6 +26,8 @@
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="Properties\Key.pfx" />
     <None Include="Project.json" />
+    <PRIResource Include="Strings\en-us\Resources.resw" />
+    <PRIResource Include="Strings\ja-jp\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">

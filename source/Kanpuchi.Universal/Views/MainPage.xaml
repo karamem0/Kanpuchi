@@ -6,20 +6,67 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <SplitView>
+        <SplitView
+            CompactPaneLength="48"
+            DisplayMode="Overlay"
+            IsPaneOpen="{Binding ElementName=MenuButton, Path=IsChecked, Mode=TwoWay}"
+            OpenPaneLength="320" >
             <SplitView.Pane>
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackPanel
+                        Grid.Column="0"
+                        Grid.Row="0">
+                    </StackPanel>
+                    <StackPanel
+                        Grid.Column="0"
+                        Grid.Row="1">
+                        <Button  Style="{StaticResource MenuButtonStyle}">
+                            <Button.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="48" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="48" />
+                                    </Grid.RowDefinitions>
+                                    <FontIcon
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        FontFamily="Segoe MDL2 Assets"
+                                        Glyph="&#xE713;" />
+                                    <TextBlock
+                                        x:Uid="SettingsButton"
+                                        Grid.Column="1"
+                                        Grid.Row="0"
+                                        Text="Settings"
+                                        VerticalAlignment="Center" />
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
                 </Grid>
             </SplitView.Pane>
             <SplitView.Content>
-                <Grid>
+                <Grid Margin="48,0,0,0">
                 </Grid>
             </SplitView.Content>
         </SplitView>
         <ToggleButton
+            x:Name="MenuButton"
             Background="{ThemeResource AppBarBackgroundThemeBrush}"
             Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"
-            VerticalAlignment="Top">
+            Height="40"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Width="48">
             <ToggleButton.Content>
                 <FontIcon
                     FontFamily="Segoe MDL2 Assets"

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -36,9 +37,21 @@ namespace Karamem0.Kanpuchi {
             if (this.RootFrame == null) {
                 this.RootFrame = new Frame();
             }
+            var manager = SystemNavigationManager.GetForCurrentView();
+            manager.AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
+            manager.BackRequested += this.OnSystemNavigationManagerBackRequested;
             this.RootFrame.Navigate(typeof(MainPage), e.Arguments);
             Window.Current.Content = this.RootFrame;
             Window.Current.Activate();
+        }
+
+        private void OnSystemNavigationManagerBackRequested(object sender, BackRequestedEventArgs e) {
+            if (this.RootFrame != null) {
+                if (this.RootFrame.CanGoBack == true) {
+                    this.RootFrame.GoBack();
+                }
+            }
+            e.Handled = true;
         }
 
     }
