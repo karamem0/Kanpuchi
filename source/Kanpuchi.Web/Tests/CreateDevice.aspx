@@ -4,10 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MatomeSite API テスト</title>
+    <title>Device API テスト</title>
     <link rel="stylesheet" href="/Content/bootstrap.min.css">
     <script type="text/javascript" src="/Scripts/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Scripts/base64.min.js"></script>
     <!--[if lt IE 9]>
     <script type="text/javascript" src="/Scripts/html5siv.min.js"></script>
     <script type="text/javascript" src="/Scripts/respond.min.js"></script>
@@ -15,8 +16,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>MatomeSite API テスト</h1>
-        <form id="form" class="form-horizontal">
+        <h1>Device API テスト</h1>
+        <form id="request-query" class="form-horizontal">
             <div class="form-group">
                 <div class="col-sm-12 text-right">
                     <button type="button" id="button" class="btn btn-default">実行</button>
@@ -32,8 +33,10 @@
             $("#button").click(function () {
                 $("#console").html(null);
                 $.ajax({
-                    type: "GET",
-                    url: encodeURI("/api/matomesite?" + $("form").serialize()),
+                    type: "POST",
+                    url: encodeURI("/api/device"),
+                    data: JSON.stringify({}),
+                    dataType: "application/json",
                     success: function (data, status, request) {
                         $("#console").html(
                             "status: " + request.status + "<br>" +

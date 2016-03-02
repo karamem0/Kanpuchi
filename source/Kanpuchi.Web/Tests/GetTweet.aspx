@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/Content/bootstrap.min.css">
     <script type="text/javascript" src="/Scripts/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Scripts/base64.min.js"></script>
     <!--[if lt IE 9]>
     <script type="text/javascript" src="/Scripts/html5siv.min.js"></script>
     <script type="text/javascript" src="/Scripts/respond.min.js"></script>
@@ -16,7 +17,21 @@
 <body>
     <div class="container">
         <h1>Tweet API テスト</h1>
-        <form id="form" class="form-horizontal">
+        <form id="request-header" class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="authorization">deviceid</label>
+                <div class="col-sm-10">
+                    <input type="text" id="deviceid" name="deviceid" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="authorization">devicekey</label>
+                <div class="col-sm-10">
+                    <input type="text" id="devicekey" name="devicekey" class="form-control" />
+                </div>
+            </div>
+        </form>
+        <form id="request-query" class="form-horizontal">
             <div class="form-group">
                 <label class="col-sm-2 control-label" for="minid">minid</label>
                 <div class="col-sm-10">
@@ -51,7 +66,13 @@
                 $("#console").html(null);
                 $.ajax({
                     type: "GET",
-                    url: encodeURI("/api/tweet?" + $("form").serialize()),
+                    url: encodeURI("/api/tweet?" + $("#request-query").serialize()),
+                    beforeSend: function (xhr) {
+                        var name = $("#deviceid").val();
+                        var password = $("#devicekey").val();
+                        var credentials = Base64.encode(name + ":" + password)
+                        xhr.setRequestHeader("Authorization", "Basic " + credentials);
+                    },
                     success: function (data, status, request) {
                         $("#console").html(
                             "status: " + request.status + "<br>" +

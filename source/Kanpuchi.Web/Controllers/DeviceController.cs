@@ -1,4 +1,5 @@
-﻿using Karamem0.Kanpuchi.Models;
+﻿using Karamem0.Kanpuchi.Filters;
+using Karamem0.Kanpuchi.Models;
 using Karamem0.Kanpuchi.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -73,6 +74,7 @@ namespace Karamem0.Kanpuchi.Controllers {
         /// </summary>
         /// <param name="deviceId">デバイス ID を示す <see cref="System.Guid"/>。</param>
         /// <returns>応答メッセージを示す <see cref="System.Net.Http.HttpResponseMessage"/>。</returns>
+        [BasicAuthetication()]
         public HttpResponseMessage DeleteDevice(Guid deviceId) {
             try {
                 var model = this.dbContext.Devices.Find(deviceId);

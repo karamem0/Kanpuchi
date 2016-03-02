@@ -1,4 +1,5 @@
-﻿using Karamem0.Kanpuchi.Models;
+﻿using Karamem0.Kanpuchi.Filters;
+using Karamem0.Kanpuchi.Models;
 using Karamem0.Kanpuchi.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,7 @@ namespace Karamem0.Kanpuchi.Controllers {
         /// <param name="itemCount">取得する件数を示す <see cref="System.Int32"/>。</param>
         /// <param name="siteId">取得するサイトを示す <see cref="System.Int32"/> の配列。</param>
         /// <returns>検索結果を示す <see cref="System.Collections.Generic.IEnumerable{T}"/>。</returns>
+        [BasicAuthetication()]
         public IEnumerable<MatomeEntryViewModel> GetMatomeEntry(Guid? minId = null, Guid? maxId = null, int itemCount = 20, [FromUri]int[] siteId = null) {
             var minDate = (DateTime?)null;
             var minEntry = this.dbContext.MatomeEntries.Find(minId);
@@ -76,6 +78,7 @@ namespace Karamem0.Kanpuchi.Controllers {
         /// <returns>
         /// まとめ記事を示す <see cref="Karamem0.Kanpuchi.ViewModels.MatomeEntryViewModel"/>。
         /// </returns>
+        [BasicAuthetication()]
         public MatomeEntryViewModel GetMatomeEntry(Guid entryId) {
             var model = this.dbContext.MatomeEntries.Find(entryId);
             if (model == null) {

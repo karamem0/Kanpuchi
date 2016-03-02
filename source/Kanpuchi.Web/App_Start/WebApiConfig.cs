@@ -24,7 +24,6 @@ namespace Karamem0.Kanpuchi {
                 "api/{Controller}/{Id}",
                 new { Id = RouteParameter.Optional }
             );
-            config.Filters.Add(new AccessLogAttribute());
             config.Formatters.Remove(config.Formatters.XmlFormatter);
         }
 

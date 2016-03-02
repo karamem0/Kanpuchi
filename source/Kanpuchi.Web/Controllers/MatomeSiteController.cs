@@ -1,4 +1,5 @@
-﻿using Karamem0.Kanpuchi.Models;
+﻿using Karamem0.Kanpuchi.Filters;
+using Karamem0.Kanpuchi.Models;
 using Karamem0.Kanpuchi.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,7 @@ namespace Karamem0.Kanpuchi.Controllers {
         /// まとめサイトのコレクションを返します。
         /// </summary>
         /// <returns>検索結果を示す <see cref="System.Collections.Generic.IEnumerable{T}"/>。</returns>
+        [BasicAuthetication()]
         public IEnumerable<MatomeSiteViewModel> GetMatomeSite() {
             return this.dbContext.MatomeSites
                 .Select(x => new MatomeSiteViewModel() {
@@ -49,6 +51,7 @@ namespace Karamem0.Kanpuchi.Controllers {
         /// <returns>
         /// まとめサイトを示す <see cref="Karamem0.Kanpuchi.ViewModels.MatomeSiteViewModel"/>。
         /// </returns>
+        [BasicAuthetication()]
         public MatomeSiteViewModel GetMatomeSite(int siteId) {
             var model = this.dbContext.MatomeSites.Find(siteId);
             if (model == null) {

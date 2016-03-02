@@ -109,7 +109,7 @@
     <Compile Include="Controllers\MatomeEntryController.cs" />
     <Compile Include="Controllers\MatomeSiteController.cs" />
     <Compile Include="Controllers\TweetController.cs" />
-    <Compile Include="Filters\AccessLogAttribute.cs" />
+    <Compile Include="Filters\BasicAutheticationAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -135,6 +135,8 @@
     <Content Include="Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Privacy.aspx" />
+    <Content Include="Scripts\base64.js" />
+    <Content Include="Scripts\base64.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\html5shiv-printshiv.js" />
@@ -161,9 +163,10 @@
     <Content Include="Fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Packages.config" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
-    <Content Include="Tests\MatomeEntry.aspx" />
-    <Content Include="Tests\MatomeSite.aspx" />
-    <Content Include="Tests\Tweet.aspx" />
+    <Content Include="Tests\CreateDevice.aspx" />
+    <Content Include="Tests\GetMatomeEntry.aspx" />
+    <Content Include="Tests\GetMatomeSite.aspx" />
+    <Content Include="Tests\GetTweet.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

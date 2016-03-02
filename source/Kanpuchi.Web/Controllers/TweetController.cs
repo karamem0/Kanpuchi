@@ -1,4 +1,5 @@
-﻿using Karamem0.Kanpuchi.Models;
+﻿using Karamem0.Kanpuchi.Filters;
+using Karamem0.Kanpuchi.Models;
 using Karamem0.Kanpuchi.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -38,6 +39,7 @@ namespace Karamem0.Kanpuchi.Controllers {
         /// <param name="maxId">最大値を示す <see cref="System.String"/>。</param>
         /// <param name="itemCount">取得する件数を示す <see cref="System.Int32"/>。</param>
         /// <returns>検索結果を示す <see cref="System.Collections.Generic.IEnumerable{T}"/>。</returns>
+        [BasicAuthetication()]
         public IEnumerable<TweetViewModel> GetTweet(string minId = null, string maxId = null, int itemCount = 20) {
             return this.dbContext.TwitterStatuses
                 .Include(x => x.User)
@@ -64,6 +66,7 @@ namespace Karamem0.Kanpuchi.Controllers {
         /// </summary>
         /// <param name="statusId">ステータス ID を示す <see cref="System.String"/>。</param>
         /// <returns>検索結果を示す <see cref="Karamem0.Kanpuchi.ViewModels.TweetViewModel"/>。</returns>
+        [BasicAuthetication()]
         public TweetViewModel GetTweet(string statusId) {
             return this.dbContext.TwitterStatuses
                 .Where(x => x.StatusId == statusId)
