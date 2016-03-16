@@ -63,7 +63,7 @@
             x:Name="MenuButton"
             Background="{ThemeResource AppBarBackgroundThemeBrush}"
             Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"
-            Height="40"
+            Height="36"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
             Width="48">
