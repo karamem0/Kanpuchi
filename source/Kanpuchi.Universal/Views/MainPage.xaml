@@ -6,11 +6,39 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="48" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ToggleButton
+            x:Name="MenuButton"
+            Grid.Column="0"
+            Grid.Row="0"
+            Style="{StaticResource MenuButtonStyle}">
+            <ToggleButton.Content>
+                <FontIcon
+                    FontFamily="Segoe MDL2 Assets"
+                    Glyph="&#xE700;" />
+            </ToggleButton.Content>
+        </ToggleButton>
+        <Grid
+            Grid.Column="1"
+            Grid.Row="0"
+            Background="{ThemeResource SystemChromeHighColor}">
+        </Grid>
         <SplitView
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Grid.Row="1"
             CompactPaneLength="48"
-            DisplayMode="Overlay"
+            DisplayMode="CompactOverlay"
             IsPaneOpen="{Binding ElementName=MenuButton, Path=IsChecked, Mode=TwoWay}"
-            OpenPaneLength="320" >
+            OpenPaneLength="320"
+            PaneBackground="{ThemeResource SystemChromeBlackMediumColor}">
             <SplitView.Pane>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -23,12 +51,10 @@
                     <StackPanel
                         Grid.Column="0"
                         Grid.Row="0">
-                    </StackPanel>
-                    <StackPanel
-                        Grid.Column="0"
-                        Grid.Row="1">
-                        <Button  Style="{StaticResource MenuButtonStyle}">
-                            <Button.Content>
+                        <RadioButton
+                            GroupName="Navigation"
+                            Style="{StaticResource NavigationButtonStyle}">
+                            <RadioButton.Content>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="48" />
@@ -40,38 +66,88 @@
                                     <FontIcon
                                         Grid.Column="0"
                                         Grid.Row="0"
+                                        Margin="0"
                                         FontFamily="Segoe MDL2 Assets"
+                                        FontSize="15"
+                                        Glyph="&#xE80F;" />
+                                    <TextBlock
+                                        x:Uid="HomeButton"
+                                        Grid.Column="1"
+                                        Grid.Row="0"
+                                        HorizontalAlignment="Left"
+                                        Text="Home"
+                                        VerticalAlignment="Center" />
+                                </Grid>
+                            </RadioButton.Content>
+                        </RadioButton>
+                    </StackPanel>
+                    <StackPanel
+                        Grid.Column="0"
+                        Grid.Row="1">
+                        <RadioButton
+                            GroupName="Navigation"
+                            Style="{StaticResource NavigationButtonStyle}">
+                            <RadioButton.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="48" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="48" />
+                                    </Grid.RowDefinitions>
+                                    <FontIcon
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        Margin="0"
+                                        FontFamily="Segoe MDL2 Assets"
+                                        FontSize="15"
+                                        Glyph="&#xE76E;" />
+                                    <TextBlock
+                                        x:Uid="ReviewAppButton"
+                                        Grid.Column="1"
+                                        Grid.Row="0"
+                                        HorizontalAlignment="Left"
+                                        Text="Review App"
+                                        VerticalAlignment="Center" />
+                                </Grid>
+                            </RadioButton.Content>
+                        </RadioButton>
+                        <RadioButton
+                            GroupName="Navigation"
+                            Style="{StaticResource NavigationButtonStyle}">
+                            <RadioButton.Content>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="48" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="48" />
+                                    </Grid.RowDefinitions>
+                                    <FontIcon
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        Margin="0"
+                                        FontFamily="Segoe MDL2 Assets"
+                                        FontSize="15"
                                         Glyph="&#xE713;" />
                                     <TextBlock
                                         x:Uid="SettingsButton"
                                         Grid.Column="1"
                                         Grid.Row="0"
+                                        HorizontalAlignment="Left"
                                         Text="Settings"
                                         VerticalAlignment="Center" />
                                 </Grid>
-                            </Button.Content>
-                        </Button>
+                            </RadioButton.Content>
+                        </RadioButton>
                     </StackPanel>
                 </Grid>
             </SplitView.Pane>
             <SplitView.Content>
-                <Grid Margin="48,0,0,0">
-                </Grid>
+                <Frame x:Name="Frame" />
             </SplitView.Content>
         </SplitView>
-        <ToggleButton
-            x:Name="MenuButton"
-            Background="{ThemeResource AppBarBackgroundThemeBrush}"
-            Foreground="{ThemeResource AppBarItemForegroundThemeBrush}"
-            Height="36"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Width="48">
-            <ToggleButton.Content>
-                <FontIcon
-                    FontFamily="Segoe MDL2 Assets"
-                    Glyph="&#xE700;" />
-            </ToggleButton.Content>
-        </ToggleButton>
     </Grid>
 </Page>

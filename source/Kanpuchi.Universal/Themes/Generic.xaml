@@ -1,22 +1,90 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Style x:Key="MenuButtonStyle" TargetType="Button">
+    <Color x:Key="AppThemeForegroundColor">#FFFFFFFF</Color>
+    <Color x:Key="AppThemeBackgroundColor">#FFA6341F</Color>
+    <Color x:Key="AppThemeUnobtrusiveBackgroundColor">#FFC5523C</Color>
+    <SolidColorBrush x:Name="AppThemeForegroundBrush" Color="{StaticResource AppThemeForegroundColor}" />
+    <SolidColorBrush x:Name="AppThemeBackgroundBrush" Color="{StaticResource AppThemeBackgroundColor}" />
+    <SolidColorBrush x:Name="AppThemeUnobtrusiveBackgroundBrush" Color="{StaticResource AppThemeUnobtrusiveBackgroundColor}" />
+    <Style x:Key="MenuButtonStyle" TargetType="ToggleButton">
+        <Setter Property="Background" Value="{StaticResource AppThemeBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="#00FFFFFF" />
+        <Setter Property="BorderThickness" Value="0,0,0,0" />
+        <Setter Property="Foreground" Value="{StaticResource AppThemeForegroundBrush}" />
+        <Setter Property="Height" Value="40" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="Checked" />
+                                <VisualState x:Name="PointerOver" />
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="Border"
+                                            Storyboard.TargetProperty="(UIElement.Background).(SolidColorBrush.Color)"
+                                            Duration="00:00:00"
+                                            To="{ThemeResource AppThemeUnobtrusiveBackgroundColor}" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Border
+                            x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter
+                                x:Name="ContentPresenter"
+                        		Content="{TemplateBinding Content}"
+                                Foreground="{TemplateBinding Foreground}"
+                        		HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                        		VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Width" Value="48" />
+    </Style>
+    <Style x:Key="NavigationButtonStyle" TargetType="RadioButton">
+        <Setter Property="Background" Value="#00FFFFFF" />
+        <Setter Property="Foreground" Value="{ThemeResource SystemAltHighColor}" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}">
+                <ControlTemplate TargetType="RadioButton">
+                    <Grid>
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CommonStates">
                                 <VisualState x:Name="Normal" />
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="Border"
+                                            Storyboard.TargetProperty="(UIElement.Background).(SolidColorBrush.Color)"
+                                            Duration="00:00:00"
+                                            To="{StaticResource AppThemeUnobtrusiveBackgroundColor}" />
+                                        <ColorAnimation
+                                            Storyboard.TargetName="ContentPresenter"
+                                            Storyboard.TargetProperty="(UIElement.Foreground).(SolidColorBrush.Color)"
+                                            Duration="00:00:00"
+                                            To="{ThemeResource SystemColorHighlightTextColor}" />
+                                    </Storyboard>
+                                </VisualState>
                                 <VisualState x:Name="PointerOver">
                                     <Storyboard>
                                         <ColorAnimation
-                                            Storyboard.TargetName="Background"
+                                            Storyboard.TargetName="Border"
                                             Storyboard.TargetProperty="(UIElement.Background).(SolidColorBrush.Color)"
                                             Duration="00:00:00"
                                             To="{ThemeResource SystemListLowColor}" />
@@ -25,26 +93,27 @@
                                 <VisualState x:Name="Pressed">
                                     <Storyboard>
                                         <ColorAnimation
-                                            Storyboard.TargetName="Background"
+                                            Storyboard.TargetName="Border"
                                             Storyboard.TargetProperty="(UIElement.Background).(SolidColorBrush.Color)"
                                             Duration="00:00:00"
                                             To="{ThemeResource SystemListMediumColor}" />
                                     </Storyboard>
                                 </VisualState>
-                                <VisualState x:Name="Disabled">
-                                </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
-                        <Grid
-                            x:Name="Background"
-                            Background="#00FFFFFF">
+                        <Border
+                            x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
                             <ContentPresenter
+                                x:Name="ContentPresenter"
                         		Content="{TemplateBinding Content}"
-                                Foreground="{ThemeResource SystemBaseHighColor}"
+                                Foreground="{TemplateBinding Foreground}"
                         		HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                         		VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                        </Grid>
-                    </Border>
+                        </Border>
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
