@@ -15,12 +15,12 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Karamem0.Kanpuchi.Views {
 
-    public sealed partial class SettingsPage : Page {
+    public sealed partial class HomePage : Page {
 
         /// <summary>
-        /// <see cref="Karamem0.Kanpuchi.Views.SettingsPage"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Views.HomePage"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        public SettingsPage() {
+        public HomePage() {
             this.InitializeComponent();
         }
 

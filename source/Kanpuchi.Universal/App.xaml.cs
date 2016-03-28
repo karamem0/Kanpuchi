@@ -17,10 +17,18 @@ namespace Karamem0.Kanpuchi {
     /// </summary>
     public sealed partial class App : Application {
 
-        /// <summary>
-        /// アプリケーションのルート フレームを取得します。
-        /// </summary>
-        public Frame RootFrame { get; private set; }
+        public Frame ContentFrame {
+            get {
+                var rootFrame = Window.Current.Content as Frame;
+                if (rootFrame != null) {
+                    var mainPage = rootFrame.Content as MainPage;
+                    if (mainPage != null) {
+                        return mainPage.FindName("ContentFrame") as Frame;
+                    }
+                }
+                return null;
+            }
+        }
 
         /// <summary>
         /// <see cref="Karamem0.Kanpuchi.App"/> クラスの新しいインスタンスを初期化します。
@@ -34,24 +42,10 @@ namespace Karamem0.Kanpuchi {
         /// </summary>
         /// <param name="e">イベントのデータを格納する <see cref="Windows.ApplicationModel.Activation.LaunchActivatedEventArgs"/>。</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e) {
-            if (this.RootFrame == null) {
-                this.RootFrame = new Frame();
-            }
-            var manager = SystemNavigationManager.GetForCurrentView();
-            manager.AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
-            manager.BackRequested += this.OnSystemNavigationManagerBackRequested;
-            this.RootFrame.Navigate(typeof(MainPage), e.Arguments);
-            Window.Current.Content = this.RootFrame;
+            var rootFrame = new Frame();
+            rootFrame.Navigate(typeof(MainPage), e.Arguments);
+            Window.Current.Content = rootFrame;
             Window.Current.Activate();
-        }
-
-        private void OnSystemNavigationManagerBackRequested(object sender, BackRequestedEventArgs e) {
-            if (this.RootFrame != null) {
-                if (this.RootFrame.CanGoBack == true) {
-                    this.RootFrame.GoBack();
-                }
-            }
-            e.Handled = true;
         }
 
     }

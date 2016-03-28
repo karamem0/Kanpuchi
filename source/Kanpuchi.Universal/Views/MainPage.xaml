@@ -4,39 +4,44 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:li="using:Karamem0.Kanpuchi.Interactivity"
+    mc:Ignorable="d"
+    DataContext="{Binding MainViewModel, Source={StaticResource ViewModelLocator}}">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="48" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40" />
+            <RowDefinition Height="48" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <ToggleButton
             x:Name="MenuButton"
             Grid.Column="0"
             Grid.Row="0"
-            Style="{StaticResource MenuButtonStyle}">
-            <ToggleButton.Content>
-                <FontIcon
-                    FontFamily="Segoe MDL2 Assets"
-                    Glyph="&#xE700;" />
-            </ToggleButton.Content>
-        </ToggleButton>
-        <Grid
+            Style="{StaticResource MenuButtonStyle}" />
+        <Border
             Grid.Column="1"
             Grid.Row="0"
-            Background="{ThemeResource SystemChromeHighColor}">
-        </Grid>
+            Background="{ThemeResource SystemChromeMediumLowColor}">
+            <TextBlock
+                x:Name="ContentTitleTextBlock"
+                Foreground="{ThemeResource SystemChromeBlackHighColor}"
+                HorizontalAlignment="Left"
+                Margin="15,0,0,0"
+                Style="{ThemeResource TitleTextBlockStyle}"
+                VerticalAlignment="Center" />
+        </Border>
         <SplitView
             Grid.Column="0"
             Grid.ColumnSpan="2"
             Grid.Row="1"
+            Background="{ThemeResource SystemChromeMediumColor}"
             CompactPaneLength="48"
             DisplayMode="CompactOverlay"
-            IsPaneOpen="{Binding ElementName=MenuButton, Path=IsChecked, Mode=TwoWay}"
+            IsPaneOpen="{Binding IsChecked, ElementName=MenuButton, Mode=TwoWay}"
             OpenPaneLength="320"
             PaneBackground="{ThemeResource SystemChromeBlackMediumColor}">
             <SplitView.Pane>
@@ -52,102 +57,51 @@
                         Grid.Column="0"
                         Grid.Row="0">
                         <RadioButton
+                            x:Uid="HomeButton"
+                            Checked="OnRadioButtonChecked"
+                            Content="Home"
                             GroupName="Navigation"
-                            Style="{StaticResource NavigationButtonStyle}">
-                            <RadioButton.Content>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="48" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="48" />
-                                    </Grid.RowDefinitions>
-                                    <FontIcon
-                                        Grid.Column="0"
-                                        Grid.Row="0"
-                                        Margin="0"
-                                        FontFamily="Segoe MDL2 Assets"
-                                        FontSize="15"
-                                        Glyph="&#xE80F;" />
-                                    <TextBlock
-                                        x:Uid="HomeButton"
-                                        Grid.Column="1"
-                                        Grid.Row="0"
-                                        HorizontalAlignment="Left"
-                                        Text="Home"
-                                        VerticalAlignment="Center" />
-                                </Grid>
-                            </RadioButton.Content>
+                            IsChecked="{Binding DisplayType,
+                                Converter={StaticResource ContentPageTypeConverter},
+                                ConverterParameter=HomePage,
+                                Mode=TwoWay}"
+                            Style="{StaticResource NavigationRadioButtonStyle}"
+                            Tag="&#xE80F;">
                         </RadioButton>
                     </StackPanel>
                     <StackPanel
                         Grid.Column="0"
                         Grid.Row="1">
+                        <Button
+                            x:Uid="ReviewAppButton"
+                            Command="{Binding LaunchReviewAppCommand}"
+                            Content="Review App"
+                            Style="{StaticResource NavigationButtonStyle}"
+                            Tag="&#xE76E;">
+                        </Button>
                         <RadioButton
+                            x:Uid="SettingsButton"
+                            Checked="OnRadioButtonChecked"
+                            Content="Settings"
                             GroupName="Navigation"
-                            Style="{StaticResource NavigationButtonStyle}">
-                            <RadioButton.Content>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="48" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="48" />
-                                    </Grid.RowDefinitions>
-                                    <FontIcon
-                                        Grid.Column="0"
-                                        Grid.Row="0"
-                                        Margin="0"
-                                        FontFamily="Segoe MDL2 Assets"
-                                        FontSize="15"
-                                        Glyph="&#xE76E;" />
-                                    <TextBlock
-                                        x:Uid="ReviewAppButton"
-                                        Grid.Column="1"
-                                        Grid.Row="0"
-                                        HorizontalAlignment="Left"
-                                        Text="Review App"
-                                        VerticalAlignment="Center" />
-                                </Grid>
-                            </RadioButton.Content>
-                        </RadioButton>
-                        <RadioButton
-                            GroupName="Navigation"
-                            Style="{StaticResource NavigationButtonStyle}">
-                            <RadioButton.Content>
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="48" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="48" />
-                                    </Grid.RowDefinitions>
-                                    <FontIcon
-                                        Grid.Column="0"
-                                        Grid.Row="0"
-                                        Margin="0"
-                                        FontFamily="Segoe MDL2 Assets"
-                                        FontSize="15"
-                                        Glyph="&#xE713;" />
-                                    <TextBlock
-                                        x:Uid="SettingsButton"
-                                        Grid.Column="1"
-                                        Grid.Row="0"
-                                        HorizontalAlignment="Left"
-                                        Text="Settings"
-                                        VerticalAlignment="Center" />
-                                </Grid>
-                            </RadioButton.Content>
+                            IsChecked="{Binding DisplayType,
+                                Converter={StaticResource ContentPageTypeConverter},
+                                ConverterParameter=SettingsPage,
+                                Mode=TwoWay}"
+                            Style="{StaticResource NavigationRadioButtonStyle}"
+                            Tag="&#xE713;">
                         </RadioButton>
                     </StackPanel>
                 </Grid>
             </SplitView.Pane>
             <SplitView.Content>
-                <Frame x:Name="Frame" />
+                <Border Background="{ThemeResource SystemChromeMediumColor}">
+                    <Frame x:Name="ContentFrame" />
+                </Border>
             </SplitView.Content>
         </SplitView>
     </Grid>
+    <i:Interaction.Behaviors>
+        <li:ViewModelBehavior />
+    </i:Interaction.Behaviors>
 </Page>

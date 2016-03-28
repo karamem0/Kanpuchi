@@ -17,8 +17,18 @@ namespace Karamem0.Kanpuchi.Views {
 
     public sealed partial class MainPage : Page {
 
+        /// <summary>
+        /// <see cref="Karamem0.Kanpuchi.Views.MainPage"/> クラスの新しいインスタンスを初期化します。
+        /// </summary>
         public MainPage() {
             this.InitializeComponent();
+        }
+
+        private void OnRadioButtonChecked(object sender, RoutedEventArgs e) {
+            var radioButton = sender as RadioButton;
+            if (radioButton != null) {
+                this.ContentTitleTextBlock.Text = radioButton.Content.ToString();
+            }
         }
 
     }
