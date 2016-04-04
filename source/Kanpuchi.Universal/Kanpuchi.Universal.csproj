@@ -56,6 +56,19 @@
     <Compile Include="Infrastructure\ViewModel.cs" />
     <Compile Include="Interactivity\ViewModelBehavior.cs" />
     <Compile Include="Interactivity\ViewModelLocator.cs" />
+    <Compile Include="Models\Device.cs" />
+    <Compile Include="Models\MatomeEntry.cs" />
+    <Compile Include="Models\MatomeSite.cs" />
+    <Compile Include="Models\Settings.cs" />
+    <Compile Include="Models\Tweet.cs" />
+    <Compile Include="Repositories\DeviceRepository.cs" />
+    <Compile Include="Repositories\MatomeEntryRepository.cs" />
+    <Compile Include="Repositories\MatomeSiteRepository.cs" />
+    <Compile Include="Repositories\SettingsRepository.cs" />
+    <Compile Include="Repositories\TweetRepository.cs" />
+    <Compile Include="Services\MatomeEntryService.cs" />
+    <Compile Include="Services\SettingsService.cs" />
+    <Compile Include="Services\TweetService.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,8 +79,20 @@
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MatomeSitePivotItem.xaml.cs">
+      <DependentUpon>MatomeSitePivotItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MatomeEntryPivotItem.xaml.cs">
+      <DependentUpon>MatomeEntryPivotItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GeneralPivotItem.xaml.cs">
+      <DependentUpon>GeneralPivotItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TweetPivotItem.xaml.cs">
+      <DependentUpon>TweetPivotItem.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -126,7 +151,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MatomeSitePivotItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MatomeEntryPivotItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GeneralPivotItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\TweetPivotItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -157,6 +198,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <PlatformTarget>x86</PlatformTarget>
     <OutputPath>bin\x86\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Properties\Key.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

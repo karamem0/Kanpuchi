@@ -31,7 +31,7 @@
                 Foreground="{ThemeResource SystemChromeBlackHighColor}"
                 HorizontalAlignment="Left"
                 Margin="15,0,0,0"
-                Style="{ThemeResource TitleTextBlockStyle}"
+                Style="{ThemeResource BaseTextBlockStyle}"
                 VerticalAlignment="Center" />
         </Border>
         <SplitView

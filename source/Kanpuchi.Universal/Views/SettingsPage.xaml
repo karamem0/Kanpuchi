@@ -7,8 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:li="using:Karamem0.Kanpuchi.Interactivity"
+    xmlns:vi="using:Karamem0.Kanpuchi.Views"
     mc:Ignorable="d"
     DataContext="{Binding SettingsViewModel, Source={StaticResource ViewModelLocator}}">
+    <Pivot>
+        <vi:GeneralPivotItem />
+        <vi:MatomeSitePivotItem />
+    </Pivot>
     <i:Interaction.Behaviors>
         <li:ViewModelBehavior />
     </i:Interaction.Behaviors>

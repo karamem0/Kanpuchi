@@ -117,13 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="GeneralPivotHeader.Text" xml:space="preserve">
+    <value>General</value>
+  </data>
   <data name="HomeButton.Content" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="MatomeEntryPivotHeader.Text" xml:space="preserve">
+    <value>Matomes</value>
+  </data>
+  <data name="MatomeSitePivotHeader.Text" xml:space="preserve">
+    <value>Sites</value>
   </data>
   <data name="ReviewAppButton.Content" xml:space="preserve">
     <value>Review App</value>
   </data>
   <data name="SettingsButton.Content" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="TweetPivotHeader.Text" xml:space="preserve">
+    <value>Tweets</value>
   </data>
 </root>
