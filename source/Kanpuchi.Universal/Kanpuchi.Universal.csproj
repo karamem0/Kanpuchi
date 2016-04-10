@@ -55,6 +55,8 @@
     <Compile Include="Infrastructure\Repository.cs" />
     <Compile Include="Infrastructure\Service.cs" />
     <Compile Include="Infrastructure\ViewModel.cs" />
+    <Compile Include="Interactivity\LocalTimeConverter.cs" />
+    <Compile Include="Interactivity\StringToVisibilityConveter.cs" />
     <Compile Include="Interactivity\ViewModelBehavior.cs" />
     <Compile Include="Interactivity\ViewModelLocator.cs" />
     <Compile Include="Models\Device.cs" />

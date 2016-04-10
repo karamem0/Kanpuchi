@@ -4,11 +4,88 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    DataContext="{Binding HomeViewModel, Source={StaticResource ViewModelLocator}}">
     <PivotItem.Header>
         <TextBlock
             x:Uid="TweetPivotHeader"
             Style="{ThemeResource BodyTextBlockStyle}"
             Text="Tweets" />
     </PivotItem.Header>
+    <Border>
+        <ListBox
+            Background="#00FFFFFF"
+            ItemsSource="{Binding Tweets}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,0,0,0">
+                        <Button
+                            CommandParameter="{Binding Permalink}"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Stretch">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border>
+                                        <Grid x:Name="Grid">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.RenderTransform>
+                                                <TranslateTransform X="0" Y="0" />
+                                            </Grid.RenderTransform>
+                                            <Border
+                                                Grid.Column="0"
+                                                Grid.Row="0"
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Top">
+                                                <Image
+                                                    Height="48"
+                                                    Source="{Binding ProfileImageUrl}"
+                                                    Width="48" />
+                                            </Border>
+                                            <StackPanel
+                                                Grid.Column="1"
+                                                Grid.Row="0"
+                                                Margin="12,0,0,0">
+                                                <TextBlock Text="{Binding UserName}" />
+                                                <TextBlock Text="{Binding ScreenName}" />
+                                                <TextBlock
+                                                    Text="{Binding Text}"
+                                                    TextWrapping="Wrap" />
+                                                <TextBlock
+                                                    Text="{Binding CreatedAt, Converter={StaticResource LocalTimeConverter}}" />
+                                            </StackPanel>
+                                        </Grid>
+                                        <VisualStateManager.VisualStateGroups>
+                                            <VisualStateGroup x:Name="CommonStates">
+                                                <VisualState x:Name="Normal" />
+                                                <VisualState x:Name="Pressed">
+                                                    <Storyboard>
+                                                        <DoubleAnimation
+                                                            Duration="00:00:00"
+                                                            To="3"
+                                                            Storyboard.TargetName="Grid"
+                                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" />
+                                                        <DoubleAnimation
+                                                            Duration="00:00:00"
+                                                            To="3"
+                                                            Storyboard.TargetName="Grid"
+                                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)" />
+                                                    </Storyboard>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateManager.VisualStateGroups>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Border>
 </PivotItem>
