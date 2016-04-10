@@ -20,17 +20,10 @@ namespace Karamem0.Kanpuchi.Repositories {
     /// </summary>
     public sealed class DeviceRepository : Repository<Device> {
 
-#if DEBUG
-        /// <summary>
-        /// POST リクエスト URI を表します。
-        /// </summary>
-        private static readonly string PostUri = "https://kanpuchidev.azurewebsites.net/api/device";
-#else
         /// <summary>
         /// POST リクエスト URI を表します。
         /// </summary>
         private static readonly string PostUri = "https://kanpuchi.azurewebsites.net/api/device";
-#endif
 
         /// <summary>
         /// アプリケーションの <see cref=".Kanpuchi.Repositories.Device"/> クラスのインスタンスを表します。
@@ -64,18 +57,20 @@ namespace Karamem0.Kanpuchi.Repositories {
             requestMessage.RequestUri = requestUri;
             requestMessage.Method = HttpMethod.Post;
             requestMessage.Content = new StringContent(device.ToString(), Encoding.UTF8, "application/json");
-            var responseMessage = await new HttpClient().SendAsync(requestMessage);
-            using (var stream = await responseMessage.Content.ReadAsStreamAsync()) {
-                var serializer = new JsonSerializer();
-                using (var reader = new JsonTextReader(new StreamReader(stream))) {
-                    device = serializer.Deserialize<Device>(reader);
+            using (var client = new HttpClient()) {
+                var responseMessage = await client.SendAsync(requestMessage);
+                using (var stream = await responseMessage.Content.ReadAsStreamAsync()) {
+                    var serializer = new JsonSerializer();
+                    using (var reader = new JsonTextReader(new StreamReader(stream))) {
+                        device = serializer.Deserialize<Device>(reader);
+                    }
                 }
+                AppSettings.Current.DeviceId = device.DeviceId;
+                AppSettings.Current.DeviceKey = device.DeviceKey;
+                AppSettings.Current.Save();
+                DeviceRepository.Instance = device;
+                return device;
             }
-            AppSettings.Current.DeviceId = device.DeviceId;
-            AppSettings.Current.DeviceKey = device.DeviceKey;
-            AppSettings.Current.Save();
-            DeviceRepository.Instance = device;
-            return device;
         }
 
     }

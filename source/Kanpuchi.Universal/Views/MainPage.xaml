@@ -25,10 +25,10 @@
         <Border
             Grid.Column="1"
             Grid.Row="0"
-            Background="{ThemeResource SystemChromeMediumLowColor}">
+            Background="{ThemeResource SystemAltHighColor}">
             <TextBlock
                 x:Name="ContentTitleTextBlock"
-                Foreground="{ThemeResource SystemChromeBlackHighColor}"
+                Foreground="{ThemeResource SystemChromeAltLowColor}"
                 HorizontalAlignment="Left"
                 Margin="15,0,0,0"
                 Style="{ThemeResource BaseTextBlockStyle}"
@@ -38,12 +38,12 @@
             Grid.Column="0"
             Grid.ColumnSpan="2"
             Grid.Row="1"
-            Background="{ThemeResource SystemChromeMediumColor}"
             CompactPaneLength="48"
             DisplayMode="CompactOverlay"
+            Foreground="{ThemeResource SystemChromeAltLowColor}"
             IsPaneOpen="{Binding IsChecked, ElementName=MenuButton, Mode=TwoWay}"
             OpenPaneLength="320"
-            PaneBackground="{ThemeResource SystemChromeBlackMediumColor}">
+            PaneBackground="{ThemeResource SystemChromeLowColor}">
             <SplitView.Pane>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -95,7 +95,7 @@
                 </Grid>
             </SplitView.Pane>
             <SplitView.Content>
-                <Border Background="{ThemeResource SystemChromeMediumColor}">
+                <Border Background="{ThemeResource SystemAltHighColor}">
                     <Frame x:Name="ContentFrame" />
                 </Border>
             </SplitView.Content>

@@ -35,7 +35,7 @@ namespace Karamem0.Kanpuchi.Repositories {
         /// <summary>
         /// 指定した設定情報を保存します。
         /// </summary>
-        /// <returns>非同期操作を示す <see cref="T:System.Threading.Tasks.Task"/>。</returns>
+        /// <returns>非同期操作を示す <see cref="System.Threading.Tasks.Task"/>。</returns>
         public async Task SaveAsync(Settings value) {
             await Task.Factory.StartNew(() => {
                 if (value != null) {

@@ -30,7 +30,7 @@ namespace Karamem0.Kanpuchi.Interactivity {
         /// </summary>
         protected override void OnAttached() {
             this.AssociatedObject.Loaded += this.OnAssociatedObjectLoaded;
-            var contentFrame = ((App)App.Current).ContentFrame;
+            var contentFrame = ((App)Application.Current).ContentFrame;
             if (contentFrame != null) {
                 contentFrame.Navigating += this.OnFrameNavigating;
             }
@@ -45,7 +45,7 @@ namespace Karamem0.Kanpuchi.Interactivity {
         /// </summary>
         protected override void OnDetached() {
             this.AssociatedObject.Loaded -= this.OnAssociatedObjectLoaded;
-            var contentFrame = ((App)App.Current).ContentFrame;
+            var contentFrame = ((App)Application.Current).ContentFrame;
             if (contentFrame != null) {
                 contentFrame.Navigating -= this.OnFrameNavigating;
             }

@@ -37,6 +37,7 @@
     </Compile>
     <Compile Include="Configuration\AppSettings.cs" />
     <Compile Include="Configuration\AppSettingsBase.cs" />
+    <Compile Include="Interactivity\BooleanToVisibilityConverter.cs" />
     <Compile Include="Interactivity\ContentPageTypeConverter.cs" />
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />

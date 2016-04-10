@@ -67,7 +67,8 @@ namespace Karamem0.Kanpuchi.Services {
                     deviceKey: device.DeviceKey,
                     siteIds: settings.EnableSiteIds);
                 if (matomeEntries != null) {
-                    this.viewModel.MatomeEntries.InsertRangeIf(0, matomeEntries.OrderByDescending(x => x.CreatedAt), x => x.CreatedAt);
+                    this.viewModel.MatomeEntries.InsertRangeIf(0,
+                        matomeEntries.OrderByDescending(x => x.CreatedAt), x => x.CreatedAt);
                 }
                 this.RaiseAsyncCompleted();
             } catch (Exception ex) {
@@ -79,7 +80,6 @@ namespace Karamem0.Kanpuchi.Services {
         /// 最新のまとめ記事より前のまとめ記事を読み込みます。
         /// </summary>
         public async void LoadPreviousAsync() {
-            var context = SynchronizationContext.Current;
             try {
                 this.RaiseAsyncStarted();
                 var device = await this.deviceRepository.RegisterAsync();
@@ -92,7 +92,8 @@ namespace Karamem0.Kanpuchi.Services {
                     maxId: maxId,
                     siteIds: settings.EnableSiteIds);
                 if (matomeEntries != null) {
-                    this.viewModel.MatomeEntries.AddRangeIf(matomeEntries.OrderByDescending(x => x.CreatedAt), x => x.CreatedAt);
+                    this.viewModel.MatomeEntries.AddRangeIf(
+                        matomeEntries.OrderByDescending(x => x.CreatedAt), x => x.CreatedAt);
                 }
                 this.RaiseAsyncCompleted();
             } catch (Exception ex) {

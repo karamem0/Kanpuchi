@@ -46,29 +46,6 @@ namespace Karamem0.Kanpuchi.Infrastructure {
         }
 
         /// <summary>
-        /// ビジー状態が変更されると発生します。
-        /// </summary>
-        public event EventHandler BusyStateChanged;
-
-        /// <summary>
-        /// <see cref="Karamem0.Kanpuchi.Infrastructure.ViewModel.BusyStateChanged"/> イベントを発生させます。
-        /// </summary>
-        /// <param name="e">イベントのデータを格納する <see cref="System.EventArgs"/>。</param>
-        protected virtual void OnBusyStateChanged(EventArgs e) {
-            var handler = this.BusyStateChanged;
-            if (handler != null) {
-                handler.Invoke(this, e);
-            }
-        }
-
-        /// <summary>
-        /// <see cref="Karamem0.Kanpuchi.Infrastructure.ViewModel.BusyStateChanged"/> イベントを発生させます。
-        /// </summary>
-        protected void RaiseBusyStateChanged() {
-            this.OnBusyStateChanged(new EventArgs());
-        }
-
-        /// <summary>
         /// 戻るナビゲーション履歴の最新ページに移動するコマンドを取得します。
         /// </summary>
         public DelegateCommand GoBackCommand { get; private set; }
@@ -148,7 +125,11 @@ namespace Karamem0.Kanpuchi.Infrastructure {
         /// アプリのレビューを起動します。
         /// </summary>
         private async void LaunchReviewApp() {
-            await Launcher.LaunchUriAsync(new Uri("ms-windows-store:reviewapp?appid=" + CurrentApp.AppId));
+            try {
+                await Launcher.LaunchUriAsync(new Uri("ms-windows-store:reviewapp?appid=" + CurrentApp.AppId));
+            } catch {
+                this.RaiseError("LaunchAppError");
+            }
         }
 
         /// <summary>
@@ -158,25 +139,6 @@ namespace Karamem0.Kanpuchi.Infrastructure {
         /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
         private bool CanLaunchReviewApp() {
             return true;
-        }
-
-        /// <summary>
-        /// ビジー状態にあるかどうかを示す値を表します。
-        /// </summary>
-        private bool isBusy;
-
-        /// <summary>
-        /// ビジー状態にあるかどうかを示す値を取得します。
-        /// </summary>
-        public bool IsBusy {
-            get { return this.isBusy; }
-            private set {
-                if (this.isBusy != value) {
-                    this.isBusy = value;
-                    this.RaisePropertyChanged(() => this.IsBusy);
-                    this.RaiseBusyStateChanged();
-                }
-            }
         }
 
         /// <summary>
@@ -197,9 +159,7 @@ namespace Karamem0.Kanpuchi.Infrastructure {
         /// <summary>
         /// ビュー モデルがアンロードされると呼び出されます。
         /// </summary>
-        public virtual void OnUnloaded() {
-            this.EndBusy();
-        }
+        public virtual void OnUnloaded() { }
 
         /// <summary>
         /// 指定した型で表されるページに移動します。
@@ -213,21 +173,6 @@ namespace Karamem0.Kanpuchi.Infrastructure {
                     contentFrame.Navigate(pageType, parameter);
                 }
             }
-        }
-
-        /// <summary>
-        /// ビジー状態を開始します。
-        /// </summary>
-        /// <param name="resourceKey">メッセージ リソースのキー文字列を示す <see cref="System.String"/>。</param>
-        protected void BeginBusy(string resourceKey) {
-            this.IsBusy = true;
-        }
-
-        /// <summary>
-        /// ビジー状態を終了します。
-        /// </summary>
-        protected void EndBusy() {
-            this.IsBusy = false;
         }
 
     }

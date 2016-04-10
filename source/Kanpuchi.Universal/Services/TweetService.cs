@@ -58,7 +58,8 @@ namespace Karamem0.Kanpuchi.Services {
                     deviceId: device.DeviceId.ToString(),
                     deviceKey: device.DeviceKey);
                 if (tweets != null) {
-                    this.viewModel.Tweets.InsertRangeIf(0, tweets.OrderByDescending(x => x.StatusId), x => x.StatusId);
+                    this.viewModel.Tweets.InsertRangeIf(0,
+                        tweets.OrderByDescending(x => x.StatusId), x => x.StatusId);
                 }
                 this.RaiseAsyncCompleted();
             } catch (Exception ex) {
@@ -80,7 +81,8 @@ namespace Karamem0.Kanpuchi.Services {
                     deviceKey: device.DeviceKey,
                     maxId: maxId);
                 if (tweets != null) {
-                    this.viewModel.Tweets.AddRangeIf(tweets.OrderByDescending(x => x.StatusId), x => x.StatusId);
+                    this.viewModel.Tweets.AddRangeIf(
+                        tweets.OrderByDescending(x => x.StatusId), x => x.StatusId);
                 }
                 this.RaiseAsyncCompleted();
             } catch (Exception ex) {

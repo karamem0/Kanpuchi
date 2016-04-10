@@ -17,17 +17,10 @@ namespace Karamem0.Kanpuchi.Repositories {
     /// </summary>
     public sealed class MatomeSiteRepository : Repository<MatomeSite> {
 
-#if DEBUG
-        /// <summary>
-        /// GET リクエスト URI を表します。
-        /// </summary>
-        private static readonly string GetUri = "https://kanpuchidev.azurewebsites.net/api/matomesite";
-#else
         /// <summary>
         /// GET リクエスト URI を表します。
         /// </summary>
         private static readonly string GetUri = "https://kanpuchi.azurewebsites.net/api/matomesite";
-#endif
 
         /// <summary>
         /// <see cref="Karamem0.Kanpuchi.Repositories.MatomeSiteRepository"/> クラスの新しいインスタンスを初期化します。
@@ -47,11 +40,13 @@ namespace Karamem0.Kanpuchi.Repositories {
             requestMessage.RequestUri = requestUri;
             requestMessage.Method = HttpMethod.Get;
             requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Basic", requestAuth);
-            var responseMessage = await new HttpClient().SendAsync(requestMessage);
-            using (var stream = await responseMessage.Content.ReadAsStreamAsync()) {
-                var serializer = new JsonSerializer();
-                using (var reader = new JsonTextReader(new StreamReader(stream))) {
-                    return serializer.Deserialize<IEnumerable<MatomeSite>>(reader);
+            using (var client = new HttpClient()) {
+                var responseMessage = await client.SendAsync(requestMessage);
+                using (var stream = await responseMessage.Content.ReadAsStreamAsync()) {
+                    var serializer = new JsonSerializer();
+                    using (var reader = new JsonTextReader(new StreamReader(stream))) {
+                        return serializer.Deserialize<IEnumerable<MatomeSite>>(reader);
+                    }
                 }
             }
         }
