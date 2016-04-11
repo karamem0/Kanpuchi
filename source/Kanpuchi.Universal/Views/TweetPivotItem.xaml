@@ -15,7 +15,8 @@
     <Border>
         <ListBox
             Background="#00FFFFFF"
-            ItemsSource="{Binding Tweets}">
+            ItemsSource="{Binding Tweets}"
+            Style="{StaticResource ListBoxStyle}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="0,0,0,0">
@@ -51,12 +52,23 @@
                                                 Grid.Column="1"
                                                 Grid.Row="0"
                                                 Margin="12,0,0,0">
-                                                <TextBlock Text="{Binding UserName}" />
-                                                <TextBlock Text="{Binding ScreenName}" />
                                                 <TextBlock
+                                                    Foreground="{StaticResource AppThemeBackgroundBrush}"
+                                                    Style="{ThemeResource SubtitleTextBlockStyle}"
+                                                    Text="{Binding UserName}" />
+                                                <TextBlock
+                                                    Foreground="{StaticResource SystemColorGrayTextBrush}"
+                                                    Style="{ThemeResource BodyTextBlockStyle}" 
+                                                    VerticalAlignment="Bottom">
+                                                    @<Run Text="{Binding ScreenName}" />
+                                                </TextBlock>
+                                                <TextBlock
+                                                    Style="{ThemeResource BodyTextBlockStyle}"
                                                     Text="{Binding Text}"
                                                     TextWrapping="Wrap" />
                                                 <TextBlock
+                                                    Foreground="{StaticResource SystemColorGrayTextBrush}"
+                                                    Style="{ThemeResource BaseTextBlockStyle}"
                                                     Text="{Binding CreatedAt, Converter={StaticResource LocalTimeConverter}}" />
                                             </StackPanel>
                                         </Grid>

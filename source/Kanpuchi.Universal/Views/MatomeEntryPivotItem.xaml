@@ -15,7 +15,8 @@
     <Border>
         <ListBox
             Background="#00FFFFFF"
-            ItemsSource="{Binding MatomeEntries}">
+            ItemsSource="{Binding MatomeEntries}"
+            Style="{StaticResource ListBoxStyle}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="0,0,0,0">
@@ -53,12 +54,18 @@
                                                 Grid.Column="1"
                                                 Grid.Row="0">
                                                 <TextBlock
+                                                    Foreground="{StaticResource AppThemeBackgroundBrush}"
+                                                    Style="{ThemeResource TitleTextBlockStyle}"
                                                     Text="{Binding SiteName}"
                                                     TextWrapping="Wrap" />
                                                 <TextBlock
-                                                        Text="{Binding Title}"
-                                                        TextWrapping="Wrap" />
-                                                <TextBlock Text="{Binding CreatedAt, Converter={StaticResource LocalTimeConverter}}" />
+                                                    Style="{ThemeResource BodyTextBlockStyle}"
+                                                    Text="{Binding Title}"
+                                                    TextWrapping="Wrap" />
+                                                <TextBlock
+                                                    Foreground="{StaticResource SystemColorGrayTextBrush}"
+                                                    Style="{ThemeResource BaseTextBlockStyle}"
+                                                    Text="{Binding CreatedAt, Converter={StaticResource LocalTimeConverter}}" />
                                             </StackPanel>
                                         </Grid>
                                         <VisualStateManager.VisualStateGroups>
