@@ -4,6 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:li="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d"
     DataContext="{Binding HomeViewModel, Source={StaticResource ViewModelLocator}}">
     <PivotItem.Header>
@@ -12,7 +14,7 @@
             Style="{ThemeResource BodyTextBlockStyle}"
             Text="Tweets" />
     </PivotItem.Header>
-    <Border>
+    <Grid>
         <ListBox
             Background="#00FFFFFF"
             ItemsSource="{Binding Tweets}"
@@ -99,5 +101,5 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-    </Border>
+    </Grid>
 </PivotItem>

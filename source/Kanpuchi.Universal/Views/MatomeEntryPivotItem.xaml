@@ -55,7 +55,7 @@
                                                 Grid.Row="0">
                                                 <TextBlock
                                                     Foreground="{StaticResource AppThemeBackgroundBrush}"
-                                                    Style="{ThemeResource TitleTextBlockStyle}"
+                                                    Style="{ThemeResource SubtitleTextBlockStyle}"
                                                     Text="{Binding SiteName}"
                                                     TextWrapping="Wrap" />
                                                 <TextBlock
