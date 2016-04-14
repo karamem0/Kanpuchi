@@ -5,8 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
-    xmlns:ei="using:Microsoft.Xaml.Interactions.Core"
     xmlns:li="using:Karamem0.Kanpuchi.Interactivity"
+    xmlns:vi="using:Karamem0.Kanpuchi.Views"
     mc:Ignorable="d"
     DataContext="{Binding MainViewModel, Source={StaticResource ViewModelLocator}}">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -58,14 +58,11 @@
                         Grid.Column="0"
                         Grid.Row="0">
                         <RadioButton
+                            x:Name="HomeButton"
                             x:Uid="HomeButton"
                             Checked="OnRadioButtonChecked"
                             Content="Home"
                             GroupName="Navigation"
-                            IsChecked="{Binding DisplayType,
-                                Converter={StaticResource ContentPageTypeConverter},
-                                ConverterParameter=HomePage,
-                                Mode=TwoWay}"
                             Style="{StaticResource NavigationRadioButtonStyle}"
                             Tag="&#xE80F;">
                         </RadioButton>
@@ -81,14 +78,11 @@
                             Tag="&#xE76E;">
                         </Button>
                         <RadioButton
+                            x:Name="SettingsButton"
                             x:Uid="SettingsButton"
                             Checked="OnRadioButtonChecked"
                             Content="Settings"
                             GroupName="Navigation"
-                            IsChecked="{Binding DisplayType,
-                                Converter={StaticResource ContentPageTypeConverter},
-                                ConverterParameter=SettingsPage,
-                                Mode=TwoWay}"
                             Style="{StaticResource NavigationRadioButtonStyle}"
                             Tag="&#xE713;">
                         </RadioButton>
@@ -97,7 +91,9 @@
             </SplitView.Pane>
             <SplitView.Content>
                 <Border Background="{ThemeResource SystemAltHighColor}">
-                    <Frame x:Name="ContentFrame" />
+                    <Frame x:Name="ContentFrame">
+                        <vi:HomePage />
+                    </Frame>
                 </Border>
             </SplitView.Content>
         </SplitView>

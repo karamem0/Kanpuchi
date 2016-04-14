@@ -11,7 +11,6 @@
                     <li:ViewModelLocator x:Key="ViewModelLocator" />
                     <li:LauncherCommands x:Key="LauncherCommands" />
                     <li:BooleanToVisibilityConveter x:Key="BooleanToVisibilityConveter" />
-                    <li:ContentPageTypeConverter x:Key="ContentPageTypeConverter" />
                     <li:LocalTimeConverter x:Key="LocalTimeConverter" />
                     <li:StringToVisibilityConveter x:Key="StringToVisibilityConveter" />
                 </ResourceDictionary>
