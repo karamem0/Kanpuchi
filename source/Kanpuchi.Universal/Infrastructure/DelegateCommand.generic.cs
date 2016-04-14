@@ -10,7 +10,7 @@ namespace Karamem0.Kanpuchi.Infrastructure {
     /// <summary>
     /// 厳密に型指定されたパラメーターを受け取るコマンドを表します。
     /// </summary>
-    public class DelegateCommand<T> : ICommand {
+    public sealed class DelegateCommand<T> : ICommand {
 
         /// <summary>
         /// コマンドを実行できるかどうかを示す値が変更されたときに発生します。
@@ -21,7 +21,7 @@ namespace Karamem0.Kanpuchi.Infrastructure {
         /// <see cref="Kanpuchi.Infrastructure.DelegateCommand{T}.CanExecuteChanged"/> イベントを発生させます。
         /// </summary>
         /// <param name="e">イベントのデータを格納する <see cref="System.EventArgs"/>。</param>
-        protected virtual void OnCanExecuteChanged(EventArgs e) {
+        private void OnCanExecuteChanged(EventArgs e) {
             var handler = this.CanExecuteChanged;
             if (handler != null) {
                 handler.Invoke(this, e);

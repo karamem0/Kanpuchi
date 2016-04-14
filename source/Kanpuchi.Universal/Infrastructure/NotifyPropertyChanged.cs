@@ -11,7 +11,7 @@ namespace Karamem0.Kanpuchi.Infrastructure {
     /// <summary>
     /// プロパティの変更を通知可能なオブジェクトを表します。
     /// </summary>
-    public class NotifyPropertyChanged : INotifyPropertyChanged {
+    public abstract class NotifyPropertyChanged : INotifyPropertyChanged {
 
         /// <summary>
         /// プロパティが変更されると発生します。

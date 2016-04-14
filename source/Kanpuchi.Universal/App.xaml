@@ -9,6 +9,7 @@
                 <ResourceDictionary Source="Themes/Generic.xaml" />
                 <ResourceDictionary>
                     <li:ViewModelLocator x:Key="ViewModelLocator" />
+                    <li:LauncherCommands x:Key="LauncherCommands" />
                     <li:BooleanToVisibilityConveter x:Key="BooleanToVisibilityConveter" />
                     <li:ContentPageTypeConverter x:Key="ContentPageTypeConverter" />
                     <li:LocalTimeConverter x:Key="LocalTimeConverter" />

@@ -12,7 +12,7 @@ namespace Karamem0.Kanpuchi.ViewModels {
     /// <summary>
     /// 設定ページのビュー モデルを表します。
     /// </summary>
-    public class SettingsViewModel : ViewModel {
+    public sealed class SettingsViewModel : ViewModel {
 
         /// <summary>
         /// まとめサイトのコレクションを表します。

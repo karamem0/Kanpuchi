@@ -41,5 +41,8 @@
     </Grid>
     <i:Interaction.Behaviors>
         <li:ViewModelBehavior />
+        <li:MessangerBehavior Key="Error">
+            <li:ErrorMessageAction />
+        </li:MessangerBehavior>
     </i:Interaction.Behaviors>
 </Page>

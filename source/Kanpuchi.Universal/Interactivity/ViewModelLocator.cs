@@ -12,7 +12,7 @@ namespace Karamem0.Kanpuchi.Interactivity {
     /// <summary>
     /// ビュー モデルを格納します。
     /// </summary>
-    public class ViewModelLocator : DependencyObject {
+    public sealed class ViewModelLocator : DependencyObject {
 
         /// <summary>
         /// <see cref="Karamem0.Kanpuchi.Interactivity.ViewModelLocator.MainViewModel"/>

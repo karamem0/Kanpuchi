@@ -11,7 +11,7 @@ namespace Karamem0.Kanpuchi.Interactivity {
     /// <summary>
     /// null または空の文字列を <see cref="Windows.UI.Xaml.Visibility"/> に変換するための機能を提供します。
     /// </summary>
-    public class StringToVisibilityConveter : IValueConverter {
+    public sealed class StringToVisibilityConveter : IValueConverter {
 
         /// <summary>
         /// null または空の文字列のときに <see cref="Windows.UI.Xaml.Visibility.Collapsed"/> を返します。それ以外の場合は

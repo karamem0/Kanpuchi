@@ -10,20 +10,13 @@ namespace Karamem0.Kanpuchi.Configuration {
     /// <summary>
     /// アプリケーションの設定情報を表します。
     /// </summary>
-    public class AppSettings : AppSettingsBase {
+    public sealed class AppSettings : AppSettingsBase {
 
         /// <summary>
         /// アプリケーションの <see cref="Karamem0.Kanpuchi.Configuration.AppSettings"/>
         /// クラスのインスタンスを取得します。
         /// </summary>
-        public static AppSettings Current { get; private set; }
-
-        /// <summary>
-        /// <see cref="Karamem0.Kanpuchi.Configuration.AppSettings"/> クラスの静的メンバーを初期化します。
-        /// </summary>
-        static AppSettings() {
-            AppSettings.Current = new AppSettings();
-        }
+        public static AppSettings Current { get; private set; } = new AppSettings();
 
         /// <summary>
         /// デバイス ID を取得または設定します。

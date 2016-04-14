@@ -11,7 +11,7 @@ namespace Karamem0.Kanpuchi.Interactivity {
     /// <summary>
     /// <see cref="System.Boolean"/> を <see cref="Windows.UI.Xaml.Visibility"/> に変換するための機能を提供します。
     /// </summary>
-    public class BooleanToVisibilityConveter : IValueConverter {
+    public sealed class BooleanToVisibilityConveter : IValueConverter {
 
         /// <summary>
         /// <see cref="System.Boolean"/> を <see cref="Windows.UI.Xaml.Visibility"/> に変換します。

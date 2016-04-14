@@ -9,7 +9,7 @@ namespace Karamem0.Kanpuchi.Infrastructure {
     /// <summary>
     /// 非同期操作が完了したときに発生するイベントのデータを格納します。
     /// </summary>
-    public class AsyncCompletedEventArgs : EventArgs {
+    public sealed class AsyncCompletedEventArgs : EventArgs {
 
         /// <summary>
         /// 発生した例外を取得します。

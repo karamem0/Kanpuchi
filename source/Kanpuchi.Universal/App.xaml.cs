@@ -1,4 +1,5 @@
-﻿using Karamem0.Kanpuchi.Views;
+﻿using Karamem0.Kanpuchi.Infrastructure;
+using Karamem0.Kanpuchi.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Core;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 

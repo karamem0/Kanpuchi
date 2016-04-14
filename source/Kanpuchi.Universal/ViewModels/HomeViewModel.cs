@@ -13,7 +13,7 @@ namespace Karamem0.Kanpuchi.ViewModels {
     /// <summary>
     /// ホーム ページのビュー モデルを表します。
     /// </summary>
-    public class HomeViewModel : ViewModel {
+    public sealed class HomeViewModel : ViewModel {
 
         /// <summary>
         /// <see cref="Karamem0.Kanpuchi.Views.HomePage"/> のピボットの項目のインデックスを指定します。   
@@ -188,7 +188,7 @@ namespace Karamem0.Kanpuchi.ViewModels {
             }
             this.IsBusy = false;
             if (e.Exception != null) {
-                this.RaiseError("LoadError");
+                Messanger.Current.Send("Error", "LoadError");
             }
         }
 
@@ -217,7 +217,7 @@ namespace Karamem0.Kanpuchi.ViewModels {
             }
             this.IsBusy = false;
             if (e.Exception != null) {
-                this.RaiseError("LoadError");
+                Messanger.Current.Send("Error", "LoadError");
             }
         }
 

@@ -1,19 +1,17 @@
 ﻿using Karamem0.Kanpuchi.Infrastructure;
-using Karamem0.Kanpuchi.Interactivity;
 using Karamem0.Kanpuchi.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Resources;
 
 namespace Karamem0.Kanpuchi.ViewModels {
 
     /// <summary>
     /// メイン ページのビュー モデルを表します。
     /// </summary>
-    public class MainViewModel : ViewModel {
+    public sealed class MainViewModel : ViewModel {
 
         /// <summary>
         /// コンテンツ領域に表示されるページを表します。

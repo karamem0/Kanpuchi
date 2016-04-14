@@ -12,7 +12,7 @@ namespace Karamem0.Kanpuchi.Interactivity {
     /// <summary>
     /// パラメーターで渡された名前のページを変換するための機能を提供します。
     /// </summary>
-    public class ContentPageTypeConverter : IValueConverter {
+    public sealed class ContentPageTypeConverter : IValueConverter {
 
         /// <summary>
         /// <see cref="System.Type"/> を <see cref="System.Boolean"/> に変換します。

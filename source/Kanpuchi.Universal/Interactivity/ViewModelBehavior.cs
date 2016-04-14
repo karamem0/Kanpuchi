@@ -34,10 +34,6 @@ namespace Karamem0.Kanpuchi.Interactivity {
             if (contentFrame != null) {
                 contentFrame.Navigating += this.OnFrameNavigating;
             }
-            var viewModel = this.AssociatedObject.DataContext as ViewModel;
-            if (viewModel != null) {
-                viewModel.Error += this.OnViewModelError;
-            }
         }
 
         /// <summary>
@@ -48,10 +44,6 @@ namespace Karamem0.Kanpuchi.Interactivity {
             var contentFrame = ((App)Application.Current).ContentFrame;
             if (contentFrame != null) {
                 contentFrame.Navigating -= this.OnFrameNavigating;
-            }
-            var viewModel = this.AssociatedObject.DataContext as ViewModel;
-            if (viewModel != null) {
-                viewModel.Error -= this.OnViewModelError;
             }
         }
 
@@ -77,15 +69,6 @@ namespace Karamem0.Kanpuchi.Interactivity {
             if (viewModel != null) {
                 viewModel.OnUnloaded();
             }
-        }
-
-        /// <summary>
-        /// <see cref="Karamem0.Kanpuchi.Infrastructure.ViewModel.Error"/> イベントで追加の処理を実行します。
-        /// </summary>
-        /// <param name="sender">イベントを発生させた <see cref="System.Object"/>。</param>
-        /// <param name="e">イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructure.ErrorEventArgs"/>。</param>
-        private async void OnViewModelError(object sender, ErrorEventArgs e) {
-            await new MessageDialog(e.Message).ShowAsync();
         }
 
     }
