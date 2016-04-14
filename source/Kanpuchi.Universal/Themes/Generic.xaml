@@ -1,17 +1,20 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Color x:Key="AppThemeForegroundColor">#FFFFFFFF</Color>
-    <Color x:Key="AppThemeBackgroundColor">#FFA6341F</Color>
-    <Color x:Key="AppThemeUnobtrusiveBackgroundColor">#FFC5523C</Color>
-    <SolidColorBrush x:Name="AppThemeForegroundBrush" Color="{StaticResource AppThemeForegroundColor}" />
-    <SolidColorBrush x:Name="AppThemeBackgroundBrush" Color="{StaticResource AppThemeBackgroundColor}" />
-    <SolidColorBrush x:Name="AppThemeUnobtrusiveBackgroundBrush" Color="{StaticResource AppThemeUnobtrusiveBackgroundColor}" />
+    <!-- Colors -->
+    <Color x:Key="AppThemeLightColor">#FFFFFFFF</Color>
+    <Color x:Key="AppThemeMiddleColor">#FFC5523C</Color>
+    <Color x:Key="AppThemeDarkColor">#FFA6341F</Color>
+    <!-- Brushes -->
+    <SolidColorBrush x:Name="AppThemeLightBrush" Color="{StaticResource AppThemeLightColor}" />
+    <SolidColorBrush x:Name="AppThemeMiddleBrush" Color="{StaticResource AppThemeMiddleColor}" />
+    <SolidColorBrush x:Name="AppThemeDarkBrush" Color="{StaticResource AppThemeDarkColor}" />
+    <!-- Styles -->
     <Style x:Key="MenuButtonStyle" TargetType="ToggleButton">
-        <Setter Property="Background" Value="{StaticResource AppThemeBackgroundBrush}" />
+        <Setter Property="Background" Value="{StaticResource AppThemeDarkBrush}" />
         <Setter Property="BorderBrush" Value="#00FFFFFF" />
         <Setter Property="BorderThickness" Value="0,0,0,0" />
-        <Setter Property="Foreground" Value="{StaticResource AppThemeForegroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource AppThemeLightBrush}" />
         <Setter Property="Height" Value="48" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -30,7 +33,7 @@
                                             Storyboard.TargetName="Border"
                                             Storyboard.TargetProperty="(UIElement.Background).(SolidColorBrush.Color)"
                                             Duration="00:00:00"
-                                            To="{ThemeResource AppThemeUnobtrusiveBackgroundColor}" />
+                                            To="{ThemeResource AppThemeMiddleColor}" />
                                     </Storyboard>
                                 </VisualState>
                             </VisualStateGroup>
@@ -151,7 +154,7 @@
                                             Storyboard.TargetName="Border"
                                             Storyboard.TargetProperty="(UIElement.Background).(SolidColorBrush.Color)"
                                             Duration="00:00:00"
-                                            To="{StaticResource AppThemeUnobtrusiveBackgroundColor}" />
+                                            To="{StaticResource AppThemeMiddleColor}" />
                                         <ColorAnimation
                                             Storyboard.TargetName="HeaderIcon"
                                             Storyboard.TargetProperty="(UIElement.Foreground).(SolidColorBrush.Color)"
@@ -228,6 +231,7 @@
     <Style x:Key="ListBoxStyle" TargetType="ListBox">
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Padding" Value="18,0,18,0" />
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
                 <Style TargetType="ListBoxItem">
@@ -260,5 +264,26 @@
         </Setter>
         <Setter Property="VerticalAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
+    </Style>
+    <Style x:Key="ListIconButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="00FFFFFF" />
+        <Setter Property="Foreground" Value="{StaticResource SystemColorGrayTextBrush}" />
+        <Setter Property="Margin" Value="0,0,0,0" />
+        <Setter Property="Padding" Value="0,0,0,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        Margin="{TemplateBinding Margin}">
+                        <FontIcon
+                            Foreground="{TemplateBinding Foreground}"
+                            FontFamily="Segoe MDL2 Assets"
+                            Glyph="{TemplateBinding Content}"
+                            Margin="{TemplateBinding Padding}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>

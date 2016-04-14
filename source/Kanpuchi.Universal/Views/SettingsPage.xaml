@@ -21,7 +21,7 @@
         <ProgressBar
             Grid.Column="0"
             Grid.Row="0"
-            Foreground="{StaticResource AppThemeBackgroundBrush}"
+            Foreground="{StaticResource AppThemeDarkBrush}"
             IsIndeterminate="True"
             Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConveter}}" />
         <Pivot

@@ -120,4 +120,7 @@
   <data name="LaunchAppError" xml:space="preserve">
     <value>アプリを起動できませんでした。</value>
   </data>
+  <data name="LoadError" xml:space="preserve">
+    <value>データを読み込めませんでした。再度お試しください。</value>
+  </data>
 </root>
