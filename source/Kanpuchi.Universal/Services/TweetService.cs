@@ -1,5 +1,7 @@
-﻿using Karamem0.Kanpuchi.Extensions;
+﻿using AutoMapper;
+using Karamem0.Kanpuchi.Extensions;
 using Karamem0.Kanpuchi.Infrastructure;
+using Karamem0.Kanpuchi.Models;
 using Karamem0.Kanpuchi.Repositories;
 using Karamem0.Kanpuchi.ViewModels;
 using System;
@@ -58,8 +60,13 @@ namespace Karamem0.Kanpuchi.Services {
                     deviceId: device.DeviceId.ToString(),
                     deviceKey: device.DeviceKey);
                 if (tweets != null) {
-                    this.viewModel.Tweets.InsertRangeIf(0,
-                        tweets.OrderByDescending(x => x.StatusId), x => x.StatusId);
+                    var config = new MapperConfiguration(x => x.CreateMap<Tweet, TweetViewModel>());
+                    var mapper = config.CreateMapper();
+                    foreach (var tweet in tweets.OrderByDescending(x => x.CreatedAt)) {
+                        if (this.viewModel.Tweets.Any(x => x.StatusId == tweet.StatusId) != true) {
+                            this.viewModel.Tweets.Insert(0, mapper.Map<TweetViewModel>(tweet));
+                        }
+                    }
                 }
                 this.RaiseAsyncCompleted();
             } catch (Exception ex) {
@@ -81,8 +88,13 @@ namespace Karamem0.Kanpuchi.Services {
                     deviceKey: device.DeviceKey,
                     maxId: maxId);
                 if (tweets != null) {
-                    this.viewModel.Tweets.AddRangeIf(
-                        tweets.OrderByDescending(x => x.StatusId), x => x.StatusId);
+                    var config = new MapperConfiguration(x => x.CreateMap<Tweet, TweetViewModel>());
+                    var mapper = config.CreateMapper();
+                    foreach (var tweet in tweets.OrderByDescending(x => x.CreatedAt)) {
+                        if (this.viewModel.Tweets.Any(x => x.StatusId == tweet.StatusId) != true) {
+                            this.viewModel.Tweets.Add(mapper.Map<TweetViewModel>(tweet));
+                        }
+                    }
                 }
                 this.RaiseAsyncCompleted();
             } catch (Exception ex) {

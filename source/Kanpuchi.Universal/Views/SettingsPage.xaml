@@ -23,7 +23,7 @@
             Grid.Row="0"
             Foreground="{StaticResource AppThemeDarkBrush}"
             IsIndeterminate="True"
-            Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConveter}}" />
+            Visibility="{Binding IsBusy, Converter={StaticResource VisibleConverter}}" />
         <Pivot
             Grid.Column="0"
             Grid.Row="1"

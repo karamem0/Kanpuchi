@@ -33,10 +33,7 @@
     </Compile>
     <Compile Include="Configuration\AppSettings.cs" />
     <Compile Include="Configuration\AppSettingsBase.cs" />
-    <Compile Include="Extensions\DependencyObjectExtensions.cs" />
-    <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Extensions\PackageVersionExtensions.cs" />
-    <Compile Include="Extensions\SynchronizationContextExtensions.cs" />
     <Compile Include="Infrastructure\AsyncCompletedEventArgs.cs" />
     <Compile Include="Infrastructure\AsyncStartedEventArgs.cs" />
     <Compile Include="Infrastructure\Behavior.cs" />
@@ -50,12 +47,11 @@
     <Compile Include="Infrastructure\Repository.cs" />
     <Compile Include="Infrastructure\Service.cs" />
     <Compile Include="Infrastructure\ViewModel.cs" />
-    <Compile Include="Interactivity\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Interactivity\BooleanAndVisibilityConverter.cs" />
     <Compile Include="Interactivity\ErrorMessageAction.cs" />
     <Compile Include="Interactivity\LauncherCommands.cs" />
     <Compile Include="Interactivity\LocalTimeConverter.cs" />
     <Compile Include="Interactivity\MessangerBehavior.cs" />
-    <Compile Include="Interactivity\StringToVisibilityConveter.cs" />
     <Compile Include="Interactivity\ViewModelBehavior.cs" />
     <Compile Include="Interactivity\ViewModelLocator.cs" />
     <Compile Include="Models\Device.cs" />
@@ -74,6 +70,7 @@
     <Compile Include="Services\TweetService.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\MatomeEntryViewModel.cs" />
     <Compile Include="ViewModels\SettingsViewModel.cs" />
     <Compile Include="ViewModels\TweetViewModel.cs" />
     <Compile Include="Views\GeneralPivotItem.xaml.cs">

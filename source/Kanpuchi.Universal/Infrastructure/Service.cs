@@ -35,7 +35,7 @@ namespace Karamem0.Kanpuchi.Infrastructure {
         /// <see cref="Karamem0.Kanpuchi.Infrastructure.Service.AsyncStarted"/> イベントを発生させます。
         /// </summary>
         protected void RaiseAsyncStarted() {
-            SynchronizationContext.Current.Post(param => this.OnAsyncStarted(param), new AsyncStartedEventArgs());
+            this.OnAsyncStarted(new AsyncStartedEventArgs());
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Karamem0.Kanpuchi.Infrastructure {
         /// </summary>\
         /// <param name="ex">発生した例外を示す <see cref="System.Exception"/>。</param>
         protected void RaiseAsyncCompleted(Exception ex = null) {
-            SynchronizationContext.Current.Post(param => this.OnAsyncCompleted(param), new AsyncCompletedEventArgs(ex));
+            this.OnAsyncCompleted(new AsyncCompletedEventArgs(ex));
         }
 
         /// <summary>

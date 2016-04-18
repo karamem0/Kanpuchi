@@ -68,18 +68,16 @@ namespace Karamem0.Kanpuchi.Services {
                     deviceKey: device.DeviceKey);
                 if (matomeSites != null) {
                     this.viewModel.MatomeSites.Clear();
-                    this.viewModel.MatomeSites.AddRange(matomeSites
-                        .OrderBy(x => x.SiteId)
-                        .Select(x => {
-                            if (settings.EnableSiteIds == null ||
-                                settings.EnableSiteIds.Length == 0 ||
-                                settings.EnableSiteIds.Contains(x.SiteId) == true) {
-                                x.Enabled = true;
-                            } else {
-                                x.Enabled = false;
-                            }
-                            return x;
-                        }));
+                    foreach (var matomeSite in matomeSites.OrderBy(x => x.SiteId)) {
+                        if (settings.EnableSiteIds == null ||
+                            settings.EnableSiteIds.Length == 0 ||
+                            settings.EnableSiteIds.Contains(matomeSite.SiteId) == true) {
+                            matomeSite.Enabled = true;
+                        } else {
+                            matomeSite.Enabled = false;
+                        }
+                        this.viewModel.MatomeSites.Add(matomeSite);
+                    }
                 }
                 this.RaiseAsyncCompleted();
             } catch (Exception ex) {

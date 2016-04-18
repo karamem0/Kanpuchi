@@ -30,10 +30,7 @@ namespace Karamem0.Kanpuchi.Interactivity {
         /// </summary>
         protected override void OnAttached() {
             this.AssociatedObject.Loaded += this.OnAssociatedObjectLoaded;
-            var contentFrame = ((App)Application.Current).ContentFrame;
-            if (contentFrame != null) {
-                contentFrame.Navigating += this.OnFrameNavigating;
-            }
+            this.AssociatedObject.Unloaded += this.OnAssociatedObjectUnloaded;
         }
 
         /// <summary>
@@ -41,10 +38,7 @@ namespace Karamem0.Kanpuchi.Interactivity {
         /// </summary>
         protected override void OnDetached() {
             this.AssociatedObject.Loaded -= this.OnAssociatedObjectLoaded;
-            var contentFrame = ((App)Application.Current).ContentFrame;
-            if (contentFrame != null) {
-                contentFrame.Navigating -= this.OnFrameNavigating;
-            }
+            this.AssociatedObject.Unloaded -= this.OnAssociatedObjectUnloaded;
         }
 
         /// <summary>
@@ -60,11 +54,11 @@ namespace Karamem0.Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Windows.UI.Xaml.Controls.Frame.Navigating"/> イベントで追加の処理を実行します。
+        /// <see cref="Windows.UI.Xaml.FrameworkElement.Unloaded"/> イベントで追加の処理を実行します。
         /// </summary>
         /// <param name="sender">イベントを発生させた <see cref="System.Object"/>。</param>
-        /// <param name="e">イベントのデータを格納する <see cref="Windows.UI.Xaml.Navigation.NavigatingCancelEventArgs"/>。</param>
-        private void OnFrameNavigating(object sender, NavigatingCancelEventArgs e) {
+        /// <param name="e">イベントのデータを格納する <see cref="Windows.UI.Xaml.RoutedEventArgs"/>。</param>
+        private void OnAssociatedObjectUnloaded(object sender, RoutedEventArgs e) {
             var viewModel = this.AssociatedObject.DataContext as ViewModel;
             if (viewModel != null) {
                 viewModel.OnUnloaded();

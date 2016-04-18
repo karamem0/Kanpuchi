@@ -45,7 +45,7 @@ namespace Karamem0.Kanpuchi.Models {
         public virtual string Url { get; set; }
 
         /// <summary>
-        /// URL を取得または設定します。
+        /// サムネイル画像の URL を取得または設定します。
         /// </summary>
         [DataMember()]
         public virtual string ThumbnailUrl { get; set; }

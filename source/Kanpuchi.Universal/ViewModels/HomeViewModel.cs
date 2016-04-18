@@ -70,12 +70,12 @@ namespace Karamem0.Kanpuchi.ViewModels {
         /// <summary>
         /// ツイートのコレクションを表します。
         /// </summary>
-        private ObservableCollection<Tweet> tweets;
+        private ObservableCollection<TweetViewModel> tweets;
 
         /// <summary>
         /// ツイートのコレクションを取得します。
         /// </summary>
-        public ObservableCollection<Tweet> Tweets {
+        public ObservableCollection<TweetViewModel> Tweets {
             get { return this.tweets; }
             private set {
                 if (this.tweets != value) {
@@ -88,12 +88,12 @@ namespace Karamem0.Kanpuchi.ViewModels {
         /// <summary>
         /// まとめ記事のコレクションを表します。
         /// </summary>
-        private ObservableCollection<MatomeEntry> matomeEntries;
+        private ObservableCollection<MatomeEntryViewModel> matomeEntries;
 
         /// <summary>
         /// まとめ記事のコレクションを取得します。
         /// </summary>
-        public ObservableCollection<MatomeEntry> MatomeEntries {
+        public ObservableCollection<MatomeEntryViewModel> MatomeEntries {
             get { return this.matomeEntries; }
             private set {
                 if (this.matomeEntries != value) {
@@ -144,8 +144,8 @@ namespace Karamem0.Kanpuchi.ViewModels {
         /// <see cref="Karamem0.Kanpuchi.ViewModels.HomeViewModel"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public HomeViewModel() {
-            this.Tweets = new ObservableCollection<Tweet>();
-            this.MatomeEntries = new ObservableCollection<MatomeEntry>();
+            this.Tweets = new ObservableCollection<TweetViewModel>();
+            this.MatomeEntries = new ObservableCollection<MatomeEntryViewModel>();
             this.LoadLatestCommand = new DelegateCommand(this.LoadLatest, this.CanLoadLatest);
         }
 
@@ -157,7 +157,7 @@ namespace Karamem0.Kanpuchi.ViewModels {
         }
 
         /// <summary>
-        /// ビュー モデルがアンロードされる直前に呼び出されます。
+        /// ビュー モデルがアンロードされると呼び出されます。
         /// </summary>
         public override void OnUnloaded() { }
 

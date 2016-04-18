@@ -73,6 +73,16 @@ namespace Karamem0.Kanpuchi.ViewModels {
         /// </summary>
         public SettingsViewModel() { }
 
+        /// <summary>
+        /// ビュー モデルがロードされると呼び出されます。
+        /// </summary>
+        public override void OnLoaded() { }
+
+        /// <summary>
+        /// ビュー モデルがアンロードされると呼び出されます。
+        /// </summary>
+        public override void OnUnloaded() { }
+
     }
 
 }

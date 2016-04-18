@@ -55,7 +55,7 @@ namespace Karamem0.Kanpuchi.Infrastructure {
         }
 
         /// <summary>
-        /// <see cref="Kanpuchi.Infrastructure.DelegateCommand{T}`/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Kanpuchi.Infrastructure.DelegateCommand{T}" /> クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="onExecute">コマンドが実行されたときに呼び出される <see cref="System.Action{T}"/>。</param>
         /// <param name="onCanExecute">コマンドを実行できるかどうかを判断するときに呼び出される <see cref="System.Func{T}"/>。</param>

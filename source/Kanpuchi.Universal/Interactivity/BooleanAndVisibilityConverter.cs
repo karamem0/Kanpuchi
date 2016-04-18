@@ -11,7 +11,19 @@ namespace Karamem0.Kanpuchi.Interactivity {
     /// <summary>
     /// <see cref="System.Boolean"/> を <see cref="Windows.UI.Xaml.Visibility"/> に変換するための機能を提供します。
     /// </summary>
-    public sealed class BooleanToVisibilityConveter : IValueConverter {
+    public sealed class BooleanAndVisibilityConverter : IValueConverter {
+
+        /// <summary>
+        /// 値を反転するかどうかを示す値を取得または設定します。
+        /// </summary>
+        public bool IsReverse { get; set; }
+
+        /// <summary>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.BooleanAndVisibilityConverter"/> クラスの新しいインスタンスを初期化します。
+        /// </summary>
+        public BooleanAndVisibilityConverter() {
+            this.IsReverse = false;
+        }
 
         /// <summary>
         /// <see cref="System.Boolean"/> を <see cref="Windows.UI.Xaml.Visibility"/> に変換します。
@@ -23,10 +35,14 @@ namespace Karamem0.Kanpuchi.Interactivity {
         /// <returns>変換された <see cref="System.Object"/>。</returns>
         public object Convert(object value, Type targetType, object parameter, string language) {
             if (value is bool) {
-                if ((bool)value == true) {
+                var item1 = (bool)value;
+                var item2 = (this.IsReverse == true) ? false : true;
+                if (item1 == item2) {
                     return Visibility.Visible;
                 }
-                return Visibility.Collapsed;
+                if (item1 != item2) {
+                    return Visibility.Collapsed;
+                }
             }
             return DependencyProperty.UnsetValue;
         }
@@ -41,10 +57,14 @@ namespace Karamem0.Kanpuchi.Interactivity {
         /// <returns>変換された <see cref="System.Object"/>。</returns>
         public object ConvertBack(object value, Type targetType, object parameter, string language) {
             if (value is Visibility) {
-                if ((Visibility)value == Visibility.Visible) {
+                var item1 = (Visibility)value;
+                var item2 = (this.IsReverse == true) ? Visibility.Collapsed : Visibility.Visible;
+                if (item1 == item2) {
                     return true;
                 }
-                return false;
+                if (item1 != item2) {
+                    return false;
+                }
             }
             return DependencyProperty.UnsetValue;
         }

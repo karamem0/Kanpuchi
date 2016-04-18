@@ -1,8 +1,6 @@
-﻿using Karamem0.Kanpuchi.Infrastructure;
-using Karamem0.Kanpuchi.Views;
+﻿using Karamem0.Kanpuchi.Views;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,19 +14,6 @@ namespace Karamem0.Kanpuchi {
     /// Windows Phone アプリケーションを表します。
     /// </summary>
     public sealed partial class App : Application {
-
-        public Frame ContentFrame {
-            get {
-                var rootFrame = Window.Current.Content as Frame;
-                if (rootFrame != null) {
-                    var mainPage = rootFrame.Content as MainPage;
-                    if (mainPage != null) {
-                        return mainPage.FindName("ContentFrame") as Frame;
-                    }
-                }
-                return null;
-            }
-        }
 
         /// <summary>
         /// <see cref="Karamem0.Kanpuchi.App"/> クラスの新しいインスタンスを初期化します。

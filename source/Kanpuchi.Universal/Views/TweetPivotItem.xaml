@@ -21,105 +21,95 @@
             Style="{StaticResource ListBoxStyle}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid Margin="0,0,0,0">
-                        <Button
-                            HorizontalAlignment="Stretch"
-                            HorizontalContentAlignment="Stretch">
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border>
-                                        <Grid x:Name="Grid">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*" />
-                                                <RowDefinition Height="Auto" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.RenderTransform>
-                                                <TranslateTransform X="0" Y="0" />
-                                            </Grid.RenderTransform>
-                                            <Border
-                                                Grid.Column="0"
-                                                Grid.Row="0"
-                                                HorizontalAlignment="Stretch"
-                                                VerticalAlignment="Top">
-                                                <Image
-                                                    Height="48"
-                                                    Source="{Binding ProfileImageUrl}"
-                                                    Width="48" />
-                                            </Border>
-                                            <StackPanel
-                                                Grid.Column="1"
-                                                Grid.Row="0"
-                                                Orientation="Vertical"
-                                                Margin="12,0,0,0">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <TextBlock
-                                                        Foreground="{StaticResource AppThemeDarkBrush}"
-                                                        Style="{ThemeResource BaseTextBlockStyle}"
-                                                        Text="{Binding UserName}" />
-                                                    <TextBlock
-                                                        Foreground="{StaticResource SystemColorGrayTextBrush}"
-                                                        Margin="3,0,0,0"
-                                                        Style="{ThemeResource BodyTextBlockStyle}"
-                                                        VerticalAlignment="Bottom">
-                                                        <Run Text="@" /><Run Text="{Binding ScreenName}" />
-                                                    </TextBlock>
-                                                </StackPanel>
-                                                <TextBlock
-                                                    Style="{ThemeResource BodyTextBlockStyle}"
-                                                    Text="{Binding Text}"
-                                                    TextWrapping="Wrap" />
-                                                <TextBlock
-                                                    Foreground="{StaticResource SystemColorGrayTextBrush}"
-                                                    Style="{ThemeResource BodyTextBlockStyle}"
-                                                    Text="{Binding CreatedAt, Converter={StaticResource LocalTimeConverter}}" />
-                                            </StackPanel>
-                                            <StackPanel
-                                                Grid.Column="1"
-                                                Grid.Row="1"
-                                                Orientation="Horizontal"
-                                                Margin="12,12,0,6">
-                                                <Button
-                                                    Content="&#xE909;"
-                                                    Margin="0,0,0,0"
-                                                    Style="{StaticResource ListIconButtonStyle}" />
-                                                <Button
-                                                    Content="&#xE72D;"
-                                                    Margin="24,0,0,0"
-                                                    Style="{StaticResource ListIconButtonStyle}" />
-                                                <Button
-                                                    Content="&#xE8C8;"
-                                                    Margin="24,0,0,0"
-                                                    Style="{StaticResource ListIconButtonStyle}" />
-                                            </StackPanel>
-                                        </Grid>
-                                        <VisualStateManager.VisualStateGroups>
-                                            <VisualStateGroup x:Name="CommonStates">
-                                                <VisualState x:Name="Normal" />
-                                                <VisualState x:Name="Pressed">
-                                                    <Storyboard>
-                                                        <DoubleAnimation
-                                                            Duration="00:00:00"
-                                                            To="3"
-                                                            Storyboard.TargetName="Grid"
-                                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" />
-                                                        <DoubleAnimation
-                                                            Duration="00:00:00"
-                                                            To="3"
-                                                            Storyboard.TargetName="Grid"
-                                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)" />
-                                                    </Storyboard>
-                                                </VisualState>
-                                            </VisualStateGroup>
-                                        </VisualStateManager.VisualStateGroups>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
-                    </Grid>
+                    <Border Margin="0,0,0,0">
+                        <Grid x:Name="Grid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.RenderTransform>
+                                <TranslateTransform X="0" Y="0" />
+                            </Grid.RenderTransform>
+                            <Border
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Top">
+                                <Image
+                                    Height="48"
+                                    Source="{Binding ProfileImageUrl}"
+                                    Width="48" />
+                            </Border>
+                            <StackPanel
+                                Grid.Column="1"
+                                Grid.Row="0"
+                                Orientation="Vertical"
+                                Margin="12,0,0,0">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock
+                                        Foreground="{StaticResource AppThemeDarkBrush}"
+                                        Style="{ThemeResource BaseTextBlockStyle}"
+                                        Text="{Binding UserName}" />
+                                    <TextBlock
+                                        Foreground="{StaticResource SystemColorGrayTextBrush}"
+                                        Margin="3,0,0,0"
+                                        Style="{ThemeResource BodyTextBlockStyle}"
+                                        VerticalAlignment="Bottom">
+                                        <Run Text="@" /><Run Text="{Binding ScreenName}" />
+                                    </TextBlock>
+                                </StackPanel>
+                                <TextBlock
+                                    Style="{ThemeResource BodyTextBlockStyle}"
+                                    Text="{Binding Text}"
+                                    TextWrapping="Wrap" />
+                                <TextBlock
+                                    Foreground="{StaticResource SystemColorGrayTextBrush}"
+                                    Style="{ThemeResource BodyTextBlockStyle}"
+                                    Text="{Binding CreatedAt, Converter={StaticResource LocalTimeConverter}}" />
+                            </StackPanel>
+                            <StackPanel
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                Orientation="Horizontal"
+                                Margin="12,12,0,6">
+                                <Button
+                                    Content="&#xE909;"
+                                    Margin="0,0,0,0"
+                                    Style="{StaticResource ListIconButtonStyle}" />
+                                <Button
+                                    Content="&#xE72D;"
+                                    Margin="24,0,0,0"
+                                    Style="{StaticResource ListIconButtonStyle}" />
+                                <Button
+                                    Content="&#xE8C8;"
+                                    Margin="24,0,0,0"
+                                    Style="{StaticResource ListIconButtonStyle}" />
+                            </StackPanel>
+                        </Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Duration="00:00:00"
+                                            To="3"
+                                            Storyboard.TargetName="Grid"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" />
+                                        <DoubleAnimation
+                                            Duration="00:00:00"
+                                            To="3"
+                                            Storyboard.TargetName="Grid"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

@@ -1,5 +1,7 @@
-﻿using Karamem0.Kanpuchi.Extensions;
+﻿using AutoMapper;
+using Karamem0.Kanpuchi.Extensions;
 using Karamem0.Kanpuchi.Infrastructure;
+using Karamem0.Kanpuchi.Models;
 using Karamem0.Kanpuchi.Repositories;
 using Karamem0.Kanpuchi.ViewModels;
 using System;
@@ -67,8 +69,13 @@ namespace Karamem0.Kanpuchi.Services {
                     deviceKey: device.DeviceKey,
                     siteIds: settings.EnableSiteIds);
                 if (matomeEntries != null) {
-                    this.viewModel.MatomeEntries.InsertRangeIf(0,
-                        matomeEntries.OrderByDescending(x => x.CreatedAt), x => x.CreatedAt);
+                    var config = new MapperConfiguration(x => x.CreateMap<MatomeEntry, MatomeEntryViewModel>());
+                    var mapper = config.CreateMapper();
+                    foreach (var matomeEntry in matomeEntries.OrderByDescending(x => x.CreatedAt)) {
+                        if (this.viewModel.MatomeEntries.Any(x => x.EntryId == matomeEntry.EntryId) != true) {
+                            this.viewModel.MatomeEntries.Insert(0, mapper.Map<MatomeEntryViewModel>(matomeEntry));
+                        }
+                    }
                 }
                 this.RaiseAsyncCompleted();
             } catch (Exception ex) {
@@ -92,8 +99,13 @@ namespace Karamem0.Kanpuchi.Services {
                     maxId: maxId,
                     siteIds: settings.EnableSiteIds);
                 if (matomeEntries != null) {
-                    this.viewModel.MatomeEntries.AddRangeIf(
-                        matomeEntries.OrderByDescending(x => x.CreatedAt), x => x.CreatedAt);
+                    var config = new MapperConfiguration(x => x.CreateMap<MatomeEntry, MatomeEntryViewModel>());
+                    var mapper = config.CreateMapper();
+                    foreach (var matomeEntry in matomeEntries.OrderByDescending(x => x.CreatedAt)) {
+                        if (this.viewModel.MatomeEntries.Any(x => x.EntryId == matomeEntry.EntryId) != true) {
+                            this.viewModel.MatomeEntries.Add(mapper.Map<MatomeEntryViewModel>(matomeEntry));
+                        }
+                    }
                 }
                 this.RaiseAsyncCompleted();
             } catch (Exception ex) {
