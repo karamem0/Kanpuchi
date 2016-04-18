@@ -8,7 +8,8 @@
     xmlns:li="using:Karamem0.Kanpuchi.Interactivity"
     xmlns:vi="using:Karamem0.Kanpuchi.Views"
     mc:Ignorable="d"
-    DataContext="{Binding MainViewModel, Source={StaticResource ViewModelLocator}}">
+    DataContext="{Binding MainViewModel, Source={StaticResource ViewModelLocator}}"
+    Loaded="OnLoaded">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="48" />
@@ -91,9 +92,7 @@
             </SplitView.Pane>
             <SplitView.Content>
                 <Border Background="{ThemeResource SystemAltHighColor}">
-                    <Frame x:Name="ContentFrame">
-                        <vi:HomePage />
-                    </Frame>
+                    <Frame x:Name="ContentFrame" />
                 </Border>
             </SplitView.Content>
         </SplitView>

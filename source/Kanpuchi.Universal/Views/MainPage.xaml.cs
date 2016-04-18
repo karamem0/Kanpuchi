@@ -17,6 +17,9 @@ namespace Karamem0.Kanpuchi.Views {
         public MainPage() {
             this.InitializeComponent();
         }
+        private void OnLoaded(object sender, RoutedEventArgs e) {
+            this.HomeButton.IsChecked = true;
+        }
 
         /// <summary>
         /// <see cref="Windows.UI.Xaml.Controls.RadioButton.Checked"/> イベントで追加の処理を実行します。
@@ -26,16 +29,15 @@ namespace Karamem0.Kanpuchi.Views {
         private void OnRadioButtonChecked(object sender, RoutedEventArgs e) {
             var radioButton = sender as RadioButton;
             if (radioButton != null) {
+                if (radioButton.IsChecked == true) {
+                    if (radioButton == this.HomeButton) {
+                        this.ContentFrame.Navigate(typeof(HomePage));
+                    }
+                    if (radioButton == this.SettingsButton) {
+                        this.ContentFrame.Navigate(typeof(SettingsPage));
+                    }
+                }
                 this.ContentTitleTextBlock.Text = radioButton.Content.ToString();
-            }
-            var contentFrame = ((App)Application.Current).ContentFrame;
-            if (contentFrame != null) {
-                if (radioButton == this.HomeButton) {
-                    contentFrame.Navigate(typeof(HomePage));
-                }
-                if (radioButton == this.SettingsButton) {
-                    contentFrame.Navigate(typeof(SettingsPage));
-                }
             }
         }
 
