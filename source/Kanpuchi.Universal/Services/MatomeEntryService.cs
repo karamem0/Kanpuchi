@@ -71,7 +71,7 @@ namespace Karamem0.Kanpuchi.Services {
                 if (matomeEntries != null) {
                     var config = new MapperConfiguration(x => x.CreateMap<MatomeEntry, MatomeEntryViewModel>());
                     var mapper = config.CreateMapper();
-                    foreach (var matomeEntry in matomeEntries.OrderByDescending(x => x.CreatedAt)) {
+                    foreach (var matomeEntry in matomeEntries.OrderBy(x => x.CreatedAt)) {
                         if (this.viewModel.MatomeEntries.Any(x => x.EntryId == matomeEntry.EntryId) != true) {
                             this.viewModel.MatomeEntries.Insert(0, mapper.Map<MatomeEntryViewModel>(matomeEntry));
                         }

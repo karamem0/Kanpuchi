@@ -62,7 +62,7 @@ namespace Karamem0.Kanpuchi.Services {
                 if (tweets != null) {
                     var config = new MapperConfiguration(x => x.CreateMap<Tweet, TweetViewModel>());
                     var mapper = config.CreateMapper();
-                    foreach (var tweet in tweets.OrderByDescending(x => x.CreatedAt)) {
+                    foreach (var tweet in tweets.OrderBy(x => x.CreatedAt)) {
                         if (this.viewModel.Tweets.Any(x => x.StatusId == tweet.StatusId) != true) {
                             this.viewModel.Tweets.Insert(0, mapper.Map<TweetViewModel>(tweet));
                         }
