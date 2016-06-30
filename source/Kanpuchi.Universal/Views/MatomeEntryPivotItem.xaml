@@ -5,7 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    DataContext="{Binding HomeViewModel, Source={StaticResource ViewModelLocator}}">
+    DataContext="{Binding HomeViewModel, Source={StaticResource ViewModelLocator}}"
+    Margin="6,0,0,0">
     <PivotItem.Header>
         <TextBlock
             x:Uid="MatomeEntryPivotHeader"
@@ -62,7 +63,7 @@
                                     Text="{Binding Title}"
                                     TextWrapping="Wrap" />
                                 <TextBlock
-                                    Foreground="{StaticResource SystemColorGrayTextBrush}"
+                                    Foreground="{ThemeResource SystemChromeDisabledLowColor}"
                                     Style="{ThemeResource BodyTextBlockStyle}"
                                     Text="{Binding CreatedAt, Converter={StaticResource LocalTimeConverter}}" />
                             </StackPanel>
@@ -72,38 +73,22 @@
                                 Orientation="Horizontal"
                                 Margin="12,12,0,6">
                                 <Button
+                                    Command="{Binding LaunchBrowserCommand}"
                                     Content="&#xE909;"
                                     Margin="0,0,0,0"
                                     Style="{StaticResource ListIconButtonStyle}" />
                                 <Button
+                                    Command="{Binding DataTransferCommand}"
                                     Content="&#xE72D;"
                                     Margin="24,0,0,0"
                                     Style="{StaticResource ListIconButtonStyle}" />
                                 <Button
+                                    Command="{Binding CopyClipboardCommand}"
                                     Content="&#xE8C8;"
                                     Margin="24,0,0,0"
                                     Style="{StaticResource ListIconButtonStyle}" />
                             </StackPanel>
                         </Grid>
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
-                                <VisualState x:Name="Pressed">
-                                    <Storyboard>
-                                        <DoubleAnimation
-                                            Duration="00:00:00"
-                                            To="3"
-                                            Storyboard.TargetName="Grid"
-                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" />
-                                        <DoubleAnimation
-                                            Duration="00:00:00"
-                                            To="3"
-                                            Storyboard.TargetName="Grid"
-                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)" />
-                                    </Storyboard>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
                     </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>

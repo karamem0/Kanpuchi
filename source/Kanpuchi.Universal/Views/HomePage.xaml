@@ -27,7 +27,7 @@
         <Pivot
             Grid.Column="0"
             Grid.Row="1"
-            Margin="12,0,12,0"
+            Margin="0,0,0,0"
             SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
             <vi:TweetPivotItem />
             <vi:MatomeEntryPivotItem />

@@ -126,9 +126,9 @@
     <None Include="Properties\Key.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <PRIResource Include="Strings\en-us\Errors.resw" />
+    <PRIResource Include="Strings\en-us\Strings.resw" />
     <PRIResource Include="Strings\en-us\Resources.resw" />
-    <PRIResource Include="Strings\ja-jp\Errors.resw" />
+    <PRIResource Include="Strings\ja-jp\Strings.resw" />
     <PRIResource Include="Strings\ja-jp\Resources.resw" />
   </ItemGroup>
   <ItemGroup>

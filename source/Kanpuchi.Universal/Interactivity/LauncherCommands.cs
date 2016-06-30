@@ -27,7 +27,7 @@ namespace Karamem0.Kanpuchi.Interactivity {
         }
 
         /// <summary>
-        /// <see cref="Karamem0.Kanpuchi.Infrastructure.ViewModel.LaunchBrowser"/> を実行できるかどうかを判断します。
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.LauncherCommands.LaunchBrowser"/> を実行できるかどうかを判断します。
         /// </summary>
         /// <param name="parameter">URI を示す <see cref="System.String"/>。</param>
         /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
@@ -44,15 +44,6 @@ namespace Karamem0.Kanpuchi.Interactivity {
         public DelegateCommand LaunchReviewAppCommand { get; private set; }
 
         /// <summary>
-        /// <see cref="Karamem0.Kanpuchi.Infrastructure.ViewModel.LaunchReviewApp"/> を実行できるかどうかを判断します。
-        /// </summary>
-        /// <param name="parameter">URI を示す <see cref="System.String"/>。</param>
-        /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
-        private bool CanLaunchReviewApp() {
-            return true;
-        }
-
-        /// <summary>
         /// アプリのレビューを起動します。
         /// </summary>
         private async void LaunchReviewApp() {
@@ -61,6 +52,15 @@ namespace Karamem0.Kanpuchi.Interactivity {
             } catch {
                 Messanger.Current.Send("Error", "LaunchAppError");
             }
+        }
+
+        /// <summary>
+        /// <see cref="Karamem0.Kanpuchi.Interactivity.LauncherCommands.LaunchBrowser"/> を実行できるかどうかを判断します。
+        /// </summary>
+        /// <param name="parameter">URI を示す <see cref="System.String"/>。</param>
+        /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
+        private bool CanLaunchReviewApp() {
+            return true;
         }
 
         /// <summary>

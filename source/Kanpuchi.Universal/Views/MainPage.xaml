@@ -37,6 +37,7 @@
                 VerticalAlignment="Center" />
         </Border>
         <SplitView
+            x:Name="SplitView"
             Grid.Column="0"
             Grid.ColumnSpan="2"
             Grid.Row="1"
@@ -92,10 +93,38 @@
             </SplitView.Pane>
             <SplitView.Content>
                 <Border Background="{ThemeResource SystemAltHighColor}">
-                    <Frame x:Name="ContentFrame" />
+                    <Frame x:Name="ContentFrame" Margin="0,0,0,0" Padding="0,0,0,0" />
                 </Border>
             </SplitView.Content>
         </SplitView>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="Narrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SplitView.DisplayMode" Value="Overlay" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Middle">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="640"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SplitView.DisplayMode" Value="CompactOverlay" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1280"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SplitView.DisplayMode" Value="CompactInline" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
     </Grid>
     <i:Interaction.Behaviors>
         <li:ViewModelBehavior />

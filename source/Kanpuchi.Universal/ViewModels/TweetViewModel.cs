@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.DataTransfer;
+using Windows.ApplicationModel.Resources;
+using Windows.System;
 
 namespace Karamem0.Kanpuchi.ViewModels {
 
@@ -103,7 +106,7 @@ namespace Karamem0.Kanpuchi.ViewModels {
         }
 
         /// <summary>
-        /// プロフィール画像の URL を表します。
+        /// 固定リンクの URL を表します。
         /// </summary>
         private string permalink;
 
@@ -157,9 +160,87 @@ namespace Karamem0.Kanpuchi.ViewModels {
         }
 
         /// <summary>
+        /// ツイートの URL を Web ブラウザーで表示するコマンドを取得します。
+        /// </summary>
+        public DelegateCommand LaunchBrowserCommand { get; private set; }
+
+        /// <summary>
+        /// ツイートの URL を Web ブラウザーで表示します。
+        /// </summary>
+        private async void LaunchBrowser() {
+            await Launcher.LaunchUriAsync(new Uri(this.Permalink));
+        }
+
+        /// <summary>
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.TweetViewModel.LaunchBrowser"/> を実行できるかどうかを判断します。
+        /// </summary>
+        /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
+        private bool CanLaunchBrowser() {
+            if (string.IsNullOrEmpty(this.Permalink) == true) {
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// ツイートを共有するコマンドを取得します。
+        /// </summary>
+        public DelegateCommand DataTransferCommand { get; private set; }
+
+        /// <summary>
+        /// ツイートを共有します。
+        /// </summary>
+        private void DataTransfer() {
+            var manager = DataTransferManager.GetForCurrentView();
+            manager.DataRequested += this.OnDataTransferManagerDataRequested;
+            DataTransferManager.ShowShareUI();
+        }
+
+        /// <summary>
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.TweetViewModel.DataTransfer"/> を実行できるかどうかを判断します。
+        /// </summary>
+        /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
+        private bool CanDataTransfer() {
+            if (string.IsNullOrEmpty(this.Permalink) == true) {
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// ツイートをクリップ ボードにコピーするコマンドを取得します。
+        /// </summary>
+        public DelegateCommand CopyClipboardCommand { get; private set; }
+
+        /// <summary>
+        /// ツイートをクリップ ボードにコピーします。
+        /// </summary>
+        private void CopyClipboard() {
+            var dataPackage = new DataPackage();
+            dataPackage.RequestedOperation = DataPackageOperation.Copy;
+            dataPackage.SetText(this.Permalink);
+            Clipboard.SetContent(dataPackage);
+        }
+
+        /// <summary>
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.TweetViewModel.CopyClipboard"/> を実行できるかどうかを判断します。
+        /// </summary>
+        /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
+        private bool CanCopyClipboard() {
+            if (string.IsNullOrEmpty(this.Permalink) == true) {
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
         /// <see cref="Karamem0.Kanpuchi.ViewModels.TweetViewModel"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        public TweetViewModel() { }
+        public TweetViewModel() {
+            this.LaunchBrowserCommand = new DelegateCommand(this.LaunchBrowser, this.CanLaunchBrowser);
+            this.DataTransferCommand = new DelegateCommand(this.DataTransfer, this.CanDataTransfer);
+            this.CopyClipboardCommand = new DelegateCommand(this.CopyClipboard, this.CanCopyClipboard);
+        }
 
         /// <summary>
         /// ビュー モデルがロードされると呼び出されます。
@@ -170,6 +251,24 @@ namespace Karamem0.Kanpuchi.ViewModels {
         /// ビュー モデルがアンロードされると呼び出されます。
         /// </summary>
         public override void OnUnloaded() { }
+
+        /// <summary>
+        /// <see cref="Windows.ApplicationModel.DataTransfer.DataTransferManager.DataRequested"/>
+        /// イベントで追加の処理を実行します。
+        /// </summary>
+        /// <param name="sender">
+        /// イベントを発生させた <see cref="Windows.ApplicationModel.DataTransfer.DataTransferManager"/>。
+        /// </param>
+        /// <param name="e">
+        /// イベントのデータを格納する <see cref="Windows.ApplicationModel.DataTransfer.DataRequestedEventArgs"/>。
+        /// </param>
+        private void OnDataTransferManagerDataRequested(DataTransferManager sender, DataRequestedEventArgs e) {
+            var resourceLoader = ResourceLoader.GetForCurrentView("Strings");
+            e.Request.Data.Properties.Title = resourceLoader.GetString("ShareTitle");
+            e.Request.Data.Properties.Description = resourceLoader.GetString("ShareDescription");
+            e.Request.Data.SetWebLink(new Uri(this.Permalink));
+            sender.DataRequested += this.OnDataTransferManagerDataRequested;
+        }
 
     }
 

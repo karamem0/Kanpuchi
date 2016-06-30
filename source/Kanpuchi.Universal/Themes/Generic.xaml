@@ -231,7 +231,7 @@
     <Style x:Key="ListBoxStyle" TargetType="ListBox">
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-        <Setter Property="Padding" Value="18,0,18,0" />
+        <Setter Property="Padding" Value="0,0,12,0" />
         <Setter Property="ItemContainerStyle">
             <Setter.Value>
                 <Style TargetType="ListBoxItem">
@@ -266,22 +266,48 @@
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
     </Style>
     <Style x:Key="ListIconButtonStyle" TargetType="Button">
-        <Setter Property="Background" Value="00FFFFFF" />
-        <Setter Property="Foreground" Value="{ThemeResource SystemColorGrayTextBrush}" />
+        <Setter Property="Background" Value="#00FFFFFF" />
+        <Setter Property="Foreground" Value="{ThemeResource SystemChromeDisabledLowColor}" />
         <Setter Property="Margin" Value="0,0,0,0" />
         <Setter Property="Padding" Value="0,0,0,0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border
-                        Background="{TemplateBinding Background}"
-                        Margin="{TemplateBinding Margin}">
-                        <FontIcon
-                            Foreground="{TemplateBinding Foreground}"
-                            FontFamily="Segoe MDL2 Assets"
-                            Glyph="{TemplateBinding Content}"
-                            Margin="{TemplateBinding Padding}" />
-                    </Border>
+                    <Grid>
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            Margin="{TemplateBinding Margin}">
+                            <FontIcon
+                                x:Name="FontIcon"
+                                Foreground="{TemplateBinding Foreground}"
+                                FontFamily="Segoe MDL2 Assets"
+                                Glyph="{TemplateBinding Content}"
+                                Margin="{TemplateBinding Padding}" />
+                        </Border>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="PointerOver">
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="FontIcon"
+                                            Storyboard.TargetProperty="(UIElement.Foreground).(SolidColorBrush.Color)"
+                                            Duration="00:00:00"
+                                            To="{ThemeResource SystemChromeDisabledHighColor}" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="FontIcon"
+                                            Storyboard.TargetProperty="(UIElement.Foreground).(SolidColorBrush.Color)"
+                                            Duration="00:00:00"
+                                            To="{ThemeResource SystemChromeDisabledHighColor}" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
