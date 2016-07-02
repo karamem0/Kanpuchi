@@ -129,8 +129,17 @@
   <data name="MatomeSitePivotHeader.Text" xml:space="preserve">
     <value>Sites</value>
   </data>
+  <data name="RefreshButton.Label" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
   <data name="ReviewAppButton.Content" xml:space="preserve">
     <value>Review App</value>
+  </data>
+  <data name="ScrollToBottomButton.Label" xml:space="preserve">
+    <value>Bottom</value>
+  </data>
+  <data name="ScrollToTopButton.Label" xml:space="preserve">
+    <value>Top</value>
   </data>
   <data name="SettingsButton.Content" xml:space="preserve">
     <value>Settings</value>

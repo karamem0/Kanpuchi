@@ -1,9 +1,7 @@
-﻿using Karamem0.Kanpuchi.Extensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Karamem0.Kanpuchi.Infrastructure {
@@ -11,7 +9,7 @@ namespace Karamem0.Kanpuchi.Infrastructure {
     /// <summary>
     /// サービスの基本機能を提供します。
     /// </summary>
-    public abstract class Service {
+    public abstract class Service : IDisposable {
 
         /// <summary>
         /// 非同期操作が開始されると発生します。
@@ -58,7 +56,7 @@ namespace Karamem0.Kanpuchi.Infrastructure {
 
         /// <summary>
         /// <see cref="Karamem0.Kanpuchi.Infrastructure.Service.AsyncCompleted"/> イベントを発生させます。
-        /// </summary>\
+        /// </summary>
         /// <param name="ex">発生した例外を示す <see cref="System.Exception"/>。</param>
         protected void RaiseAsyncCompleted(Exception ex = null) {
             this.OnAsyncCompleted(new AsyncCompletedEventArgs(ex));
@@ -68,6 +66,30 @@ namespace Karamem0.Kanpuchi.Infrastructure {
         /// <see cref="Karamem0.Kanpuchi.Infrastructure.Service"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         protected Service() { }
+
+        /// <summary>
+        /// オブジェクトが破棄されるときにクリーン アップを実行します。
+        /// </summary>
+        ~Service() {
+            this.Dispose(false);
+        }
+
+        /// <summary>
+        /// 現在のインスタンスで使用されているリソースを解放します。
+        /// </summary>
+        public void Dispose() {
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// 現在のインスタンスで使用されているリソースを解放します。
+        /// </summary>
+        /// <param name="disposing">
+        /// アンマネージ リソースとマネージ リソースの両方を解放する場合は true。アンマネージ
+        /// リソースのみ解放する場合は false。
+        /// </param>
+        protected abstract void Dispose(bool disposing);
 
     }
 

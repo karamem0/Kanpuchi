@@ -229,6 +229,7 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
     </Style>
     <Style x:Key="ListBoxStyle" TargetType="ListBox">
+        <Setter Property="Background" Value="#00FFFFFF" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="Padding" Value="0,0,12,0" />
@@ -260,6 +261,33 @@
                     <Setter Property="VerticalAlignment" Value="Stretch" />
                     <Setter Property="VerticalContentAlignment" Value="Stretch" />
                 </Style>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBox">
+                    <ScrollViewer x:Name="ScrollViewer">
+                        <Grid
+                            x:Name="Content"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Margin="{TemplateBinding Padding}">
+                            <Grid
+                                Margin="0,-48,0,48"
+                                VerticalAlignment="Top">
+                                <FontIcon
+                                    Foreground="{ThemeResource SystemChromeDisabledLowColor}"
+                                    FontFamily="Segoe MDL2 Assets"
+                                    Glyph="&#xE72C;"
+                                    Height="48"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Width="48" />
+                            </Grid>
+                            <ItemsPresenter />
+                        </Grid>
+                    </ScrollViewer>
+                </ControlTemplate>
             </Setter.Value>
         </Setter>
         <Setter Property="VerticalAlignment" Value="Stretch" />

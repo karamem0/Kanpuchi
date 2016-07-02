@@ -57,10 +57,45 @@ namespace Karamem0.Kanpuchi.ViewModels {
         }
 
         /// <summary>
-        /// <see cref="Karamem0.Kanpuchi.ViewModels.MainViewModel.LoadLatest"/> を実行できるかどうかを判断します。
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.HomeViewModel.LoadLatest"/> を実行できるかどうかを判断します。
         /// </summary>
         /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
         private bool CanLoadLatest() {
+            if (this.IsBusy == true) {
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// 選択されているピボット項目の直前のデータを読み込むコマンドを取得します。
+        /// </summary>
+        public DelegateCommand LoadPreviousCommand { get; private set; }
+
+        /// <summary>
+        /// 選択されているピボット項目の直前のデータを読み込みます。
+        /// </summary>
+        private void LoadPrevious() {
+            var index = (PivotIndex)this.SelectedIndex;
+            if (index == PivotIndex.Tweet) {
+                var tweetService = new TweetService(this);
+                tweetService.AsyncStarted += this.OnTweetServiceAsyncStarted;
+                tweetService.AsyncCompleted += this.OnTweetServiceAsyncCompleted;
+                tweetService.LoadPreviousAsync();
+            }
+            if (index == PivotIndex.MatomeEntry) {
+                var matomeEntryService = new MatomeEntryService(this);
+                matomeEntryService.AsyncStarted += this.OnMatomeEntryServiceAsyncStarted;
+                matomeEntryService.AsyncCompleted += this.OnMatomeEntryServiceAsyncCompleted;
+                matomeEntryService.LoadPreviousAsync();
+            }
+        }
+
+        /// <summary>
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.HomeViewModel.LoadPrevious"/> を実行できるかどうかを判断します。
+        /// </summary>
+        /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
+        private bool CanLoadPrevious() {
             if (this.IsBusy == true) {
                 return false;
             }
@@ -147,6 +182,7 @@ namespace Karamem0.Kanpuchi.ViewModels {
             this.Tweets = new ObservableCollection<TweetViewModel>();
             this.MatomeEntries = new ObservableCollection<MatomeEntryViewModel>();
             this.LoadLatestCommand = new DelegateCommand(this.LoadLatest, this.CanLoadLatest);
+            this.LoadPreviousCommand = new DelegateCommand(this.LoadPrevious, this.CanLoadPrevious);
         }
 
         /// <summary>
@@ -185,6 +221,7 @@ namespace Karamem0.Kanpuchi.ViewModels {
             var tweetService = sender as TweetService;
             if (tweetService != null) {
                 tweetService.AsyncCompleted -= this.OnTweetServiceAsyncCompleted;
+                tweetService.Dispose();
             }
             this.IsBusy = false;
             if (e.Exception != null) {
@@ -214,13 +251,13 @@ namespace Karamem0.Kanpuchi.ViewModels {
             var matomeEntryService = sender as MatomeEntryService;
             if (matomeEntryService != null) {
                 matomeEntryService.AsyncCompleted -= this.OnMatomeEntryServiceAsyncCompleted;
+                matomeEntryService.Dispose();
             }
             this.IsBusy = false;
             if (e.Exception != null) {
                 Messanger.Current.Send("Error", "LoadError");
             }
         }
-
 
     }
 

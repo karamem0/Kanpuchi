@@ -1,5 +1,4 @@
-﻿using Karamem0.Kanpuchi.Extensions;
-using Karamem0.Kanpuchi.Infrastructure;
+﻿using Karamem0.Kanpuchi.Infrastructure;
 using Karamem0.Kanpuchi.Models;
 using Karamem0.Kanpuchi.Repositories;
 using Karamem0.Kanpuchi.ViewModels;
@@ -7,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Karamem0.Kanpuchi.Services {
@@ -16,6 +14,11 @@ namespace Karamem0.Kanpuchi.Services {
     /// まとめサイトを管理するためのサービスを表します。
     /// </summary>
     public class SettingsService : Service {
+
+        /// <summary>
+        /// オブジェクトが解放されたかどうかを示す値を表します。
+        /// </summary>
+        private bool disposed;
 
         /// <summary>
         /// ビュー モデルを表します。
@@ -59,6 +62,9 @@ namespace Karamem0.Kanpuchi.Services {
         /// 設定情報を読み込みます。
         /// </summary>
         public async void LoadAsync() {
+            if (this.disposed == true) {
+                throw new ObjectDisposedException(nameof(SettingsService));
+            }
             try {
                 this.RaiseAsyncStarted();
                 var settings = await this.settingsRepository.LoadAsync();
@@ -89,6 +95,9 @@ namespace Karamem0.Kanpuchi.Services {
         /// 設定情報を保存します。
         /// </summary>
         public async void SaveAsync() {
+            if (this.disposed == true) {
+                throw new ObjectDisposedException(nameof(SettingsService));
+            }
             try {
                 this.RaiseAsyncStarted();
                 var settings = new Settings();
@@ -101,6 +110,22 @@ namespace Karamem0.Kanpuchi.Services {
             } catch (Exception ex) {
                 this.RaiseAsyncCompleted(ex);
             }
+        }
+
+        /// <summary>
+        /// 現在のインスタンスで使用されているリソースを解放します。
+        /// </summary>
+        /// <param name="disposing">
+        /// アンマネージ リソースとマネージ リソースの両方を解放する場合は true。アンマネージ
+        /// リソースのみ解放する場合は false。
+        /// </param>
+        protected override void Dispose(bool disposing) {
+            if (this.disposed != true) {
+                if (disposing == true) {
+                    this.viewModel = null;
+                }
+            }
+            this.disposed = true;
         }
 
     }

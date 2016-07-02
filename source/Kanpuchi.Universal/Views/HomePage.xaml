@@ -18,13 +18,19 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <ProgressBar
+        <Border
             Grid.Column="0"
             Grid.Row="0"
-            Foreground="{StaticResource AppThemeDarkBrush}"
-            IsIndeterminate="True"
-            Visibility="{Binding IsBusy, Converter={StaticResource VisibleConverter}}" />
+            Height="6">
+            <ProgressBar
+                Background="#00FFFFFF"
+                Foreground="{StaticResource AppThemeDarkBrush}"
+                IsIndeterminate="True"
+                IsTabStop="False"
+                Visibility="{Binding IsBusy, Converter={StaticResource VisibleConverter}}" />
+        </Border>
         <Pivot
+            x:Name="Pivot"
             Grid.Column="0"
             Grid.Row="1"
             Margin="0,0,0,0"
@@ -37,7 +43,32 @@
             Grid.Row="2"
             Background="{ThemeResource SystemAltHighColor}"
             HorizontalAlignment="Stretch"
-            VerticalAlignment="Bottom" />
+            VerticalAlignment="Bottom">
+            <AppBarButton
+                x:Uid="ScrollToTopButton"
+                Click="OnScrollToTopButtonClick"
+                Label="Top">
+                <FontIcon
+                    FontFamily="Segoe MDL2 Assets"
+                    Glyph="&#xE74A;" />
+            </AppBarButton>
+            <AppBarButton
+                x:Uid="ScrollToBottomButton"
+                Click="OnScrollToBottomButtonClick"
+                Label="Bottom">
+                <FontIcon
+                    FontFamily="Segoe MDL2 Assets"
+                    Glyph="&#xE74B;" />
+            </AppBarButton>
+            <AppBarButton
+                x:Uid="RefreshButton"
+                Command="{Binding LoadLatestCommand}"
+                Label="Refresh">
+                <FontIcon
+                    FontFamily="Segoe MDL2 Assets"
+                    Glyph="&#xE72C;" />
+            </AppBarButton>
+        </CommandBar>
     </Grid>
     <i:Interaction.Behaviors>
         <li:ViewModelBehavior />

@@ -33,6 +33,7 @@
     </Compile>
     <Compile Include="Configuration\AppSettings.cs" />
     <Compile Include="Configuration\AppSettingsBase.cs" />
+    <Compile Include="Extensions\DependencyExtensions.cs" />
     <Compile Include="Extensions\PackageVersionExtensions.cs" />
     <Compile Include="Infrastructure\AsyncCompletedEventArgs.cs" />
     <Compile Include="Infrastructure\AsyncStartedEventArgs.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="Interactivity\BooleanAndVisibilityConverter.cs" />
     <Compile Include="Interactivity\ErrorMessageAction.cs" />
     <Compile Include="Interactivity\LauncherCommands.cs" />
+    <Compile Include="Interactivity\ScrollBoundsBehavior.cs" />
     <Compile Include="Interactivity\LocalTimeConverter.cs" />
     <Compile Include="Interactivity\MessangerBehavior.cs" />
     <Compile Include="Interactivity\ViewModelBehavior.cs" />
@@ -197,6 +199,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <PlatformTarget>x64</PlatformTarget>
     <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;;CODE_ANALYSIS</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <PlatformTarget>x64</PlatformTarget>

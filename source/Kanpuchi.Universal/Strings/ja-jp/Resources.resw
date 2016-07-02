@@ -129,8 +129,17 @@
   <data name="MatomeSitePivotHeader.Text" xml:space="preserve">
     <value>サイト</value>
   </data>
+  <data name="RefreshButton.Label" xml:space="preserve">
+    <value>更新</value>
+  </data>
   <data name="ReviewAppButton.Content" xml:space="preserve">
     <value>アプリのレビュー</value>
+  </data>
+  <data name="ScrollToBottomButton.Label" xml:space="preserve">
+    <value>下に移動</value>
+  </data>
+  <data name="ScrollToTopButton.Label" xml:space="preserve">
+    <value>上に移動</value>
   </data>
   <data name="SettingsButton.Content" xml:space="preserve">
     <value>設定</value>

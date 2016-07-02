@@ -61,7 +61,8 @@ namespace Karamem0.Kanpuchi.Repositories {
                         return serializer.Deserialize<IEnumerable<MatomeEntry>>(reader);
                     }
                 }
-            }        }
+            }
+        }
 
     }
 
