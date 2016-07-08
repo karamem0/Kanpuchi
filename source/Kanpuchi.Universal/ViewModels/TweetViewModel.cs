@@ -1,4 +1,5 @@
-﻿using Karamem0.Kanpuchi.Infrastructure;
+﻿using Prism.Commands;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace Karamem0.Kanpuchi.ViewModels {
     /// <summary>
     /// ツイートのビュー モデルを表します。
     /// </summary>
-    public sealed class TweetViewModel : ViewModel {
+    public sealed class TweetViewModel : BindableBase {
 
         /// <summary>
         /// ID を表します。
@@ -28,7 +29,7 @@ namespace Karamem0.Kanpuchi.ViewModels {
             set {
                 if (this.statusId != value) {
                     this.statusId = value;
-                    this.RaisePropertyChanged(() => this.StatusId);
+                    this.OnPropertyChanged();
                 }
             }
         }
@@ -46,7 +47,7 @@ namespace Karamem0.Kanpuchi.ViewModels {
             set {
                 if (this.userId != value) {
                     this.userId = value;
-                    this.RaisePropertyChanged(() => this.UserId);
+                    this.OnPropertyChanged();
                 }
             }
         }
@@ -64,7 +65,7 @@ namespace Karamem0.Kanpuchi.ViewModels {
             set {
                 if (this.userName != value) {
                     this.userName = value;
-                    this.RaisePropertyChanged(() => this.UserName);
+                    this.OnPropertyChanged();
                 }
             }
         }
@@ -82,7 +83,7 @@ namespace Karamem0.Kanpuchi.ViewModels {
             set {
                 if (this.screenName != value) {
                     this.screenName = value;
-                    this.RaisePropertyChanged(() => this.ScreenName);
+                    this.OnPropertyChanged();
                 }
             }
         }
@@ -100,7 +101,7 @@ namespace Karamem0.Kanpuchi.ViewModels {
             set {
                 if (this.profileImageUrl != value) {
                     this.profileImageUrl = value;
-                    this.RaisePropertyChanged(() => this.ProfileImageUrl);
+                    this.OnPropertyChanged();
                 }
             }
         }
@@ -118,7 +119,7 @@ namespace Karamem0.Kanpuchi.ViewModels {
             set {
                 if (this.permalink != value) {
                     this.permalink = value;
-                    this.RaisePropertyChanged(() => this.Permalink);
+                    this.OnPropertyChanged();
                 }
             }
         }
@@ -136,7 +137,7 @@ namespace Karamem0.Kanpuchi.ViewModels {
             set {
                 if (this.text != value) {
                     this.text = value;
-                    this.RaisePropertyChanged(() => this.Text);
+                    this.OnPropertyChanged();
                 }
             }
         }
@@ -154,7 +155,7 @@ namespace Karamem0.Kanpuchi.ViewModels {
             set {
                 if (this.createdAt != value) {
                     this.createdAt = value;
-                    this.RaisePropertyChanged(() => this.CreatedAt);
+                    this.OnPropertyChanged();
                 }
             }
         }
@@ -241,16 +242,6 @@ namespace Karamem0.Kanpuchi.ViewModels {
             this.DataTransferCommand = new DelegateCommand(this.DataTransfer, this.CanDataTransfer);
             this.CopyClipboardCommand = new DelegateCommand(this.CopyClipboard, this.CanCopyClipboard);
         }
-
-        /// <summary>
-        /// ビュー モデルがロードされると呼び出されます。
-        /// </summary>
-        public override void OnLoaded() { }
-
-        /// <summary>
-        /// ビュー モデルがアンロードされると呼び出されます。
-        /// </summary>
-        public override void OnUnloaded() { }
 
         /// <summary>
         /// <see cref="Windows.ApplicationModel.DataTransfer.DataTransferManager.DataRequested"/>

@@ -120,11 +120,17 @@
   <data name="ErrorTitle" xml:space="preserve">
     <value>エラー</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>ホーム</value>
+  </data>
   <data name="LaunchAppError" xml:space="preserve">
     <value>アプリを起動できませんでした。</value>
   </data>
   <data name="LoadError" xml:space="preserve">
     <value>データを読み込めませんでした。再度お試しください。</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>設定</value>
   </data>
   <data name="ShareDescription" xml:space="preserve">
     <value>選択した URL を共有します。</value>

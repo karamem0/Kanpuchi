@@ -4,11 +4,62 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    xmlns:prism="using:Prism.Windows.Mvvm"
+    mc:Ignorable="d"
+    Margin="6,0,0,0">
     <PivotItem.Header>
         <TextBlock
             x:Uid="MatomeSitePivotHeader"
             Style="{ThemeResource BodyTextBlockStyle}"
             Text="Sites" />
     </PivotItem.Header>
+    <Grid>
+        <ListBox
+            Background="#00FFFFFF"
+            ItemsSource="{Binding MatomeSites}"
+            Style="{StaticResource ListBoxStyle}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <CheckBox
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            Command="{Binding SaveCommand}"
+                            HorizontalAlignment="Stretch"
+                            IsChecked="{Binding Enabled, Mode=TwoWay}"
+                            MinWidth="0"
+                            Style="{StaticResource CheckBoxStyle}"
+                            VerticalAlignment="Stretch">
+                        </CheckBox>
+                        <Button
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            Margin="6,0,0,0">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <StackPanel>
+                                        <TextBlock
+                                            Foreground="{StaticResource AppThemeDarkBrush}"
+                                            Style="{ThemeResource BaseTextBlockStyle}"
+                                            Text="{Binding SiteName}" />
+                                        <TextBlock
+                                            Foreground="{ThemeResource SystemColorGrayTextColor}"
+                                            Style="{ThemeResource BodyTextBlockStyle}"
+                                            Text="{Binding SiteUrl}" />
+                                    </StackPanel>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
 </PivotItem>

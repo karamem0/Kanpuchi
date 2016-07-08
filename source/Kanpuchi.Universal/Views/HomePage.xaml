@@ -1,15 +1,24 @@
-﻿<Page
+﻿<prism:SessionStateAwarePage
     x:Class="Karamem0.Kanpuchi.Views.HomePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prism="using:Prism.Windows.Mvvm"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:li="using:Karamem0.Kanpuchi.Interactivity"
     xmlns:vi="using:Karamem0.Kanpuchi.Views"
     mc:Ignorable="d"
-    DataContext="{Binding HomeViewModel, Source={StaticResource ViewModelLocator}}">
+    prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
+        <Grid.Resources>
+            <li:BooleanAndVisibilityConverter
+                x:Key="VisibleConverter"
+                IsReverse="False" />
+            <li:BooleanAndVisibilityConverter
+                x:Key="CollaspedConverter"
+                IsReverse="True" />
+        </Grid.Resources>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
@@ -35,8 +44,8 @@
             Grid.Row="1"
             Margin="0,0,0,0"
             SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
-            <vi:TweetPivotItem />
-            <vi:MatomeEntryPivotItem />
+            <vi:TweetPivotItem DataContext="{Binding}" />
+            <vi:MatomeEntryPivotItem DataContext="{Binding}" />
         </Pivot>
         <CommandBar
             Grid.Column="0"
@@ -46,7 +55,6 @@
             VerticalAlignment="Bottom">
             <AppBarButton
                 x:Uid="ScrollToTopButton"
-                Click="OnScrollToTopButtonClick"
                 Label="Top">
                 <FontIcon
                     FontFamily="Segoe MDL2 Assets"
@@ -54,7 +62,6 @@
             </AppBarButton>
             <AppBarButton
                 x:Uid="ScrollToBottomButton"
-                Click="OnScrollToBottomButtonClick"
                 Label="Bottom">
                 <FontIcon
                     FontFamily="Segoe MDL2 Assets"
@@ -70,10 +77,4 @@
             </AppBarButton>
         </CommandBar>
     </Grid>
-    <i:Interaction.Behaviors>
-        <li:ViewModelBehavior />
-        <li:MessangerBehavior Key="Error">
-            <li:ErrorMessageAction />
-        </li:MessangerBehavior>
-    </i:Interaction.Behaviors>
-</Page>
+</prism:SessionStateAwarePage>

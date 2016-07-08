@@ -1,4 +1,7 @@
-﻿using Karamem0.Kanpuchi.Views;
+﻿using Karamem0.Kanpuchi.ViewModels;
+using Karamem0.Kanpuchi.Views;
+using Prism.Mvvm;
+using Prism.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,27 +13,60 @@ using Windows.UI.Xaml.Controls;
 
 namespace Karamem0.Kanpuchi {
 
-    /// <summary>
-    /// Windows Phone アプリケーションを表します。
-    /// </summary>
-    public sealed partial class App : Application {
+    public sealed partial class Application : PrismApplication {
 
         /// <summary>
-        /// <see cref="Karamem0.Kanpuchi.App"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Application"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        public App() {
+        public Application() {
             this.InitializeComponent();
         }
 
         /// <summary>
-        /// アプリケーションがアクティブになるとき呼び出されます。
+        /// アプリケーションのシェルを示すビジュアル要素を作成します。
         /// </summary>
-        /// <param name="e">イベントのデータを格納する <see cref="Windows.ApplicationModel.Activation.LaunchActivatedEventArgs"/>。</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e) {
-            var rootFrame = new Frame();
-            rootFrame.Navigate(typeof(MainPage), e.Arguments);
-            Window.Current.Content = rootFrame;
-            Window.Current.Activate();
+        /// <param name="rootFrame">基底のフレームを示す <see cref="Windows.UI.Xaml.Controls.Frame"/>。</param>
+        /// <returns>シェルを示す <see cref="Windows.UI.Xaml.UIElement"/>。</returns>
+        protected override UIElement CreateShell(Frame rootFrame) {
+            var shell = new Shell();
+            shell.SplitView.Content = rootFrame;
+            return shell;
+        }
+
+        /// <summary>
+        /// アプリケーションが初期化されるときのイベントで追加の処理を実行します。
+        /// </summary>
+        /// <param name="args">
+        /// イベントのデータを格納する
+        /// <see cref="Windows.ApplicationModel.Activation.IActivatedEventArgs"/>。
+        /// </param>
+        /// <returns><see cref="System.Threading.Tasks.Task"/>。</returns>
+        protected override Task OnInitializeAsync(IActivatedEventArgs args) {
+            ViewModelLocationProvider.Register(
+                typeof(Shell).FullName,
+                () => new ShellViewModel(this.NavigationService));
+            var homePageViewModel = new HomePageViewModel();
+            ViewModelLocationProvider.Register(
+                typeof(HomePage).FullName,
+                () => homePageViewModel);
+            var settingsPageViewModel = new SettingsPageViewModel();
+            ViewModelLocationProvider.Register(
+                typeof(SettingsPage).FullName,
+                () => settingsPageViewModel);
+            return base.OnInitializeAsync(args);
+        }
+
+        /// <summary>
+        /// アプリケーションが起動されるときのイベントで追加の処理を実行します。
+        /// </summary>
+        /// <param name="args">
+        /// イベントのデータを格納する
+        /// <see cref="Windows.ApplicationModel.Activation.LaunchActivatedEventArgs"/>。
+        /// </param>
+        /// <returns><see cref="System.Threading.Tasks.Task"/>。</returns>
+        protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args) {
+            this.NavigationService.Navigate("Home", null);
+            return Task.FromResult<object>(null);
         }
 
     }

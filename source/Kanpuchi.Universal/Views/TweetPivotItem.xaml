@@ -7,7 +7,6 @@
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:li="using:Karamem0.Kanpuchi.Interactivity"
     mc:Ignorable="d"
-    DataContext="{Binding HomeViewModel, Source={StaticResource ViewModelLocator}}"
     Margin="6,0,0,0">
     <PivotItem.Header>
         <TextBlock
@@ -15,7 +14,16 @@
             Style="{ThemeResource BodyTextBlockStyle}"
             Text="Tweets" />
     </PivotItem.Header>
-    <Grid>
+    <Border>
+        <Border.Resources>
+            <li:BooleanAndVisibilityConverter
+                x:Key="VisibleConverter"
+                IsReverse="False" />
+            <li:BooleanAndVisibilityConverter
+                x:Key="CollaspedConverter"
+                IsReverse="True" />
+            <li:LocalTimeConverter x:Key="LocalTimeConverter" />
+        </Border.Resources>
         <ListBox
             Background="#00FFFFFF"
             ItemsSource="{Binding Tweets}"
@@ -97,6 +105,31 @@
                     </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
+            <ListBox.Template>
+                <ControlTemplate TargetType="ListBox">
+                    <ScrollViewer x:Name="ScrollViewer">
+                        <Grid
+                            x:Name="Content"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Margin="{TemplateBinding Padding}">
+                            <Grid
+                                Margin="0,-48,0,48"
+                                VerticalAlignment="Top">
+                                <FontIcon
+                                    Foreground="{ThemeResource SystemChromeDisabledLowColor}"
+                                    FontFamily="Segoe MDL2 Assets"
+                                    Glyph="&#xE72C;"
+                                    Height="48"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Width="48" />
+                            </Grid>
+                            <ItemsPresenter />
+                        </Grid>
+                    </ScrollViewer>
+                </ControlTemplate>
+            </ListBox.Template>
             <i:Interaction.Behaviors>
                 <li:ScrollBoundsBehavior
                     ScrollBottomCommand="{Binding LoadPreviousCommand}"
@@ -105,5 +138,5 @@
                     ScrollTopOffset="50" />
             </i:Interaction.Behaviors>
         </ListBox>
-    </Grid>
+    </Border>
 </PivotItem>

@@ -120,11 +120,17 @@
   <data name="ErrorTitle" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
   <data name="LaunchAppError" xml:space="preserve">
     <value>Failed to launch an app.</value>
   </data>
   <data name="LoadError" xml:space="preserve">
     <value>Failed to load data. Try again.</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
   </data>
   <data name="ShareDescription" xml:space="preserve">
     <value>Share selected URL.</value>

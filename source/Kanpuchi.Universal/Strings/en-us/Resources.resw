@@ -135,6 +135,9 @@
   <data name="ReviewAppButton.Content" xml:space="preserve">
     <value>Review App</value>
   </data>
+  <data name="SaveButton.Label" xml:space="preserve">
+    <value>Save</value>
+  </data>
   <data name="ScrollToBottomButton.Label" xml:space="preserve">
     <value>Bottom</value>
   </data>

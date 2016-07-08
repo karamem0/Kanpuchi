@@ -26,7 +26,7 @@ namespace Karamem0.Kanpuchi.Infrastructure {
         public T AssociatedObject { get; private set; }
 
         /// <summary>
-        /// <see cref="Karamem0.Kanpuchi.Infrastructure.Behavior"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.Infrastructure.Behavior{T}"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         protected Behavior() { }
 

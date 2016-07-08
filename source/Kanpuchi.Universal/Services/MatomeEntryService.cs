@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Karamem0.Kanpuchi.Extensions;
 using Karamem0.Kanpuchi.Infrastructure;
 using Karamem0.Kanpuchi.Models;
 using Karamem0.Kanpuchi.Repositories;
@@ -24,7 +25,7 @@ namespace Karamem0.Kanpuchi.Services {
         /// <summary>
         /// ビュー モデルを表します。
         /// </summary>
-        private HomeViewModel viewModel;
+        private HomePageViewModel viewModel;
 
         /// <summary>
         /// デバイスを格納するリポジトリを表します。
@@ -54,7 +55,7 @@ namespace Karamem0.Kanpuchi.Services {
         /// <see cref="Karamem0.Kanpuchi.Services.MatomeEntryService"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         /// <param name="viewModel"><see cref="Karamem0.Kanpuchi.ViewModels.HomeViewModel"/>。</param>
-        public MatomeEntryService(HomeViewModel viewModel)
+        public MatomeEntryService(HomePageViewModel viewModel)
             : this() {
             this.viewModel = viewModel;
         }
@@ -62,7 +63,7 @@ namespace Karamem0.Kanpuchi.Services {
         /// <summary>
         /// 最新のまとめ記事を読み込みます。
         /// </summary>
-        public async void LoadLatestAsync() {
+        public async Task LoadLatestAsync() {
             if (this.disposed == true) {
                 throw new ObjectDisposedException(nameof(MatomeEntryService));
             }
@@ -70,6 +71,12 @@ namespace Karamem0.Kanpuchi.Services {
                 this.RaiseAsyncStarted();
                 var device = await this.deviceRepository.RegisterAsync();
                 var settings = await this.settingsRepository.LoadAsync();
+                for (int index = this.viewModel.MatomeEntries.Count - 1; index >= 0; index--) {
+                    var matomeEntry = this.viewModel.MatomeEntries[index];
+                    if (settings.EnableSiteIds.Contains(matomeEntry.SiteId) != true) {
+                        this.viewModel.MatomeEntries.Remove(matomeEntry);
+                    }
+                }
                 var matomeEntries = await this.matomeEntryRepository.SearchAsync(
                     deviceId: device.DeviceId.ToString(),
                     deviceKey: device.DeviceKey,
@@ -77,11 +84,10 @@ namespace Karamem0.Kanpuchi.Services {
                 if (matomeEntries != null) {
                     var config = new MapperConfiguration(x => x.CreateMap<MatomeEntry, MatomeEntryViewModel>());
                     var mapper = config.CreateMapper();
-                    foreach (var matomeEntry in matomeEntries.OrderBy(x => x.CreatedAt)) {
-                        if (this.viewModel.MatomeEntries.Any(x => x.EntryId == matomeEntry.EntryId) != true) {
-                            this.viewModel.MatomeEntries.Insert(0, mapper.Map<MatomeEntryViewModel>(matomeEntry));
-                        }
-                    }
+                    this.viewModel.MatomeEntries.AddRange(
+                        matomeEntries.Select(x => mapper.Map<MatomeEntryViewModel>(x)),
+                        x => x.CreatedAt,
+                        x => x.EntryId);
                 }
                 this.RaiseAsyncCompleted();
             } catch (Exception ex) {
@@ -92,7 +98,7 @@ namespace Karamem0.Kanpuchi.Services {
         /// <summary>
         /// 最新のまとめ記事より前のまとめ記事を読み込みます。
         /// </summary>
-        public async void LoadPreviousAsync() {
+        public async Task LoadPreviousAsync() {
             if (this.disposed == true) {
                 throw new ObjectDisposedException(nameof(MatomeEntryService));
             }
@@ -110,11 +116,10 @@ namespace Karamem0.Kanpuchi.Services {
                 if (matomeEntries != null) {
                     var config = new MapperConfiguration(x => x.CreateMap<MatomeEntry, MatomeEntryViewModel>());
                     var mapper = config.CreateMapper();
-                    foreach (var matomeEntry in matomeEntries.OrderByDescending(x => x.CreatedAt)) {
-                        if (this.viewModel.MatomeEntries.Any(x => x.EntryId == matomeEntry.EntryId) != true) {
-                            this.viewModel.MatomeEntries.Add(mapper.Map<MatomeEntryViewModel>(matomeEntry));
-                        }
-                    }
+                    this.viewModel.MatomeEntries.AddRange(
+                        matomeEntries.Select(x => mapper.Map<MatomeEntryViewModel>(x)),
+                        x => x.CreatedAt,
+                        x => x.EntryId);
                 }
                 this.RaiseAsyncCompleted();
             } catch (Exception ex) {

@@ -26,7 +26,7 @@ namespace Karamem0.Kanpuchi.Repositories {
         private static readonly string PostUri = "https://kanpuchi.azurewebsites.net/api/device";
 
         /// <summary>
-        /// アプリケーションの <see cref=".Kanpuchi.Repositories.Device"/> クラスのインスタンスを表します。
+        /// アプリケーションの <see cref="Karamem0.Kanpuchi.Repositories.DeviceRepository"/> クラスのインスタンスを表します。
         /// </summary>
         private static Device Instance;
 

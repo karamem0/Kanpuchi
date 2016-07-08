@@ -100,8 +100,10 @@ namespace Karamem0.Kanpuchi.Interactivity {
         /// イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructure.MessageEventArgs"/>。
         /// </param>
         private void OnMessangerAfterSend(object sender, MessageEventArgs e) {
-            foreach (var action in this.Actions.OfType<IAction>()) {
-                action.Execute(this.AssociatedObject, e.Content);
+            if (e.Key == this.Key) {
+                foreach (var action in this.Actions.OfType<IAction>()) {
+                    action.Execute(this.AssociatedObject, e.Content);
+                }
             }
         }
 

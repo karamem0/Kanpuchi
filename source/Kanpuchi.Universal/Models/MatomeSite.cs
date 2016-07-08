@@ -39,11 +39,6 @@ namespace Karamem0.Kanpuchi.Models {
         public virtual string FeedUrl { get; set; }
 
         /// <summary>
-        /// 使用するかどうかを示す値を取得または設定します。
-        /// </summary>
-        public virtual bool Enabled { get; set; }
-
-        /// <summary>
         /// <see cref="Karamem0.Kanpuchi.Models.MatomeSite"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
         public MatomeSite() { }

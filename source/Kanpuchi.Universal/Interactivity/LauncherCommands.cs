@@ -1,4 +1,4 @@
-﻿using Karamem0.Kanpuchi.Infrastructure;
+﻿using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,14 +50,12 @@ namespace Karamem0.Kanpuchi.Interactivity {
             try {
                 await Launcher.LaunchUriAsync(new Uri("ms-windows-store:Review?ProductId=9wzdncrdcr55"));
             } catch {
-                Messanger.Current.Send("Error", "LaunchAppError");
             }
         }
 
         /// <summary>
         /// <see cref="Karamem0.Kanpuchi.Interactivity.LauncherCommands.LaunchBrowser"/> を実行できるかどうかを判断します。
         /// </summary>
-        /// <param name="parameter">URI を示す <see cref="System.String"/>。</param>
         /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
         private bool CanLaunchReviewApp() {
             return true;

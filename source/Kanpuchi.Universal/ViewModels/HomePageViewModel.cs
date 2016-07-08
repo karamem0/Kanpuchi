@@ -1,6 +1,9 @@
 ﻿using Karamem0.Kanpuchi.Infrastructure;
-using Karamem0.Kanpuchi.Models;
 using Karamem0.Kanpuchi.Services;
+using Prism.Commands;
+using Prism.Mvvm;
+using Prism.Windows.Mvvm;
+using Prism.Windows.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,10 +13,7 @@ using System.Threading.Tasks;
 
 namespace Karamem0.Kanpuchi.ViewModels {
 
-    /// <summary>
-    /// ホーム ページのビュー モデルを表します。
-    /// </summary>
-    public sealed class HomeViewModel : ViewModel {
+    public sealed class HomePageViewModel : ViewModelBase {
 
         /// <summary>
         /// <see cref="Karamem0.Kanpuchi.Views.HomePage"/> のピボットの項目のインデックスを指定します。   
@@ -40,24 +40,24 @@ namespace Karamem0.Kanpuchi.ViewModels {
         /// <summary>
         /// 選択されているピボット項目の最新のデータを読み込みます。
         /// </summary>
-        private void LoadLatest() {
+        private async void LoadLatest() {
             var index = (PivotIndex)this.SelectedIndex;
             if (index == PivotIndex.Tweet) {
                 var tweetService = new TweetService(this);
                 tweetService.AsyncStarted += this.OnTweetServiceAsyncStarted;
                 tweetService.AsyncCompleted += this.OnTweetServiceAsyncCompleted;
-                tweetService.LoadLatestAsync();
+                await tweetService.LoadLatestAsync();
             }
             if (index == PivotIndex.MatomeEntry) {
                 var matomeEntryService = new MatomeEntryService(this);
                 matomeEntryService.AsyncStarted += this.OnMatomeEntryServiceAsyncStarted;
                 matomeEntryService.AsyncCompleted += this.OnMatomeEntryServiceAsyncCompleted;
-                matomeEntryService.LoadLatestAsync();
+                await matomeEntryService.LoadLatestAsync();
             }
         }
 
         /// <summary>
-        /// <see cref="Karamem0.Kanpuchi.ViewModels.HomeViewModel.LoadLatest"/> を実行できるかどうかを判断します。
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.HomePageViewModel.LoadLatest"/> を実行できるかどうかを判断します。
         /// </summary>
         /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
         private bool CanLoadLatest() {
@@ -75,24 +75,24 @@ namespace Karamem0.Kanpuchi.ViewModels {
         /// <summary>
         /// 選択されているピボット項目の直前のデータを読み込みます。
         /// </summary>
-        private void LoadPrevious() {
+        private async void LoadPrevious() {
             var index = (PivotIndex)this.SelectedIndex;
             if (index == PivotIndex.Tweet) {
                 var tweetService = new TweetService(this);
                 tweetService.AsyncStarted += this.OnTweetServiceAsyncStarted;
                 tweetService.AsyncCompleted += this.OnTweetServiceAsyncCompleted;
-                tweetService.LoadPreviousAsync();
+                await tweetService.LoadPreviousAsync();
             }
             if (index == PivotIndex.MatomeEntry) {
                 var matomeEntryService = new MatomeEntryService(this);
                 matomeEntryService.AsyncStarted += this.OnMatomeEntryServiceAsyncStarted;
                 matomeEntryService.AsyncCompleted += this.OnMatomeEntryServiceAsyncCompleted;
-                matomeEntryService.LoadPreviousAsync();
+                await matomeEntryService.LoadPreviousAsync();
             }
         }
 
         /// <summary>
-        /// <see cref="Karamem0.Kanpuchi.ViewModels.HomeViewModel.LoadPrevious"/> を実行できるかどうかを判断します。
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.HomePageViewModel.LoadPrevious"/> を実行できるかどうかを判断します。
         /// </summary>
         /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
         private bool CanLoadPrevious() {
@@ -115,7 +115,7 @@ namespace Karamem0.Kanpuchi.ViewModels {
             private set {
                 if (this.tweets != value) {
                     this.tweets = value;
-                    this.RaisePropertyChanged(() => this.Tweets);
+                    this.OnPropertyChanged();
                 }
             }
         }
@@ -133,7 +133,7 @@ namespace Karamem0.Kanpuchi.ViewModels {
             private set {
                 if (this.matomeEntries != value) {
                     this.matomeEntries = value;
-                    this.RaisePropertyChanged(() => this.MatomeEntries);
+                    this.OnPropertyChanged();
                 }
             }
         }
@@ -151,7 +151,7 @@ namespace Karamem0.Kanpuchi.ViewModels {
             set {
                 if (this.selectedIndex != value) {
                     this.selectedIndex = value;
-                    this.RaisePropertyChanged(() => this.SelectedIndex);
+                    this.OnPropertyChanged();
                     this.LoadLatest();
                 }
             }
@@ -170,32 +170,31 @@ namespace Karamem0.Kanpuchi.ViewModels {
             private set {
                 if (this.isBusy != value) {
                     this.isBusy = value;
-                    this.RaisePropertyChanged(() => this.IsBusy);
+                    this.OnPropertyChanged();
+                    this.LoadLatestCommand.RaiseCanExecuteChanged();
+                    this.LoadPreviousCommand.RaiseCanExecuteChanged();
                 }
             }
         }
 
         /// <summary>
-        /// <see cref="Karamem0.Kanpuchi.ViewModels.HomeViewModel"/> クラスの新しいインスタンスを初期化します。
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.HomePageViewModel"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        public HomeViewModel() {
+        public HomePageViewModel() {
             this.Tweets = new ObservableCollection<TweetViewModel>();
             this.MatomeEntries = new ObservableCollection<MatomeEntryViewModel>();
             this.LoadLatestCommand = new DelegateCommand(this.LoadLatest, this.CanLoadLatest);
             this.LoadPreviousCommand = new DelegateCommand(this.LoadPrevious, this.CanLoadPrevious);
         }
 
-        /// <summary>
-        /// ビュー モデルがロードされると呼び出されます。
-        /// </summary>
-        public override void OnLoaded() {
+        public override void OnNavigatedTo(NavigatedToEventArgs e, Dictionary<string, object> viewModelState) {
             this.LoadLatest();
+            base.OnNavigatedTo(e, viewModelState);
         }
 
-        /// <summary>
-        /// ビュー モデルがアンロードされると呼び出されます。
-        /// </summary>
-        public override void OnUnloaded() { }
+        public override void OnNavigatingFrom(NavigatingFromEventArgs e, Dictionary<string, object> viewModelState, bool suspending) {
+            base.OnNavigatingFrom(e, viewModelState, suspending);
+        }
 
         /// <summary>
         /// ツイートの取得の非同期操作が開始するときに追加の処理を実行します。

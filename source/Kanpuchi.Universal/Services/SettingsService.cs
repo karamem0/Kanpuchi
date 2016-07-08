@@ -1,4 +1,5 @@
-﻿using Karamem0.Kanpuchi.Infrastructure;
+﻿using AutoMapper;
+using Karamem0.Kanpuchi.Infrastructure;
 using Karamem0.Kanpuchi.Models;
 using Karamem0.Kanpuchi.Repositories;
 using Karamem0.Kanpuchi.ViewModels;
@@ -23,7 +24,7 @@ namespace Karamem0.Kanpuchi.Services {
         /// <summary>
         /// ビュー モデルを表します。
         /// </summary>
-        private SettingsViewModel viewModel;
+        private SettingsPageViewModel viewModel;
 
         /// <summary>
         /// 設定情報を格納するリポジトリを表します。
@@ -52,8 +53,8 @@ namespace Karamem0.Kanpuchi.Services {
         /// <summary>
         /// <see cref="Karamem0.Kanpuchi.Services.SettingsService"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="viewModel"><see cref="Karamem0.Kanpuchi.ViewModels.SettingsViewModel"/>。</param>
-        public SettingsService(SettingsViewModel viewModel)
+        /// <param name="viewModel"><see cref="Karamem0.Kanpuchi.ViewModels.SettingsPageViewModel"/>。</param>
+        public SettingsService(SettingsPageViewModel viewModel)
             : this() {
             this.viewModel = viewModel;
         }
@@ -61,7 +62,8 @@ namespace Karamem0.Kanpuchi.Services {
         /// <summary>
         /// 設定情報を読み込みます。
         /// </summary>
-        public async void LoadAsync() {
+        /// <returns>非同期操作の結果を示す <see cref="System.Threading.Tasks.Task"/>。</returns>
+        public async Task LoadAsync() {
             if (this.disposed == true) {
                 throw new ObjectDisposedException(nameof(SettingsService));
             }
@@ -74,7 +76,11 @@ namespace Karamem0.Kanpuchi.Services {
                     deviceKey: device.DeviceKey);
                 if (matomeSites != null) {
                     this.viewModel.MatomeSites.Clear();
-                    foreach (var matomeSite in matomeSites.OrderBy(x => x.SiteId)) {
+                    var config = new MapperConfiguration(x => x.CreateMap<MatomeSite, MatomeSiteViewModel>());
+                    var mapper = config.CreateMapper();
+                    foreach (var matomeSite in matomeSites
+                        .OrderBy(x => x.SiteId)
+                        .Select(x => mapper.Map<MatomeSiteViewModel>(x))) {
                         if (settings.EnableSiteIds == null ||
                             settings.EnableSiteIds.Length == 0 ||
                             settings.EnableSiteIds.Contains(matomeSite.SiteId) == true) {
@@ -94,7 +100,8 @@ namespace Karamem0.Kanpuchi.Services {
         /// <summary>
         /// 設定情報を保存します。
         /// </summary>
-        public async void SaveAsync() {
+        /// <returns>非同期操作の結果を示す <see cref="System.Threading.Tasks.Task"/>。</returns>
+        public async Task SaveAsync() {
             if (this.disposed == true) {
                 throw new ObjectDisposedException(nameof(SettingsService));
             }

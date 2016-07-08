@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Karamem0.Kanpuchi.Extensions;
 using Karamem0.Kanpuchi.Infrastructure;
 using Karamem0.Kanpuchi.Models;
 using Karamem0.Kanpuchi.Repositories;
@@ -24,7 +25,7 @@ namespace Karamem0.Kanpuchi.Services {
         /// <summary>
         /// ビュー モデルを表します。
         /// </summary>
-        private HomeViewModel viewModel;
+        private HomePageViewModel viewModel;
 
         /// <summary>
         /// デバイスを格納するリポジトリを表します。
@@ -47,8 +48,8 @@ namespace Karamem0.Kanpuchi.Services {
         /// <summary>
         /// <see cref="Karamem0.Kanpuchi.Services.TweetService"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        /// <param name="viewModel"><see cref="Karamem0.Kanpuchi.ViewModels.HomeViewModel"/>。</param>
-        public TweetService(HomeViewModel viewModel)
+        /// <param name="viewModel"><see cref="Karamem0.Kanpuchi.ViewModels.HomePageViewModel"/>。</param>
+        public TweetService(HomePageViewModel viewModel)
             : this() {
             this.viewModel = viewModel;
         }
@@ -56,7 +57,7 @@ namespace Karamem0.Kanpuchi.Services {
         /// <summary>
         /// 最新のツイートを読み込みます。
         /// </summary>
-        public async void LoadLatestAsync() {
+        public async Task LoadLatestAsync() {
             if (this.disposed == true) {
                 throw new ObjectDisposedException(nameof(TweetService));
             }
@@ -69,11 +70,10 @@ namespace Karamem0.Kanpuchi.Services {
                 if (tweets != null) {
                     var config = new MapperConfiguration(x => x.CreateMap<Tweet, TweetViewModel>());
                     var mapper = config.CreateMapper();
-                    foreach (var tweet in tweets.OrderBy(x => x.CreatedAt)) {
-                        if (this.viewModel.Tweets.Any(x => x.StatusId == tweet.StatusId) != true) {
-                            this.viewModel.Tweets.Insert(0, mapper.Map<TweetViewModel>(tweet));
-                        }
-                    }
+                    this.viewModel.Tweets.AddRange(
+                        tweets.Select(x => mapper.Map<TweetViewModel>(x)),
+                        x => x.CreatedAt,
+                        x => x.StatusId);
                 }
                 this.RaiseAsyncCompleted();
             } catch (Exception ex) {
@@ -84,7 +84,7 @@ namespace Karamem0.Kanpuchi.Services {
         /// <summary>
         /// 現在読み込まれているツイートより前のツイートを読み込みます。
         /// </summary>
-        public async void LoadPreviousAsync() {
+        public async Task LoadPreviousAsync() {
             if (this.disposed == true) {
                 throw new ObjectDisposedException(nameof(TweetService));
             }
@@ -100,11 +100,10 @@ namespace Karamem0.Kanpuchi.Services {
                 if (tweets != null) {
                     var config = new MapperConfiguration(x => x.CreateMap<Tweet, TweetViewModel>());
                     var mapper = config.CreateMapper();
-                    foreach (var tweet in tweets.OrderByDescending(x => x.CreatedAt)) {
-                        if (this.viewModel.Tweets.Any(x => x.StatusId == tweet.StatusId) != true) {
-                            this.viewModel.Tweets.Add(mapper.Map<TweetViewModel>(tweet));
-                        }
-                    }
+                    this.viewModel.Tweets.AddRange(
+                        tweets.Select(x => mapper.Map<TweetViewModel>(x)),
+                        x => x.CreatedAt,
+                        x => x.StatusId);
                 }
                 this.RaiseAsyncCompleted();
             } catch (Exception ex) {
