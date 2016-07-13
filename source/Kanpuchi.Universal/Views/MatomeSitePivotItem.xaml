@@ -31,7 +31,6 @@
                         <CheckBox
                             Grid.Column="0"
                             Grid.Row="0"
-                            Command="{Binding SaveCommand}"
                             HorizontalAlignment="Stretch"
                             IsChecked="{Binding Enabled, Mode=TwoWay}"
                             MinWidth="0"

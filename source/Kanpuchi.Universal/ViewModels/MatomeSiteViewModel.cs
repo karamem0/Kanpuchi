@@ -101,29 +101,10 @@ namespace Karamem0.Kanpuchi.ViewModels {
             }
         }
 
-        public DelegateCommand SaveCommand { get; private set; }
-
-        /// <summary>
-        /// 選択されているピボット項目の最新のデータを読み込みます。
-        /// </summary>
-        private void Save() {
-            Messanger.Current.Send("SaveSettings", null);
-        }
-
-        /// <summary>
-        /// <see cref="Karamem0.Kanpuchi.ViewModels.MatomeSiteViewModel.Save"/> を実行できるかどうかを判断します。
-        /// </summary>
-        /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
-        private bool CanSave() {
-            return true;
-        }
-
         /// <summary>
         /// <see cref="Karamem0.Kanpuchi.ViewModels.MatomeSiteViewModel"/> クラスの新しいインスタンスを初期化します。
         /// </summary>
-        public MatomeSiteViewModel() {
-            this.SaveCommand = new DelegateCommand(this.Save, this.CanSave);
-        }
+        public MatomeSiteViewModel() { }
 
     }
 

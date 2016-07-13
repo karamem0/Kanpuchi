@@ -36,9 +36,10 @@
         <Pivot
             Grid.Column="0"
             Grid.Row="1"
-            Margin="12,0,12,0"
+            Margin="6,0,6,0"
             SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
             <vi:MatomeSitePivotItem DataContext="{Binding}" />
+            <vi:AboutPivotItem DataContext="{Binding}" />
         </Pivot>
     </Grid>
 </prism:SessionStateAwarePage>

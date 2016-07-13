@@ -68,7 +68,7 @@ namespace Karamem0.Kanpuchi.Services {
                 throw new ObjectDisposedException(nameof(SettingsService));
             }
             try {
-                this.RaiseAsyncStarted();
+                this.RaiseAsyncStarted(nameof(this.LoadAsync));
                 var settings = await this.settingsRepository.LoadAsync();
                 var device = await this.deviceRepository.RegisterAsync();
                 var matomeSites = await this.matomeSiteRepository.SearchAsync(
@@ -91,9 +91,9 @@ namespace Karamem0.Kanpuchi.Services {
                         this.viewModel.MatomeSites.Add(matomeSite);
                     }
                 }
-                this.RaiseAsyncCompleted();
+                this.RaiseAsyncCompleted(nameof(this.LoadAsync));
             } catch (Exception ex) {
-                this.RaiseAsyncCompleted(ex);
+                this.RaiseAsyncCompleted(nameof(this.LoadAsync), ex);
             }
         }
 
@@ -106,16 +106,16 @@ namespace Karamem0.Kanpuchi.Services {
                 throw new ObjectDisposedException(nameof(SettingsService));
             }
             try {
-                this.RaiseAsyncStarted();
+                this.RaiseAsyncStarted(nameof(this.SaveAsync));
                 var settings = new Settings();
                 settings.EnableSiteIds = this.viewModel.MatomeSites
                     .Where(x => x.Enabled)
                     .Select(x => x.SiteId)
                     .ToArray();
                 await this.settingsRepository.SaveAsync(settings);
-                this.RaiseAsyncCompleted();
+                this.RaiseAsyncCompleted(nameof(this.SaveAsync));
             } catch (Exception ex) {
-                this.RaiseAsyncCompleted(ex);
+                this.RaiseAsyncCompleted(nameof(this.SaveAsync), ex);
             }
         }
 

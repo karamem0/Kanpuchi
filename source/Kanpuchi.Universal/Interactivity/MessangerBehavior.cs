@@ -88,7 +88,7 @@ namespace Karamem0.Kanpuchi.Interactivity {
         /// <summary>
         /// ビヘイビアーがデタッチされると呼び出されます。
         /// </summary>
-        protected override void OnDetached() {
+        protected override void OnDetaching() {
             this.Messanger.AfterSend -= this.OnMessangerAfterSend;
         }
 

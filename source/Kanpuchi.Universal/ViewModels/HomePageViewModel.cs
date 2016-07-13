@@ -187,11 +187,32 @@ namespace Karamem0.Kanpuchi.ViewModels {
             this.LoadPreviousCommand = new DelegateCommand(this.LoadPrevious, this.CanLoadPrevious);
         }
 
+        /// <summary>
+        /// 現在のページにナビゲーションが移動するときに追加の処理を実行します。
+        /// </summary>
+        /// <param name="e">
+        /// イベントのデータを格納する <see cref="Prism.Windows.Navigation.NavigatedToEventArgs"/>。
+        /// </param>
+        /// <param name="viewModelState">
+        /// ビュー モデルの状態を格納する <see cref="System.Collections.Generic.Dictionary{TKey, TValue}"/>。
+        /// </param>
         public override void OnNavigatedTo(NavigatedToEventArgs e, Dictionary<string, object> viewModelState) {
-            this.LoadLatest();
             base.OnNavigatedTo(e, viewModelState);
+            this.LoadLatest();
         }
 
+        /// <summary>
+        /// 現在のページからナビゲーションが移動するときに追加の処理を実行します。
+        /// </summary>
+        /// <param name="e">
+        /// イベントのデータを格納する <see cref="Prism.Windows.Navigation.NavigatedToEventArgs"/>。
+        /// </param>
+        /// <param name="viewModelState">
+        /// ビュー モデルの状態を格納する <see cref="System.Collections.Generic.Dictionary{TKey, TValue}"/>。
+        /// </param>
+        /// <param name="suspending">
+        /// アプリが中断される場合は true。それ以外の場合は false。
+        /// </param>
         public override void OnNavigatingFrom(NavigatingFromEventArgs e, Dictionary<string, object> viewModelState, bool suspending) {
             base.OnNavigatingFrom(e, viewModelState, suspending);
         }
@@ -201,9 +222,9 @@ namespace Karamem0.Kanpuchi.ViewModels {
         /// </summary>
         /// <param name="sender">イベントを発生させた <see cref="System.Object"/>。</param>
         /// <param name="e">
-        /// イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructure.AsyncStartedEventArgs"/>。
+        /// イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructure.ServiceAsyncStartedEventArgs"/>。
         /// </param>
-        private void OnTweetServiceAsyncStarted(object sender, AsyncStartedEventArgs e) {
+        private void OnTweetServiceAsyncStarted(object sender, ServiceAsyncStartedEventArgs e) {
             var tweetService = sender as TweetService;
             if (tweetService != null) {
                 tweetService.AsyncStarted -= this.OnTweetServiceAsyncStarted;
@@ -215,8 +236,8 @@ namespace Karamem0.Kanpuchi.ViewModels {
         /// ツイートの取得の非同期操作が完了するときに追加の処理を実行します。
         /// </summary>
         /// <param name="sender">イベントを発生させた <see cref="System.Object"/>。</param>
-        /// <param name="e">イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructure.AsyncCompletedEventArgs"/>。</param>
-        private void OnTweetServiceAsyncCompleted(object sender, AsyncCompletedEventArgs e) {
+        /// <param name="e">イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructure.ServiceAsyncCompletedEventArgs"/>。</param>
+        private void OnTweetServiceAsyncCompleted(object sender, ServiceAsyncCompletedEventArgs e) {
             var tweetService = sender as TweetService;
             if (tweetService != null) {
                 tweetService.AsyncCompleted -= this.OnTweetServiceAsyncCompleted;
@@ -232,8 +253,8 @@ namespace Karamem0.Kanpuchi.ViewModels {
         /// まとめ記事の取得の非同期操作が開始するときに追加の処理を実行します。
         /// </summary>
         /// <param name="sender">イベントを発生させた <see cref="System.Object"/>。</param>
-        /// <param name="e">イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructure.AsyncStartedEventArgs"/>。</param>
-        private void OnMatomeEntryServiceAsyncStarted(object sender, AsyncStartedEventArgs e) {
+        /// <param name="e">イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructure.ServiceAsyncStartedEventArgs"/>。</param>
+        private void OnMatomeEntryServiceAsyncStarted(object sender, ServiceAsyncStartedEventArgs e) {
             var matomeEntryService = sender as MatomeEntryService;
             if (matomeEntryService != null) {
                 matomeEntryService.AsyncStarted -= this.OnMatomeEntryServiceAsyncStarted;
@@ -245,8 +266,8 @@ namespace Karamem0.Kanpuchi.ViewModels {
         /// まとめ記事の取得の非同期操作が完了するときに追加の処理を実行します。
         /// </summary>
         /// <param name="sender">イベントを発生させた <see cref="System.Object"/>。</param>
-        /// <param name="e">イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructure.AsyncCompletedEventArgs"/>。</param>
-        private void OnMatomeEntryServiceAsyncCompleted(object sender, AsyncCompletedEventArgs e) {
+        /// <param name="e">イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructure.ServiceAsyncCompletedEventArgs"/>。</param>
+        private void OnMatomeEntryServiceAsyncCompleted(object sender, ServiceAsyncCompletedEventArgs e) {
             var matomeEntryService = sender as MatomeEntryService;
             if (matomeEntryService != null) {
                 matomeEntryService.AsyncCompleted -= this.OnMatomeEntryServiceAsyncCompleted;

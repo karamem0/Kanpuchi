@@ -19,9 +19,16 @@ namespace Karamem0.Kanpuchi.ViewModels {
         /// </summary>
         private INavigationService navigationService;
 
+        /// <summary>
+        /// 指定したページに移動するコマンドを表します。
+        /// </summary>
         public DelegateCommand<string> NavigateCommand { get; private set; }
 
+        /// <summary>
+        /// 指定したページに移動します。
+        /// </summary>
         private void Navigate(string parameter) {
+            this.IsPaneOpen = false;
             var resourceLoader = ResourceLoader.GetForCurrentView("Strings");
             var title = resourceLoader.GetString(parameter);
             this.ContentTitle = title;
@@ -48,6 +55,7 @@ namespace Karamem0.Kanpuchi.ViewModels {
         /// アプリのレビューを起動します。
         /// </summary>
         private async void LaunchReviewApp() {
+            this.IsPaneOpen = false;
             try {
                 await Launcher.LaunchUriAsync(new Uri("ms-windows-store:Review?ProductId=9wzdncrdcr55"));
             } catch {
@@ -63,8 +71,32 @@ namespace Karamem0.Kanpuchi.ViewModels {
             return true;
         }
 
+        /// <summary>
+        /// メニューを開いているかどうかを示す値を表します。
+        /// </summary>
+        private bool isPaneOpen;
+
+        /// <summary>
+        /// メニューを開いているかどうかを示す値を取得または設定します。
+        /// </summary>
+        public bool IsPaneOpen {
+            get { return this.isPaneOpen; }
+            set {
+                if (this.isPaneOpen != value) {
+                    this.isPaneOpen = value;
+                    this.OnPropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>
+        /// コンテンツのタイトルを表します。
+        /// </summary>
         private string contentTitle;
 
+        /// <summary>
+        /// コンテンツのタイトル取得または設定します。
+        /// </summary>
         public string ContentTitle {
             get { return this.contentTitle; }
             set {

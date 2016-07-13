@@ -1,7 +1,8 @@
 ﻿using Karamem0.Kanpuchi.Extensions;
-using Karamem0.Kanpuchi.Infrastructure;
+using Microsoft.Xaml.Interactivity;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -108,7 +109,7 @@ namespace Karamem0.Kanpuchi.Interactivity {
         /// <summary>
         /// ビヘイビアーがデタッチされると呼び出されます。
         /// </summary>
-        protected override void OnDetached() {
+        protected override void OnDetaching() {
             var scrollViewer = this.AssociatedObject.FindVisualChildren<ScrollViewer>().FirstOrDefault();
             if (scrollViewer != null) {
                 scrollViewer.LayoutUpdated -= this.OnScrollViewerLayoutUpdated;

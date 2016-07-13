@@ -43,16 +43,20 @@
                             <Grid.RenderTransform>
                                 <TranslateTransform X="0" Y="0" />
                             </Grid.RenderTransform>
-                            <Border
+                            <Grid
                                 Grid.Column="0"
                                 Grid.Row="0"
+                                Height="48"
                                 HorizontalAlignment="Stretch"
-                                VerticalAlignment="Top">
+                                VerticalAlignment="Top"
+                                Width="48">
                                 <Image
-                                    Height="48"
                                     Source="{Binding ProfileImageUrl}"
-                                    Width="48" />
-                            </Border>
+                                    Visibility="{Binding IsProfileImageUrlEnable, Converter={StaticResource VisibleConverter}}" />
+                                <Border
+                                    Background="{ThemeResource SystemChromeLowColor}"
+                                    Visibility="{Binding IsProfileImageUrlEnable, Converter={StaticResource CollaspedConverter}}" />
+                            </Grid>
                             <StackPanel
                                 Grid.Column="1"
                                 Grid.Row="0"
@@ -135,7 +139,7 @@
                     ScrollBottomCommand="{Binding LoadPreviousCommand}"
                     ScrollBottomOffset="30"
                     ScrollTopCommand="{Binding LoadLatestCommand}"
-                    ScrollTopOffset="50" />
+                    ScrollTopOffset="30" />
             </i:Interaction.Behaviors>
         </ListBox>
     </Border>

@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Activation;
+using Windows.Foundation.Metadata;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -41,7 +43,11 @@ namespace Karamem0.Kanpuchi {
         /// <see cref="Windows.ApplicationModel.Activation.IActivatedEventArgs"/>。
         /// </param>
         /// <returns><see cref="System.Threading.Tasks.Task"/>。</returns>
-        protected override Task OnInitializeAsync(IActivatedEventArgs args) {
+        protected override async Task OnInitializeAsync(IActivatedEventArgs args) {
+            if (ApiInformation.IsApiContractPresent("Windows.Phone.PhoneContract", 1, 0)) {
+                var statusBar = StatusBar.GetForCurrentView();
+                await statusBar.HideAsync();
+            }
             ViewModelLocationProvider.Register(
                 typeof(Shell).FullName,
                 () => new ShellViewModel(this.NavigationService));
@@ -53,7 +59,7 @@ namespace Karamem0.Kanpuchi {
             ViewModelLocationProvider.Register(
                 typeof(SettingsPage).FullName,
                 () => settingsPageViewModel);
-            return base.OnInitializeAsync(args);
+            await base.OnInitializeAsync(args);
         }
 
         /// <summary>

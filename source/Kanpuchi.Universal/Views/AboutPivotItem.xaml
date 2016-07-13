@@ -1,0 +1,43 @@
+﻿<PivotItem
+    x:Class="Karamem0.Kanpuchi.Views.AboutPivotItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Margin="6,0,0,0">
+    <PivotItem.Header>
+        <TextBlock
+            x:Uid="AboutPivotHeader"
+            Style="{ThemeResource BodyTextBlockStyle}"
+            Text="About" />
+    </PivotItem.Header>
+    <Border Margin="0,0,0,0">
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="0,0,6,0">
+                    <Run x:Uid="VersionLabel" Text="Version" /><Run Text=":" />
+                </TextBlock>
+                <TextBlock Text="{Binding Version}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="0,0,6,0">
+                    <Run x:Uid="AuthorLabel" Text="Author" /><Run Text=":" />
+                </TextBlock>
+                <HyperlinkButton
+                    x:Uid="AuthorButton"
+                    Command="{Binding LaunchBrowserCommand}"
+                    CommandParameter="https://twitter.com/karamem0"
+                    Content="@karamem0"
+                    Style="{StaticResource HyperlinkButtonStyle}" />
+            </StackPanel>
+            <HyperlinkButton
+                x:Uid="PrivacyPolicyButton"
+                Command="{Binding LaunchBrowserCommand}"
+                CommandParameter="https://kanpuchi.azurewebsites.net/privacy.aspx"
+                Content="Privacy policy"
+                Margin="0,6,0,0"
+                Style="{StaticResource HyperlinkButtonStyle}" />
+        </StackPanel>
+    </Border>
+</PivotItem>

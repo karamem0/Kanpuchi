@@ -48,7 +48,6 @@
                                 Grid.Row="0"
                                 Height="48"
                                 HorizontalAlignment="Stretch"
-                                Margin="0,0,12,0"
                                 VerticalAlignment="Top"
                                 Width="48">
                                 <Image
@@ -56,13 +55,13 @@
                                     Visibility="{Binding IsThumbnailUrlEnable, Converter={StaticResource VisibleConverter}}" />
                                 <Border
                                     Background="{ThemeResource SystemChromeLowColor}"
-                                    Visibility="{Binding IsThumbnailUrlEnable, Converter={StaticResource CollaspedConverter}}">
-                                </Border>
+                                    Visibility="{Binding IsThumbnailUrlEnable, Converter={StaticResource CollaspedConverter}}" />
                             </Grid>
                             <StackPanel
                                 Grid.Column="1"
                                 Grid.Row="0"
-                                Orientation="Vertical">
+                                Orientation="Vertical"
+                                Margin="12,0,0,0">
                                 <TextBlock
                                     Foreground="{StaticResource AppThemeDarkBrush}"
                                     Style="{ThemeResource BaseTextBlockStyle}"
@@ -132,7 +131,7 @@
                     ScrollBottomCommand="{Binding LoadPreviousCommand}"
                     ScrollBottomOffset="30"
                     ScrollTopCommand="{Binding LoadLatestCommand}"
-                    ScrollTopOffset="50" />
+                    ScrollTopOffset="30" />
             </i:Interaction.Behaviors>
         </ListBox>
     </Border>

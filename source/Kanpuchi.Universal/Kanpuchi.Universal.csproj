@@ -102,9 +102,8 @@
     <Compile Include="Extensions\DependencyObjectExtensions.cs" />
     <Compile Include="Extensions\ObservableCollectionExtensions.cs" />
     <Compile Include="Extensions\PackageVersionExtensions.cs" />
-    <Compile Include="Infrastructure\AsyncCompletedEventArgs.cs" />
-    <Compile Include="Infrastructure\AsyncStartedEventArgs.cs" />
-    <Compile Include="Infrastructure\Behavior.cs" />
+    <Compile Include="Infrastructure\ServiceAsyncCompletedEventArgs.cs" />
+    <Compile Include="Infrastructure\ServiceAsyncStartedEventArgs.cs" />
     <Compile Include="Infrastructure\MessageCancelEventArgs.cs" />
     <Compile Include="Infrastructure\MessageEventArgs.cs" />
     <Compile Include="Infrastructure\Messanger.cs" />
@@ -137,6 +136,9 @@
     <Compile Include="ViewModels\SettingsPageViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\TweetViewModel.cs" />
+    <Compile Include="Views\AboutPivotItem.xaml.cs">
+      <DependentUpon>AboutPivotItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
@@ -205,6 +207,10 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
+    <Page Include="Views\AboutPivotItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\HomePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -235,8 +241,8 @@
     <None Include="Project.lock.json" />
   </ItemGroup>
   <ItemGroup>
-    <SDKReference Include="BehaviorsXamlSDKManaged, Version=12.0">
-      <Name>Behaviors SDK %28XAML%29</Name>
+    <SDKReference Include="WindowsMobile, Version=10.0.10240.0">
+      <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

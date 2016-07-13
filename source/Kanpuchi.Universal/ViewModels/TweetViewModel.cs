@@ -17,6 +17,80 @@ namespace Karamem0.Kanpuchi.ViewModels {
     public sealed class TweetViewModel : BindableBase {
 
         /// <summary>
+        /// ツイートの URL を Web ブラウザーで表示するコマンドを取得します。
+        /// </summary>
+        public DelegateCommand LaunchBrowserCommand { get; private set; }
+
+        /// <summary>
+        /// ツイートの URL を Web ブラウザーで表示します。
+        /// </summary>
+        private async void LaunchBrowser() {
+            await Launcher.LaunchUriAsync(new Uri(this.Permalink));
+        }
+
+        /// <summary>
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.TweetViewModel.LaunchBrowser"/> を実行できるかどうかを判断します。
+        /// </summary>
+        /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
+        private bool CanLaunchBrowser() {
+            if (string.IsNullOrEmpty(this.Permalink) == true) {
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// ツイートを共有するコマンドを取得します。
+        /// </summary>
+        public DelegateCommand DataTransferCommand { get; private set; }
+
+        /// <summary>
+        /// ツイートを共有します。
+        /// </summary>
+        private void DataTransfer() {
+            var manager = DataTransferManager.GetForCurrentView();
+            manager.DataRequested += this.OnDataTransferManagerDataRequested;
+            DataTransferManager.ShowShareUI();
+        }
+
+        /// <summary>
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.TweetViewModel.DataTransfer"/> を実行できるかどうかを判断します。
+        /// </summary>
+        /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
+        private bool CanDataTransfer() {
+            if (string.IsNullOrEmpty(this.Permalink) == true) {
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// ツイートをクリップ ボードにコピーするコマンドを取得します。
+        /// </summary>
+        public DelegateCommand CopyClipboardCommand { get; private set; }
+
+        /// <summary>
+        /// ツイートをクリップ ボードにコピーします。
+        /// </summary>
+        private void CopyClipboard() {
+            var dataPackage = new DataPackage();
+            dataPackage.RequestedOperation = DataPackageOperation.Copy;
+            dataPackage.SetText(this.Permalink);
+            Clipboard.SetContent(dataPackage);
+        }
+
+        /// <summary>
+        /// <see cref="Karamem0.Kanpuchi.ViewModels.TweetViewModel.CopyClipboard"/> を実行できるかどうかを判断します。
+        /// </summary>
+        /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
+        private bool CanCopyClipboard() {
+            if (string.IsNullOrEmpty(this.Permalink) == true) {
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
         /// ID を表します。
         /// </summary>
         private string statusId;
@@ -102,6 +176,7 @@ namespace Karamem0.Kanpuchi.ViewModels {
                 if (this.profileImageUrl != value) {
                     this.profileImageUrl = value;
                     this.OnPropertyChanged();
+                    this.OnPropertyChanged(() => this.IsProfileImageUrlEnable);
                 }
             }
         }
@@ -161,77 +236,16 @@ namespace Karamem0.Kanpuchi.ViewModels {
         }
 
         /// <summary>
-        /// ツイートの URL を Web ブラウザーで表示するコマンドを取得します。
+        /// プロフィール画像が有効かどうかを示す値を取得します。
         /// </summary>
-        public DelegateCommand LaunchBrowserCommand { get; private set; }
-
-        /// <summary>
-        /// ツイートの URL を Web ブラウザーで表示します。
-        /// </summary>
-        private async void LaunchBrowser() {
-            await Launcher.LaunchUriAsync(new Uri(this.Permalink));
-        }
-
-        /// <summary>
-        /// <see cref="Karamem0.Kanpuchi.ViewModels.TweetViewModel.LaunchBrowser"/> を実行できるかどうかを判断します。
-        /// </summary>
-        /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
-        private bool CanLaunchBrowser() {
-            if (string.IsNullOrEmpty(this.Permalink) == true) {
-                return false;
+        public bool IsProfileImageUrlEnable {
+            get {
+                var isNullOrEmpty = string.IsNullOrEmpty(this.profileImageUrl);
+                if (isNullOrEmpty == true) {
+                    return false;
+                }
+                return true;
             }
-            return true;
-        }
-
-        /// <summary>
-        /// ツイートを共有するコマンドを取得します。
-        /// </summary>
-        public DelegateCommand DataTransferCommand { get; private set; }
-
-        /// <summary>
-        /// ツイートを共有します。
-        /// </summary>
-        private void DataTransfer() {
-            var manager = DataTransferManager.GetForCurrentView();
-            manager.DataRequested += this.OnDataTransferManagerDataRequested;
-            DataTransferManager.ShowShareUI();
-        }
-
-        /// <summary>
-        /// <see cref="Karamem0.Kanpuchi.ViewModels.TweetViewModel.DataTransfer"/> を実行できるかどうかを判断します。
-        /// </summary>
-        /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
-        private bool CanDataTransfer() {
-            if (string.IsNullOrEmpty(this.Permalink) == true) {
-                return false;
-            }
-            return true;
-        }
-
-        /// <summary>
-        /// ツイートをクリップ ボードにコピーするコマンドを取得します。
-        /// </summary>
-        public DelegateCommand CopyClipboardCommand { get; private set; }
-
-        /// <summary>
-        /// ツイートをクリップ ボードにコピーします。
-        /// </summary>
-        private void CopyClipboard() {
-            var dataPackage = new DataPackage();
-            dataPackage.RequestedOperation = DataPackageOperation.Copy;
-            dataPackage.SetText(this.Permalink);
-            Clipboard.SetContent(dataPackage);
-        }
-
-        /// <summary>
-        /// <see cref="Karamem0.Kanpuchi.ViewModels.TweetViewModel.CopyClipboard"/> を実行できるかどうかを判断します。
-        /// </summary>
-        /// <returns>コマンドを実行できるか場合は true。それ以外の場合は false。</returns>
-        private bool CanCopyClipboard() {
-            if (string.IsNullOrEmpty(this.Permalink) == true) {
-                return false;
-            }
-            return true;
         }
 
         /// <summary>

@@ -68,7 +68,7 @@ namespace Karamem0.Kanpuchi.Services {
                 throw new ObjectDisposedException(nameof(MatomeEntryService));
             }
             try {
-                this.RaiseAsyncStarted();
+                this.RaiseAsyncStarted(nameof(this.LoadLatestAsync));
                 var device = await this.deviceRepository.RegisterAsync();
                 var settings = await this.settingsRepository.LoadAsync();
                 for (int index = this.viewModel.MatomeEntries.Count - 1; index >= 0; index--) {
@@ -89,9 +89,9 @@ namespace Karamem0.Kanpuchi.Services {
                         x => x.CreatedAt,
                         x => x.EntryId);
                 }
-                this.RaiseAsyncCompleted();
+                this.RaiseAsyncCompleted(nameof(this.LoadLatestAsync));
             } catch (Exception ex) {
-                this.RaiseAsyncCompleted(ex);
+                this.RaiseAsyncCompleted(nameof(this.LoadLatestAsync), ex);
             }
         }
 
@@ -103,7 +103,7 @@ namespace Karamem0.Kanpuchi.Services {
                 throw new ObjectDisposedException(nameof(MatomeEntryService));
             }
             try {
-                this.RaiseAsyncStarted();
+                this.RaiseAsyncStarted(nameof(this.LoadPreviousAsync));
                 var device = await this.deviceRepository.RegisterAsync();
                 var settings = await this.settingsRepository.LoadAsync();
                 var maxEntry = this.viewModel.MatomeEntries.LastOrDefault();
@@ -121,9 +121,9 @@ namespace Karamem0.Kanpuchi.Services {
                         x => x.CreatedAt,
                         x => x.EntryId);
                 }
-                this.RaiseAsyncCompleted();
+                this.RaiseAsyncCompleted(nameof(this.LoadPreviousAsync));
             } catch (Exception ex) {
-                this.RaiseAsyncCompleted(ex);
+                this.RaiseAsyncCompleted(nameof(this.LoadPreviousAsync), ex);
             }
         }
 

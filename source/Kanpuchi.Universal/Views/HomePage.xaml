@@ -42,7 +42,7 @@
             x:Name="Pivot"
             Grid.Column="0"
             Grid.Row="1"
-            Margin="0,0,0,0"
+            Margin="6,0,6,0"
             SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}">
             <vi:TweetPivotItem DataContext="{Binding}" />
             <vi:MatomeEntryPivotItem DataContext="{Binding}" />
@@ -55,6 +55,7 @@
             VerticalAlignment="Bottom">
             <AppBarButton
                 x:Uid="ScrollToTopButton"
+                Click="OnScrollToTopButtonClick"
                 Label="Top">
                 <FontIcon
                     FontFamily="Segoe MDL2 Assets"
@@ -62,6 +63,7 @@
             </AppBarButton>
             <AppBarButton
                 x:Uid="ScrollToBottomButton"
+                Click="OnScrollToBottomButtonClick"
                 Label="Bottom">
                 <FontIcon
                     FontFamily="Segoe MDL2 Assets"

@@ -684,4 +684,31 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="HyperlinkButtonStyle" TargetType="HyperlinkButton">
+        <Setter Property="Margin" Value="0,0,0,0" />
+        <Setter Property="MinHeight" Value="0" />
+        <Setter Property="MinWidth" Value="0" />
+        <Setter Property="Padding" Value="0,-3,0,0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="HyperlinkButton">
+                    <Border
+                        Margin="{TemplateBinding Margin}"
+                        MinHeight="{TemplateBinding MinHeight}"
+                        MinWidth="{TemplateBinding MinWidth}">
+                        <TextBlock
+                            FontFamily="{TemplateBinding FontFamily}"
+                            FontSize="{TemplateBinding FontSize}"
+                            FontWeight="{TemplateBinding FontWeight}"
+                            Foreground="{TemplateBinding Foreground}"
+                            Margin="{TemplateBinding Padding}">
+                            <Underline>
+                                <Run Text="{Binding Content, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+                            </Underline>
+                        </TextBlock>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

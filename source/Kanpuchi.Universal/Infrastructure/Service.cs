@@ -14,15 +14,15 @@ namespace Karamem0.Kanpuchi.Infrastructure {
         /// <summary>
         /// 非同期操作が開始されると発生します。
         /// </summary>
-        public event EventHandler<AsyncStartedEventArgs> AsyncStarted;
+        public event EventHandler<ServiceAsyncStartedEventArgs> AsyncStarted;
 
         /// <summary>
         /// <see cref="Karamem0.Kanpuchi.Infrastructure.Service.AsyncStarted"/> イベントを発生させます。
         /// </summary>
         /// <param name="e">
-        /// イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructure.AsyncStartedEventArgs"/>。
+        /// イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructure.ServiceAsyncStartedEventArgs"/>。
         /// </param>
-        protected virtual void OnAsyncStarted(AsyncStartedEventArgs e) {
+        protected virtual void OnAsyncStarted(ServiceAsyncStartedEventArgs e) {
             var handler = this.AsyncStarted;
             if (handler != null) {
                 handler.Invoke(this, e);
@@ -32,22 +32,23 @@ namespace Karamem0.Kanpuchi.Infrastructure {
         /// <summary>
         /// <see cref="Karamem0.Kanpuchi.Infrastructure.Service.AsyncStarted"/> イベントを発生させます。
         /// </summary>
-        protected void RaiseAsyncStarted() {
-            this.OnAsyncStarted(new AsyncStartedEventArgs());
+        /// <param name="methodName">非同期操作のメソッド名を示す <see cref="System.String"/>。</param>
+        protected void RaiseAsyncStarted(string methodName) {
+            this.OnAsyncStarted(new ServiceAsyncStartedEventArgs(methodName));
         }
 
         /// <summary>
         /// 非同期操作が完了すると発生します。
         /// </summary>
-        public event EventHandler<AsyncCompletedEventArgs> AsyncCompleted;
+        public event EventHandler<ServiceAsyncCompletedEventArgs> AsyncCompleted;
 
         /// <summary>
         /// <see cref="Karamem0.Kanpuchi.Infrastructure.Service.AsyncCompleted"/> イベントを発生させます。
         /// </summary>
         /// <param name="e">
-        /// イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructure.AsyncCompletedEventArgs"/>。
+        /// イベントのデータを格納する <see cref="Karamem0.Kanpuchi.Infrastructure.ServiceAsyncCompletedEventArgs"/>。
         /// </param>
-        protected virtual void OnAsyncCompleted(AsyncCompletedEventArgs e) {
+        protected virtual void OnAsyncCompleted(ServiceAsyncCompletedEventArgs e) {
             var handler = this.AsyncCompleted;
             if (handler != null) {
                 handler.Invoke(this, e);
@@ -57,9 +58,10 @@ namespace Karamem0.Kanpuchi.Infrastructure {
         /// <summary>
         /// <see cref="Karamem0.Kanpuchi.Infrastructure.Service.AsyncCompleted"/> イベントを発生させます。
         /// </summary>
+        /// <param name="methodName">非同期操作のメソッド名を示す <see cref="System.String"/>。</param>
         /// <param name="ex">発生した例外を示す <see cref="System.Exception"/>。</param>
-        protected void RaiseAsyncCompleted(Exception ex = null) {
-            this.OnAsyncCompleted(new AsyncCompletedEventArgs(ex));
+        protected void RaiseAsyncCompleted(string methodName, Exception ex = null) {
+            this.OnAsyncCompleted(new ServiceAsyncCompletedEventArgs(methodName, ex));
         }
 
         /// <summary>

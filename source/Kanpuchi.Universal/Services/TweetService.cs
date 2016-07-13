@@ -62,7 +62,7 @@ namespace Karamem0.Kanpuchi.Services {
                 throw new ObjectDisposedException(nameof(TweetService));
             }
             try {
-                this.RaiseAsyncStarted();
+                this.RaiseAsyncStarted(nameof(this.LoadLatestAsync));
                 var device = await this.deviceRepository.RegisterAsync();
                 var tweets = await this.tweetRepository.SearchAsync(
                     deviceId: device.DeviceId.ToString(),
@@ -75,9 +75,9 @@ namespace Karamem0.Kanpuchi.Services {
                         x => x.CreatedAt,
                         x => x.StatusId);
                 }
-                this.RaiseAsyncCompleted();
+                this.RaiseAsyncCompleted(nameof(this.LoadLatestAsync));
             } catch (Exception ex) {
-                this.RaiseAsyncCompleted(ex);
+                this.RaiseAsyncCompleted(nameof(this.LoadLatestAsync), ex);
             }
         }
 
@@ -89,7 +89,7 @@ namespace Karamem0.Kanpuchi.Services {
                 throw new ObjectDisposedException(nameof(TweetService));
             }
             try {
-                this.RaiseAsyncStarted();
+                this.RaiseAsyncStarted(nameof(this.LoadPreviousAsync));
                 var device = await this.deviceRepository.RegisterAsync();
                 var maxTweet = this.viewModel.Tweets.LastOrDefault();
                 var maxId = (maxTweet == null) ? null : maxTweet.StatusId;
@@ -105,9 +105,9 @@ namespace Karamem0.Kanpuchi.Services {
                         x => x.CreatedAt,
                         x => x.StatusId);
                 }
-                this.RaiseAsyncCompleted();
+                this.RaiseAsyncCompleted(nameof(this.LoadPreviousAsync));
             } catch (Exception ex) {
-                this.RaiseAsyncCompleted(ex);
+                this.RaiseAsyncCompleted(nameof(this.LoadPreviousAsync), ex);
             }
         }
 

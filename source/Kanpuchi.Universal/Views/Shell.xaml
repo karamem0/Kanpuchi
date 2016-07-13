@@ -22,6 +22,7 @@
             x:Name="MenuButton"
             Grid.Column="0"
             Grid.Row="0"
+            IsChecked="{Binding IsPaneOpen, Mode=TwoWay}"
             Style="{StaticResource MenuButtonStyle}" />
         <Border
             Grid.Column="1"
@@ -43,9 +44,8 @@
             Grid.ColumnSpan="2"
             Grid.Row="1"
             CompactPaneLength="48"
-            DisplayMode="CompactOverlay"
             Foreground="{ThemeResource SystemChromeAltLowColor}"
-            IsPaneOpen="{Binding IsChecked, ElementName=MenuButton, Mode=TwoWay}"
+            IsPaneOpen="{Binding IsPaneOpen, Mode=TwoWay}"
             OpenPaneLength="320"
             PaneBackground="{ThemeResource SystemChromeLowColor}">
             <SplitView.Pane>

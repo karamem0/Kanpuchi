@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutPivotHeader.Text" xml:space="preserve">
+    <value>アプリについて</value>
+  </data>
+  <data name="AuthorLabel.Text" xml:space="preserve">
+    <value>作者</value>
+  </data>
   <data name="GeneralPivotHeader.Text" xml:space="preserve">
     <value>全般</value>
   </data>
@@ -128,6 +134,9 @@
   </data>
   <data name="MatomeSitePivotHeader.Text" xml:space="preserve">
     <value>サイト</value>
+  </data>
+  <data name="PrivacyPolicyButton.Content" xml:space="preserve">
+    <value>プライバシー ポリシー</value>
   </data>
   <data name="RefreshButton.Label" xml:space="preserve">
     <value>更新</value>
@@ -149,5 +158,8 @@
   </data>
   <data name="TweetPivotHeader.Text" xml:space="preserve">
     <value>ツイート</value>
+  </data>
+  <data name="VersionLabel.Text" xml:space="preserve">
+    <value>バージョン</value>
   </data>
 </root>
