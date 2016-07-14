@@ -1,5 +1,6 @@
 ﻿using Karamem0.Kanpuchi.ViewModels;
 using Karamem0.Kanpuchi.Views;
+using Microsoft.HockeyApp;
 using Prism.Mvvm;
 using Prism.Windows;
 using System;
@@ -44,6 +45,7 @@ namespace Karamem0.Kanpuchi {
         /// </param>
         /// <returns><see cref="System.Threading.Tasks.Task"/>。</returns>
         protected override async Task OnInitializeAsync(IActivatedEventArgs args) {
+            HockeyClient.Current.Configure("5d129d2cee4448f0bf0150ee0f0d114c");
             if (ApiInformation.IsApiContractPresent("Windows.Phone.PhoneContract", 1, 0)) {
                 var statusBar = StatusBar.GetForCurrentView();
                 await statusBar.HideAsync();
